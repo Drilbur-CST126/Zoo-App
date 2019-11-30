@@ -1,8 +1,13 @@
 // app.dart
 // File created by Jordan Clark
 import 'package:flutter/material.dart';
+import 'package:zoo_app/controller/iControllerView.dart';
 
 class ZooApp extends StatelessWidget {
+  final IControllerView controller;
+
+  ZooApp(this.controller);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -20,13 +25,13 @@ class ZooApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -38,6 +43,7 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
+  final IControllerView controller;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();

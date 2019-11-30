@@ -2,9 +2,10 @@
 
 class Animal
 {
+  int animalId;
   String commonName;
   String scientificName;
   List<String> tags;
 
-  Animal(this.commonName, this.scientificName, [this.tags]);
+  Animal(this.animalId, this.commonName, this.scientificName, [this.tags]);
 }

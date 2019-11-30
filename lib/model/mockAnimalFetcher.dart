@@ -17,4 +17,8 @@ class MockAnimalFetcher implements IAnimalFetcher
     return animals.firstWhere((a) => a.commonName == name, orElse: () => null);
   }
   
+  @override
+  Animal getAnimalById(int id) {
+    return animals.firstWhere((a) => a.animalId == id, orElse: () => null);
+  }
 }
