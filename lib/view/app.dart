@@ -97,21 +97,30 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            FlatButton(
+              child: Text("Id 0"),
+              autofocus: false,
+              onPressed: () {
+                widget.controller.goToAnimalPage(context, 0);
+              },
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            FlatButton(
+              child: Text("Id 1"),
+              autofocus: false,
+              onPressed: () {
+                widget.controller.goToAnimalPage(context, 1);
+              },
+            ),
+            FlatButton(
+              child: Text("Id 2"),
+              autofocus: false,
+              onPressed: () {
+                widget.controller.goToAnimalPage(context, 2);
+              },
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

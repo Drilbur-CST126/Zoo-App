@@ -8,15 +8,9 @@ import 'package:zoo_app/view/animalPage.dart';
 
 class Controller implements IControllerView
 {
-  final Widget view;
   final Model model;
 
-  Controller(this.view, this.model);
-
-  start()
-  {
-    runApp(view);
-  }
+  Controller(this.model);
 
   @override
   goToAnimalPage(dynamic context, int animalId) {
