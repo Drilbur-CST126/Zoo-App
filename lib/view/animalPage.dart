@@ -4,27 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/model/animal.dart';
+import 'package:zoo_app/view/notFoundErrorPage.dart';
 
-class AnimalPage extends StatefulWidget
+// This page exists to display detailed information on the animals.
+// In the event that there is no animal to display, it will build a NotFoundErrorPage instead.
+class AnimalPage extends StatelessWidget
 {
-  final String title;
-  final Animal defaultAnimal;
-  final IControllerView controller;
+  final Animal animal;
+  final IControllerView controller; // Controller used to call methods to access the view
+  // TODO: Remove unless a need for controller is found
 
-  AnimalPage({Key key, this.title, this.defaultAnimal, @required this.controller}) : super(key: key);
+  AnimalPage({Key key, this.animal, @required this.controller}) : super(key: key);
 
-  @override
-  _AnimalPageState createState() {
-    return _AnimalPageState(defaultAnimal);
-  }
-}
-
-class _AnimalPageState extends State<AnimalPage>
-{
-  Animal animal;
-  _AnimalPageState(this.animal);
-
-  Widget _animalExists(BuildContext context)
+  // This is the main animal page. Factored out into a separate method to make the build method cleaner.
+  Widget _buildAnimalPage(BuildContext context)
   {
     return Scaffold(
       appBar: AppBar(
@@ -40,24 +33,9 @@ class _AnimalPageState extends State<AnimalPage>
     );
   }
 
-  Widget _animalDoesNotExist(BuildContext context)
-  {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("404 Error"),
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text("Uh oh! This animal is not in our databases.")
-          ],
-        ),
-      ),
-    );
-  }
-
+  // This defines what is built, either displaying the animal page or an error page based on whether it was given an animal or not.
   @override
   Widget build(BuildContext context) {
-    return animal != null ? _animalExists(context) : _animalDoesNotExist(context);
+    return animal != null ? _buildAnimalPage(context) : NotFoundErrorPage();
   }
 }
