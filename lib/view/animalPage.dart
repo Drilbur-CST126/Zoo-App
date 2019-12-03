@@ -12,9 +12,21 @@ class AnimalPage extends StatelessWidget
 {
   final Animal animal;
   final IControllerView controller; // Controller used to call methods to access the view
-  // TODO: Remove unless a need for controller is found
 
   AnimalPage({Key key, this.animal, @required this.controller}) : super(key: key);
+
+  // This gets all of the animal facts into an array of Text objects, using the 'sync*' and 'yield'
+  // From my understanding, having a function that is 'sync*' means it returns a list, and 'yield' adds an element to said list.
+  // It avoids creating and returning an extra list data member, not sure if the syntax is the best or not though.
+  List<Widget> _getAnimalFacts(BuildContext context)
+  {
+    var facts = controller.getAllFactsForAnimal(animal.animalId);
+    var factsText = new List<Widget>();
+    facts.forEach((fact) => factsText.add(
+      Padding(child: Text("- " + fact.fact, ), padding: EdgeInsets.all(20))
+    ));
+    return factsText;
+  }
 
   // This is the main animal page. Factored out into a separate method to make the build method cleaner.
   Widget _buildAnimalPage(BuildContext context)
@@ -26,7 +38,8 @@ class AnimalPage extends StatelessWidget
       body: Center(
         child: Column(
           children: <Widget>[
-            Text(animal.scientificName)
+            Text(animal.scientificName),
+            Column(children: _getAnimalFacts(context)),
           ],
         ),
       ),

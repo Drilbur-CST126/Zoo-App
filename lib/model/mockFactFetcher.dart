@@ -19,7 +19,7 @@ class MockFactFetcher implements IFactFetcher
 
   @override
   Iterable<Fact> getFactsByAnimalId(int animalId) {
-    return facts.where((fact) => fact.animalId == animalId);
+    return facts.where((fact) => fact.animalId == animalId).toList();
   }
   
 }

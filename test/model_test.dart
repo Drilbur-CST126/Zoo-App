@@ -1,7 +1,6 @@
 
 
 import 'package:test/test.dart';
-import 'package:test/test.dart' as prefix0;
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';

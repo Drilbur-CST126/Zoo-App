@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
+import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/model.dart';
 import 'package:zoo_app/view/animalPage.dart';
 
@@ -24,5 +25,10 @@ class Controller implements IControllerView
         AnimalPage(animal: model.animalFetcher.getAnimalById(animalId), controller: this,)
        )
     );
+  }
+
+  @override
+  List<Fact> getAllFactsForAnimal(int animalId) {
+    return model.factFetcher.getFactsByAnimalId(animalId);
   }
 }
