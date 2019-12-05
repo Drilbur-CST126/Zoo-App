@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zoo_app/Drawer.dart';
+import 'package:zoo_app/Clicker.dart';
+import 'package:zoo_app/DrawerItem.dart';
+import 'package:zoo_app/MissingPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,8 +22,9 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final drawerItems = [
+    new DrawerItem("Home", Icons.home),
     new DrawerItem("Animals", Icons.image),
-    new DrawerItem("Map", Icons.map)
+    new DrawerItem("Map", Icons.map),
   ];
 
   final String title;
@@ -31,17 +34,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int _selectedDrawerIndex = 0;
 
-  void _getDrawerItemWidget(int pos){
+  _getDrawerItemWidget(int pos){
     switch(pos){
       case 0:
-        return;
+        return new Clicker();
+        break;
+      case 1:
+        return new MissingPage();
+        break;
+      case 2:
+        return new MissingPage();
+        break;
       default:
-        return;
+        break;
     }
-
   }
 
   _onSelectItem(int index){
@@ -49,17 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var drawerOptions = <Widget>[];
-    for (var i = 0; i < widget.drawerItems.length; i++)
-      {
+    for (var i = 0; i < widget.drawerItems.length; i++) {
         var d = widget.drawerItems[i];
         drawerOptions.add(
           new ListTile(
@@ -70,7 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         );
       }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -78,30 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: new Drawer(
         child: new Column(
           children: <Widget>[
-            new UserAccountsDrawerHeader(accountName: new Text("Debug"), accountEmail: null),
             new Column(children: drawerOptions)
           ],
         )
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      body: _getDrawerItemWidget(_selectedDrawerIndex),
     );
   }
 }
