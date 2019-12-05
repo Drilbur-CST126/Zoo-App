@@ -2,7 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_api/src/frontend/expect_async.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
+import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/model.dart';
 import 'package:zoo_app/view/animalPage.dart';
@@ -30,5 +32,10 @@ class Controller implements IControllerView
   @override
   List<Fact> getAllFactsForAnimal(int animalId) {
     return model.factFetcher.getFactsByAnimalId(animalId);
+  }
+
+  @override
+  Iterable<Animal> getAllAnimals({bool Function(Animal) where}) {
+    return model.animalFetcher.getAllAnimals(where: where);
   }
 }

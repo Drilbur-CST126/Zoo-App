@@ -30,7 +30,7 @@ class ZooApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -45,80 +45,40 @@ class MyHomePage extends StatefulWidget {
   final String title;
   final IControllerView controller;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+  Widget _animalButton(BuildContext context, String name, int animalId)
+  {
+    return FlatButton(
+      child: Text(name),
+      autofocus: false,
+      onPressed: () {
+        controller.goToAnimalPage(context, animalId);
+      },
+    );
+  }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  List<Widget> _displayAnimals(BuildContext context)
+  {
+    var animals = controller.getAllAnimals();
+    var buttons = List<Widget>();
+    for (var animal in animals)
+    {
+      buttons.add(_animalButton(context, animal.commonName, animal.animalId));
+    }
+    return buttons;
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    var animalButtons = _displayAnimals(context);
+    animalButtons.add(_animalButton(context, "Nonexistant animal", -1));
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-              child: Text("Id 0"),
-              autofocus: false,
-              onPressed: () {
-                widget.controller.goToAnimalPage(context, 0);
-              },
-            ),
-            FlatButton(
-              child: Text("Id 1"),
-              autofocus: false,
-              onPressed: () {
-                widget.controller.goToAnimalPage(context, 1);
-              },
-            ),
-            FlatButton(
-              child: Text("Id 2"),
-              autofocus: false,
-              onPressed: () {
-                widget.controller.goToAnimalPage(context, 2);
-              },
-            ),
-          ],
+          children: animalButtons
         ),
       ),
     );

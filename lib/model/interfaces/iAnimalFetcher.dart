@@ -8,4 +8,5 @@ abstract class IAnimalFetcher
 {
   Animal getAnimalByName(String name);
   Animal getAnimalById(int id);
+  Iterable<Animal> getAllAnimals({bool Function(Animal) where});
 }

@@ -1,5 +1,6 @@
 // File created by Jordan Clark
 
+import 'package:test_api/src/frontend/expect_async.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 
@@ -25,5 +26,17 @@ class MockAnimalFetcher implements IAnimalFetcher
   @override
   Animal getAnimalById(int id) {
     return animals.firstWhere((a) => a.animalId == id, orElse: () => null);
+  }
+
+  @override
+  Iterable<Animal> getAllAnimals({bool Function(Animal) where}) {
+    if (where != null)
+    {
+      return animals.where(where);
+    }
+    else
+    {
+      return animals;
+    }
   }
 }
