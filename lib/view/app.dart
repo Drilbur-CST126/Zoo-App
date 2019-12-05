@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
 
   Widget _animalButton(BuildContext context, String name, int animalId)
   {
-    return FlatButton(
+    return RaisedButton(
       child: Text(name),
       autofocus: false,
       onPressed: () {
