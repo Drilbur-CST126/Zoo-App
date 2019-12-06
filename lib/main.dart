@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/fact.dart';
 
 import 'controller/controller.dart';
+import 'controller/iControllerView.dart';
 import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
@@ -76,11 +77,15 @@ void main() {
             "The female African lungfish lays its eggs in a nest in a weedy area of its habitat. Once the eggs hatch, the males guard the young for up to two months. The larvae have external gills that are reabsorbed during their metamorphosis into fully developed lungfish. As the African lungfish develops from juvenile to adult, its teeth fuse together to form tooth plates, which are used to chew its food."),
       ]);
   var controller = Controller(model);
-  var zooApp = ZooApp(controller);
+  var zooApp = MyApp(controller);
   runApp(zooApp);
 }
 
 class MyApp extends StatelessWidget {
+  final IControllerView controller;
+
+  MyApp(this.controller);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -88,13 +93,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-MyHomePage({Key key, this.title}) : super(key: key);
+MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Animals", Icons.image),
@@ -102,6 +107,7 @@ MyHomePage({Key key, this.title}) : super(key: key);
   ];
 
   final String title;
+  final IControllerView controller;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -116,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return new Clicker();
         break;
       case 1:
-        return new MissingPage();
+        return new AnimalListPage(controller: widget.controller);
         break;
       case 2:
         return new MissingPage();
@@ -146,6 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }
     return Scaffold(
+      key: Key("MainAppScaffold"),
       appBar: AppBar(
         title: Text(widget.title),
       ),
