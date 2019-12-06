@@ -62,6 +62,21 @@ testAnimalPage()
 
     expect(find.text("- Fact"), findsOneWidget);
   });
+  testWidgets("Animal page displays error for nonexistant animal", (WidgetTester tester) async
+  {
+
+    await tester.pumpWidget(_getZooApp(Model.mockModel([
+      Animal(0, "Test 0", "Test 0"),
+    ],
+    [
+      Fact(0, 0, "Fact"),
+    ])));
+
+    await tester.tap(find.widgetWithText(RaisedButton, "Nonexistant animal"));
+    await tester.pumpAndSettle();
+
+    expect(find.text("Our search has gone cold on this one, try another page!"), findsOneWidget);
+  });
 }
 
 void main() {

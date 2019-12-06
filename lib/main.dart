@@ -15,7 +15,7 @@ void main()
   var model = Model.mockModel([
     Animal(0, "Giraffe", "Giraffa camelopardalis"),
     Animal(1, "Emperor Penguin", "Aptenodytes forsteri"),
-    Animal(2, "Test Animal", "Animal test")
+    //Animal(2, "Test Animal", "Animal test")
   ],
   [
     Fact(0, 0, "Giraffes are the tallest mammals on Earth. Their legs alone are taller than many humans—about 6 feet."),
