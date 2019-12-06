@@ -36,7 +36,7 @@ class AnimalPage extends StatelessWidget
         title: Text(animal.commonName),
       ),
       body: Center(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Text(animal.scientificName),
             Column(children: _getAnimalFacts(context)),
