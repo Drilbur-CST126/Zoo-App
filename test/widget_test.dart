@@ -14,7 +14,7 @@ import 'package:zoo_app/model/model.dart';
 
 import 'package:zoo_app/view/app.dart';
 
-Widget _getZooApp(WidgetTester tester, Model model)
+Widget _getAnimalListPage(WidgetTester tester, Model model)
 {
   var controller = Controller(model);
   Widget app = MaterialApp(
@@ -34,7 +34,7 @@ testAnimalPage()
   testWidgets("Animal list contains all animals", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
       Animal(1, "Test 1", "Test 1")
     ], [])));
@@ -45,7 +45,7 @@ testAnimalPage()
   testWidgets("Animal list goes to animal page when clicking an option", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test Scientific Name"),
     ], [])));
 
@@ -57,7 +57,7 @@ testAnimalPage()
   testWidgets("Animal page displays facts", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
     ],
     [
@@ -72,7 +72,7 @@ testAnimalPage()
   testWidgets("Animal page displays error for nonexistant animal", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
     ],
     [
