@@ -83,8 +83,9 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final IControllerView controller;
+  final Key scaffoldKey;
 
-  MyApp(this.controller);
+  MyApp(this.controller, {this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +94,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller),
+      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller, scaffoldKey: scaffoldKey,),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
+MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) : super(key: key);
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Animals", Icons.image),
@@ -107,6 +108,7 @@ MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
   ];
 
   final String title;
+  final Key scaffoldKey;
   final IControllerView controller;
 
   @override
@@ -152,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }
     return Scaffold(
-      key: Key("MainAppScaffold"),
+      key: widget.scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
       ),
