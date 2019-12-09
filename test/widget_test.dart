@@ -7,12 +7,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zoo_app/Clicker.dart';
+import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/model.dart';
-
 import 'package:zoo_app/view/app.dart';
+import 'package:zoo_app/main.dart';
 
 Widget _getAnimalListPage(WidgetTester tester, Model model)
 {
@@ -26,6 +28,55 @@ Widget _getAnimalListPage(WidgetTester tester, Model model)
     );
 
   return app;
+}
+
+testDrawer()
+{
+  testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pump();
+    expect(find.byType(ListTile), findsWidgets);
+  });
+  testWidgets("Drawer navigates to animal page", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(ListTile, "Animals"), findsOneWidget);
+    await tester.tap(find.widgetWithText(ListTile, "Animals"));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(AnimalListPage, skipOffstage: false), findsWidgets);
+  });
+  testWidgets("Drawer returns to home page", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, "Animals"));
+    await tester.pumpAndSettle();
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, "Home"));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Clicker, skipOffstage: false), findsWidgets);
+  });
 }
 
 // Tests created by Jordan Clark
@@ -106,4 +157,5 @@ void main() {
   });*/
 
   testAnimalPage();
+  testDrawer();
 }
