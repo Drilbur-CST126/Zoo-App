@@ -21,9 +21,7 @@ class AnimalPage extends StatelessWidget
     return Theme.of(context).textTheme.body2;
   }
 
-  // This gets all of the animal facts into an array of Text objects, using the 'sync*' and 'yield'
-  // From my understanding, having a function that is 'sync*' means it returns a list, and 'yield' adds an element to said list.
-  // It avoids creating and returning an extra list data member, not sure if the syntax is the best or not though.
+  // This gets all of the animal facts into an array of Text objects
   List<Widget> _getAnimalFacts(BuildContext context)
   {
     var facts = controller.getAllFactsForAnimal(animal.animalId);

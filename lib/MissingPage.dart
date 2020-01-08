@@ -12,12 +12,7 @@ class MissingPage extends StatelessWidget{
         child: Column( mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('This page has not been created yet'),
-            RaisedButton(
-              child: Text('Go Back'),
-              onPressed: (){
-                Navigator.pop(context);
-              },
-            )
+            
           ],
         )
       )
