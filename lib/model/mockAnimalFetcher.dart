@@ -28,6 +28,7 @@ class MockAnimalFetcher implements IAnimalFetcher
     return animals.firstWhere((a) => a.animalId == id, orElse: () => null);
   }
 
+  // This function gets all animals that fit a criteria, or gets all animals if no criteria is provided.
   @override
   Iterable<Animal> getAllAnimals({bool Function(Animal) where}) {
     if (where != null)
@@ -38,5 +39,13 @@ class MockAnimalFetcher implements IAnimalFetcher
     {
       return animals;
     }
+  }
+
+  // This function gets all animals that have a common name containing a given search query.
+  @override
+  Iterable<Animal> searchAnimals(String query) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.commonName.toLowerCase().contains(query.toLowerCase());
+    });
   }
 }
