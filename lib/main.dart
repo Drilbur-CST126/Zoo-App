@@ -10,6 +10,10 @@ import 'controller/iControllerView.dart';
 import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_pro/carousel_pro.dart';
+
+// an's test branch, test initial commit
 
 // MyApp factored out into view/app.dart, done by Jordan Clark
 void main() {
@@ -83,23 +87,24 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final IControllerView controller;
+  final Key scaffoldKey;
 
-  MyApp(this.controller);
+  MyApp(this.controller, {this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Oregon Zoo Home Page',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller),
+      home: MyHomePage(title: 'Oregon Zoo', controller: controller, scaffoldKey: scaffoldKey,),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
+  MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) : super(key: key);
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Animals", Icons.image),
@@ -107,6 +112,7 @@ MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
   ];
 
   final String title;
+  final Key scaffoldKey;
   final IControllerView controller;
 
   @override
@@ -114,12 +120,13 @@ MyHomePage({Key key, this.title, @required this.controller}) : super(key: key);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   int _selectedDrawerIndex = 0;
 
   _getDrawerItemWidget(int pos){
     switch(pos){
       case 0:
-        return new Clicker();
+      // return ;
         break;
       case 1:
         return new AnimalListPage(controller: widget.controller);
@@ -139,31 +146,54 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget image_slider_carousel = Container(
+      height: 200,
+      child: Carousel(
+        boxFit: BoxFit.fill,
+        images: [
+          AssetImage('assets/elephants.jpg'),
+          AssetImage('assets/otter.jpg'),
+          AssetImage('assets/tiger3.jpg'),
+          AssetImage('assets/bears.jpg')
+        ],
+        autoplay: true,
+        indicatorBgPadding: 0.25,
+        dotSize: .5,
+        dotColor: Colors.transparent,
+        dotBgColor: Colors.white70,
+      ),
+    );
     var drawerOptions = <Widget>[];
     for (var i = 0; i < widget.drawerItems.length; i++) {
-        var d = widget.drawerItems[i];
-        drawerOptions.add(
+      var d = widget.drawerItems[i];
+      drawerOptions.add(
           new ListTile(
             leading: new Icon(d.icon),
             title: new Text(d.title),
             selected: i == _selectedDrawerIndex,
             onTap: () => _onSelectItem(i),
           )
-        );
-      }
+      );
+    }
     return Scaffold(
       key: Key("MainAppScaffold"),
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Colors.green,
+        title: Text('Oregon Zoo App'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          image_slider_carousel
+        ],
       ),
       drawer: new Drawer(
-        child: new Column(
-          children: <Widget>[
-            new Column(children: drawerOptions)
-          ],
-        )
+          child: new Column(
+            children: <Widget>[
+              new Column(children: drawerOptions)
+            ],
+          )
       ),
-      body: _getDrawerItemWidget(_selectedDrawerIndex),
     );
   }
+
 }
