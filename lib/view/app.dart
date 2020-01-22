@@ -58,11 +58,12 @@ class AnimalListPageState extends State<AnimalListPage>
   Widget build(BuildContext context) {
     var listItems = <Widget>[
       TextField(onChanged: _changeSearchTerm, 
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: "Search",
-        icon: Icon(Icons.search),
-      ),)
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: "Search",
+          icon: Icon(Icons.search),
+        ),
+      )
     ];
     listItems.addAll(widget._displayAnimals(context, searchTerm));
     listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
