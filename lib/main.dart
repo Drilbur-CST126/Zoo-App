@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoo_app/AnimalList/AnimalListHead.dart';
 import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/MissingPage.dart';
@@ -104,7 +105,7 @@ MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) :
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Animals", Icons.image),
-    new DrawerItem("Map", Icons.map),
+    new DrawerItem("Selector", Icons.book),
   ];
 
   final String title;
@@ -127,9 +128,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return new AnimalListPage(controller: widget.controller);
         break;
       case 2:
-        return new MissingPage();
+        return new AnimalListHead();
         break;
       default:
+        return new MissingPage();
         break;
     }
   }
@@ -156,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: widget.scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
       drawer: new Drawer(
         child: new Column(
