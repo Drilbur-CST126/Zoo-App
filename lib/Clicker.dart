@@ -16,9 +16,6 @@ class ClickerState extends State<Clicker>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: Text('Button Clicker')
-        ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
