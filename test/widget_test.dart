@@ -7,14 +7,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/model.dart';
-
 import 'package:zoo_app/view/app.dart';
+import 'package:zoo_app/main.dart';
 
-Widget _getZooApp(WidgetTester tester, Model model)
+Widget _getAnimalListPage(WidgetTester tester, Model model)
 {
   var controller = Controller(model);
   Widget app = MaterialApp(
@@ -28,13 +29,62 @@ Widget _getZooApp(WidgetTester tester, Model model)
   return app;
 }
 
+testDrawer()
+{
+  testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pump();
+    expect(find.byType(ListTile), findsWidgets);
+  });
+  testWidgets("Drawer navigates to animal page", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(ListTile, "Animals"), findsOneWidget);
+    await tester.tap(find.widgetWithText(ListTile, "Animals"));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(AnimalListPage, skipOffstage: false), findsWidgets);
+  });
+  testWidgets("Drawer returns to home page", (WidgetTester tester) async
+  {
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var controller = Controller(model);
+    await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
+
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, "Animals"));
+    await tester.pumpAndSettle();
+    scaffoldKey.currentState.openDrawer();
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, "Home"));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Clicker, skipOffstage: false), findsWidgets);
+  });
+}
+
 // Tests created by Jordan Clark
 testAnimalPage()
 {
   testWidgets("Animal list contains all animals", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
       Animal(1, "Test 1", "Test 1")
     ], [])));
@@ -45,7 +95,7 @@ testAnimalPage()
   testWidgets("Animal list goes to animal page when clicking an option", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test Scientific Name"),
     ], [])));
 
@@ -57,7 +107,7 @@ testAnimalPage()
   testWidgets("Animal page displays facts", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
     ],
     [
@@ -72,7 +122,7 @@ testAnimalPage()
   testWidgets("Animal page displays error for nonexistant animal", (WidgetTester tester) async
   {
 
-    await tester.pumpWidget(_getZooApp(tester, Model.mockModel([
+    await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
     ],
     [
@@ -106,4 +156,5 @@ void main() {
   });*/
 
   testAnimalPage();
+  testDrawer();
 }
