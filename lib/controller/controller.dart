@@ -37,4 +37,8 @@ class Controller implements IControllerView
   Iterable<Animal> getAllAnimals({bool Function(Animal) where}) {
     return model.animalFetcher.getAllAnimals(where: where);
   }
+
+  Iterable<Animal> searchAnimals(String searchTerm) {
+    return model.animalFetcher.searchAnimals(searchTerm);
+  }
 }
