@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/MissingPage.dart';
@@ -107,8 +108,12 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) : super(key: key);
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
-    new DrawerItem("Animals", Icons.image),
-    new DrawerItem("Map", Icons.map),
+    new DrawerItem("Zoo Map", Icons.map),
+    new DrawerItem("Exhibits", Icons.camera_alt),
+    new DrawerItem("Visiting the Zoo", Icons.location_on),
+    new DrawerItem("Daily Schedule", Icons.calendar_today),
+    new DrawerItem("Tickets", Icons.attach_money),
+
   ];
 
   final String title;
@@ -118,6 +123,7 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 
 class _MyHomePageState extends State<MyHomePage> {
 
@@ -147,15 +153,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Widget image_slider_carousel = Container(
-      height: 200,
+      height: 800,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: [
-          AssetImage('assets/elephants.jpg'),
-          AssetImage('assets/otter.jpg'),
-          AssetImage('assets/tiger3.jpg'),
-          AssetImage('assets/bears.jpg')
+          AssetImage('assets/elephant.jpg'),
+          AssetImage('assets/otter2.jpg'),
+          AssetImage('assets/tiger1.jpg'),
+          AssetImage('assets/bear.jpg')
         ],
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 2000),
         autoplay: true,
         indicatorBgPadding: 0.25,
         dotSize: .5,
@@ -180,19 +188,38 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text('Oregon Zoo App'),
+          flexibleSpace: Container(
+          ),
       ),
       body: ListView(
         children: <Widget>[
           image_slider_carousel
         ],
       ),
+//      drawer: new Drawer(
+//          child: new Column(
+//            children: <Widget>[
+//              new Column(children: drawerOptions),
+//              new Container(
+//
+//              )
+//            ],
+//          )
+//      ),
       drawer: new Drawer(
-          child: new Column(
+          child: new ListView(
             children: <Widget>[
-              new Column(children: drawerOptions)
+              new DrawerHeader(
+                child: new Text("AT THE ZOO"),
+               decoration: new BoxDecoration(
+                      color: Colors.lightGreenAccent,
+                      gradient: new LinearGradient(colors: [Colors.green, Colors.cyan])
+                ),
+              ),
+              new Column(children: drawerOptions),
             ],
           )
-      ),
+    ),
     );
   }
 
