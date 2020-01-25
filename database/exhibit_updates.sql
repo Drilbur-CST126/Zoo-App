@@ -1,3 +1,5 @@
+USE ZooCompanion;
+
 UPDATE animal.exhibits
 SET name = 'Africa Rainforest'
 WHERE exhibit_id = 1
