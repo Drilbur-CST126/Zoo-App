@@ -15,15 +15,19 @@ class AnimalPage extends StatelessWidget
 
   AnimalPage({Key key, this.animal, @required this.controller}) : super(key: key);
 
-  // This gets all of the animal facts into an array of Text objects, using the 'sync*' and 'yield'
-  // From my understanding, having a function that is 'sync*' means it returns a list, and 'yield' adds an element to said list.
-  // It avoids creating and returning an extra list data member, not sure if the syntax is the best or not though.
+  // This function gets the text style for the page, it's factored out into a function in the interest of DRY code
+  TextStyle _getTextStyle(BuildContext context)
+  {
+    return Theme.of(context).textTheme.body2;
+  }
+
+  // This gets all of the animal facts into an array of Text objects
   List<Widget> _getAnimalFacts(BuildContext context)
   {
     var facts = controller.getAllFactsForAnimal(animal.animalId);
     var factsText = new List<Widget>();
     facts.forEach((fact) => factsText.add(
-      Padding(child: Text("- " + fact.fact, ), padding: EdgeInsets.all(20))
+      Padding(child: Text("- " + fact.fact, style: _getTextStyle(context),), padding: EdgeInsets.all(20))
     ));
     return factsText;
   }
@@ -38,7 +42,7 @@ class AnimalPage extends StatelessWidget
       body: Center(
         child: ListView(
           children: <Widget>[
-            Text(animal.scientificName),
+            Text(animal.scientificName, style: _getTextStyle(context),),
             Column(children: _getAnimalFacts(context)),
           ],
         ),

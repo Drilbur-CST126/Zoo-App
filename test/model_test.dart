@@ -87,6 +87,68 @@ testMockAnimalFetcher()
 
     expect(animal, null);
   });
+
+  test("searchAnimals returns an animal with its full name", ()
+  {
+    var fetcher = MockAnimalFetcher();
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+
+    var animals = fetcher.searchAnimals("Dog");
+
+
+    expect(animals.length, 1);
+    expect(animals.first.animalId, 1);
+  });
+
+  test("searchAnimals returns an animal with part of its name", ()
+  {
+    var fetcher = MockAnimalFetcher();
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+
+    var animals = fetcher.searchAnimals("Do");
+
+    expect(animals.length, 1);
+    expect(animals.first.animalId, 1);
+  });
+
+  test("searchAnimals returns multiple animals that all fit the search", ()
+  {
+    var fetcher = MockAnimalFetcher();
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(1, "Dog 1", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(2, "Dog 2", "Canis lupus familiaris"));
+
+    var animals = fetcher.searchAnimals("Do");
+
+    expect(animals.length, 2);
+    expect(animals.first.animalId, 1);
+    expect(animals.skip(1).first.animalId, 2);  
+  });
+
+  test("searchAnimals returns nothing for a search that doesn't work", ()
+  {
+    var fetcher = MockAnimalFetcher();
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+
+    var animals = fetcher.searchAnimals("Cat");
+
+    expect(animals.isEmpty, true);
+  });
+
+  test("searchAnimals returns results even for a non-matching case", ()
+  {
+    var fetcher = MockAnimalFetcher();
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+
+    var animals = fetcher.searchAnimals("dOg");
+
+    expect(animals.length, 1);
+    expect(animals.first.animalId, 1);
+  });
 }
 
 testMockFactFetcher()

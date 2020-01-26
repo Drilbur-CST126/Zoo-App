@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:zoo_app/AnimalList/AnimalListHead.dart';
 import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/MissingPage.dart';
@@ -100,6 +101,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Oregon Zoo', controller: controller, scaffoldKey: scaffoldKey,),
+
     );
   }
 }
@@ -113,7 +115,6 @@ class MyHomePage extends StatefulWidget {
     new DrawerItem("Visiting the Zoo", Icons.location_on),
     new DrawerItem("Daily Schedule", Icons.calendar_today),
     new DrawerItem("Tickets", Icons.attach_money),
-
   ];
 
   final String title;
@@ -138,9 +139,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return new AnimalListPage(controller: widget.controller);
         break;
       case 2:
-        return new MissingPage();
+        return new AnimalListHead();
         break;
       default:
+        return new MissingPage();
         break;
     }
   }
@@ -184,12 +186,12 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
     return Scaffold(
-      key: Key("MainAppScaffold"),
+      key: widget.scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text('Oregon Zoo App'),
           flexibleSpace: Container(
-          ),
+          ),       
       ),
       body: ListView(
         children: <Widget>[
