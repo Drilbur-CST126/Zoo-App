@@ -8,4 +8,3 @@ D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.SqlServ
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csproj.CopyComplete
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.dll
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.pdb
-D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csprojAssemblyReference.cache
