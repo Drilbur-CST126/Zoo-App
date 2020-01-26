@@ -10,7 +10,7 @@ namespace ZooCompanion.Controllers
 {
     public class AnimalController : ApiController
     {
-        public IEnumerable<animals> GetAnimals()
+        public List<animals> Get()
         {
             using (ZooCompanionEntities entities = new ZooCompanionEntities())
             {
@@ -18,7 +18,7 @@ namespace ZooCompanion.Controllers
             }
         }
 
-        public animals GetAnimals(string commonName)
+        public animals Get(string commonName)
         {
             using(ZooCompanionEntities entities = new ZooCompanionEntities())
             {
