@@ -54,6 +54,7 @@ class MyHomePage extends StatefulWidget {
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Zoo Map", Icons.map),
     new DrawerItem("Exhibits", Icons.camera_alt),
+    new DrawerItem("Search By...", Icons.folder_open),
     new DrawerItem("Visiting the Zoo", Icons.location_on),
     new DrawerItem("Daily Schedule", Icons.calendar_today),
     new DrawerItem("Tickets", Icons.attach_money),
@@ -77,10 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
       case 0:
         return new HomePage();
         break;
-      case 1:
+      case 2:
         return new AnimalListPage(controller: widget.controller);
         break;
-      case 2:
+      case 3:
         return new AnimalListHead();
         break;
       default:
