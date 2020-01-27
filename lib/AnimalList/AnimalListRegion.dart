@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zoo_app/AnimalList/Africa.dart';
+import 'package:zoo_app/AnimalList/Regions/Africa.dart';
+import 'Regions/America.dart';
 
 class AnimalListRegion extends StatefulWidget{
   @override
@@ -30,7 +31,7 @@ class AnimalListRegionState extends State<AnimalListRegion>{
                       child: RaisedButton(
                         child: Text("America"),
                         onPressed: (){
-
+                          Navigator.push(this.context, MaterialPageRoute(builder: (context) => America()));
                         },
                       )
                   ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/view/animalPage.dart';
 
