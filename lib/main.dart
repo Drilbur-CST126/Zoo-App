@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:zoo_app/AnimalList/AnimalListHead.dart';
-import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
@@ -13,6 +14,9 @@ import 'controller/iControllerView.dart';
 import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
+import 'package:carousel_pro/carousel_pro.dart';
+
+// an's test branch, test initial commit
 
 // MyApp factored out into view/app.dart, done by Jordan Clark
 void main() async {
@@ -34,21 +38,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Oregon Zoo Home Page',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page', controller: controller, scaffoldKey: scaffoldKey,),
+      home: MyHomePage(title: 'Oregon Zoo', controller: controller, scaffoldKey: scaffoldKey,),
+
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) : super(key: key);
+  MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) : super(key: key);
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
-    new DrawerItem("Animals", Icons.image),
-    new DrawerItem("Selector", Icons.book),
+    new DrawerItem("Zoo Map", Icons.map),
+    new DrawerItem("Exhibits", Icons.camera_alt),
+    new DrawerItem("Visiting the Zoo", Icons.location_on),
+    new DrawerItem("Daily Schedule", Icons.calendar_today),
+    new DrawerItem("Tickets", Icons.attach_money),
   ];
 
   final String title;
@@ -59,13 +67,15 @@ MyHomePage({Key key, this.scaffoldKey, this.title, @required this.controller}) :
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+
 class _MyHomePageState extends State<MyHomePage> {
+
   int _selectedDrawerIndex = 0;
 
   _getDrawerItemWidget(int pos){
     switch(pos){
       case 0:
-        return new Clicker();
+        return new HomePage();
         break;
       case 1:
         return new AnimalListPage(controller: widget.controller);
@@ -86,31 +96,59 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget image_slider_carousel = Container(
+      height: 800,
+      child: Carousel(
+        boxFit: BoxFit.fill,
+        images: [
+          AssetImage('assets/elephant.jpg'),
+          AssetImage('assets/otter2.jpg'),
+          AssetImage('assets/tiger1.jpg'),
+          AssetImage('assets/bear.jpg')
+        ],
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 2000),
+        autoplay: true,
+        indicatorBgPadding: 0.25,
+        dotSize: .5,
+        dotColor: Colors.transparent,
+        dotBgColor: Colors.white70,
+      ),
+    );
     var drawerOptions = <Widget>[];
     for (var i = 0; i < widget.drawerItems.length; i++) {
-        var d = widget.drawerItems[i];
-        drawerOptions.add(
+      var d = widget.drawerItems[i];
+      drawerOptions.add(
           new ListTile(
             leading: new Icon(d.icon),
             title: new Text(d.title),
             selected: i == _selectedDrawerIndex,
             onTap: () => _onSelectItem(i),
           )
-        );
-      }
+      );
+    }
     return Scaffold(
       key: widget.scaffoldKey,
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
-      drawer: new Drawer(
-        child: new Column(
-          children: <Widget>[
-            new Column(children: drawerOptions)
-          ],
-        )
-      ),
       body: _getDrawerItemWidget(_selectedDrawerIndex),
+      drawer: new Drawer(
+          child: new ListView(
+            children: <Widget>[
+              new DrawerHeader(
+                child: new Text("AT THE ZOO"),
+               decoration: new BoxDecoration(
+                      color: Colors.lightGreenAccent,
+                      gradient: new LinearGradient(colors: [Colors.green, Colors.cyan])
+                ),
+              ),
+              new Column(children: drawerOptions),
+            ],
+          )
+      ),
     );
   }
+
 }
