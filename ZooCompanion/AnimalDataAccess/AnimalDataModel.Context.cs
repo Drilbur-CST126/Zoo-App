@@ -13,10 +13,10 @@ namespace AnimalDataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ZooCompanionEntities : DbContext
+    public partial class ZooCompanionWebApi_dbEntities : DbContext
     {
-        public ZooCompanionEntities()
-            : base("name=ZooCompanionEntities")
+        public ZooCompanionWebApi_dbEntities()
+            : base("name=ZooCompanionWebApi_dbEntities")
         {
             this.Configuration.ProxyCreationEnabled = false;
         }

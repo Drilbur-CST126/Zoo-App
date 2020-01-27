@@ -12,17 +12,9 @@ namespace ZooCompanion.Controllers
     {
         public List<animals> Get()
         {
-            using (ZooCompanionEntities entities = new ZooCompanionEntities())
+            using (ZooCompanionWebApi_dbEntities entities = new ZooCompanionWebApi_dbEntities())
             {
                 return entities.animals.ToList();
-            }
-        }
-
-        public animals Get(string commonName)
-        {
-            using(ZooCompanionEntities entities = new ZooCompanionEntities())
-            {
-                return entities.animals.FirstOrDefault(e => e.common_name == commonName);
             }
         }
     }

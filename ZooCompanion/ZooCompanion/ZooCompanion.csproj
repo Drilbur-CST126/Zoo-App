@@ -263,7 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnimalDataAccess\AnimalDataAccess.csproj">
-      <Project>{d59a870b-287c-440e-9abc-16ebb2c92dc3}</Project>
+      <Project>{8f841977-b86f-44d8-a91c-9735b6ef8206}</Project>
       <Name>AnimalDataAccess</Name>
     </ProjectReference>
   </ItemGroup>

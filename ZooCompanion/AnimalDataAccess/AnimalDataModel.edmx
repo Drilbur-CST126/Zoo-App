@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ZooCompanionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ZooCompanionWebApi_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="animals">
           <Key>
             <PropertyRef Name="animal_id" />
@@ -58,7 +58,7 @@
           <Property Name="sound_file" Type="binary" MaxLength="1" Nullable="false" />
           <Property Name="animal_id" Type="int" />
         </EntityType>
-        <Association Name="FK__animals__class_i__3B75D760">
+        <Association Name="FK__animals__class_i__4D94879B">
           <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
           <End Role="animals" Type="Self.animals" Multiplicity="*" />
           <ReferentialConstraint>
@@ -70,7 +70,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__animals__exhibit__3C69FB99">
+        <Association Name="FK__animals__exhibit__4E88ABD4">
           <End Role="exhibits" Type="Self.exhibits" Multiplicity="0..1" />
           <End Role="animals" Type="Self.animals" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__facts__animal_id__3F466844">
+        <Association Name="FK__facts__animal_id__5165187F">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="facts" Type="Self.facts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +94,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pictures__animal__4222D4EF">
+        <Association Name="FK__pictures__animal__5441852A">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__sounds__animal_i__44FF419A">
+        <Association Name="FK__sounds__animal_i__571DF1D5">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="sounds" Type="Self.sounds" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,30 +118,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZooCompanionModelStoreContainer">
+        <EntityContainer Name="ZooCompanionWebApi_dbModelStoreContainer">
           <EntitySet Name="animals" EntityType="Self.animals" Schema="animal" store:Type="Tables" />
           <EntitySet Name="classes" EntityType="Self.classes" Schema="animal" store:Type="Tables" />
           <EntitySet Name="exhibits" EntityType="Self.exhibits" Schema="animal" store:Type="Tables" />
           <EntitySet Name="facts" EntityType="Self.facts" Schema="animal" store:Type="Tables" />
           <EntitySet Name="pictures" EntityType="Self.pictures" Schema="animal" store:Type="Tables" />
           <EntitySet Name="sounds" EntityType="Self.sounds" Schema="animal" store:Type="Tables" />
-          <AssociationSet Name="FK__animals__class_i__3B75D760" Association="Self.FK__animals__class_i__3B75D760">
+          <AssociationSet Name="FK__animals__class_i__4D94879B" Association="Self.FK__animals__class_i__4D94879B">
             <End Role="classes" EntitySet="classes" />
             <End Role="animals" EntitySet="animals" />
           </AssociationSet>
-          <AssociationSet Name="FK__animals__exhibit__3C69FB99" Association="Self.FK__animals__exhibit__3C69FB99">
+          <AssociationSet Name="FK__animals__exhibit__4E88ABD4" Association="Self.FK__animals__exhibit__4E88ABD4">
             <End Role="exhibits" EntitySet="exhibits" />
             <End Role="animals" EntitySet="animals" />
           </AssociationSet>
-          <AssociationSet Name="FK__facts__animal_id__3F466844" Association="Self.FK__facts__animal_id__3F466844">
+          <AssociationSet Name="FK__facts__animal_id__5165187F" Association="Self.FK__facts__animal_id__5165187F">
             <End Role="animals" EntitySet="animals" />
             <End Role="facts" EntitySet="facts" />
           </AssociationSet>
-          <AssociationSet Name="FK__pictures__animal__4222D4EF" Association="Self.FK__pictures__animal__4222D4EF">
+          <AssociationSet Name="FK__pictures__animal__5441852A" Association="Self.FK__pictures__animal__5441852A">
             <End Role="animals" EntitySet="animals" />
             <End Role="pictures" EntitySet="pictures" />
           </AssociationSet>
-          <AssociationSet Name="FK__sounds__animal_i__44FF419A" Association="Self.FK__sounds__animal_i__44FF419A">
+          <AssociationSet Name="FK__sounds__animal_i__571DF1D5" Association="Self.FK__sounds__animal_i__571DF1D5">
             <End Role="animals" EntitySet="animals" />
             <End Role="sounds" EntitySet="sounds" />
           </AssociationSet>
@@ -150,7 +150,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ZooCompanionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ZooCompanionWebApi_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="animals">
           <Key>
             <PropertyRef Name="animal_id" />
@@ -162,11 +162,11 @@
           <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="class_id" Type="Int32" />
           <Property Name="exhibit_id" Type="Int32" />
-          <NavigationProperty Name="classes" Relationship="Self.FK__animals__class_i__3B75D760" FromRole="animals" ToRole="classes" />
-          <NavigationProperty Name="exhibits" Relationship="Self.FK__animals__exhibit__3C69FB99" FromRole="animals" ToRole="exhibits" />
-          <NavigationProperty Name="facts" Relationship="Self.FK__facts__animal_id__3F466844" FromRole="animals" ToRole="facts" />
-          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__animal__4222D4EF" FromRole="animals" ToRole="pictures" />
-          <NavigationProperty Name="sounds" Relationship="Self.FK__sounds__animal_i__44FF419A" FromRole="animals" ToRole="sounds" />
+          <NavigationProperty Name="classes" Relationship="Self.FK__animals__class_i__4D94879B" FromRole="animals" ToRole="classes" />
+          <NavigationProperty Name="exhibits" Relationship="Self.FK__animals__exhibit__4E88ABD4" FromRole="animals" ToRole="exhibits" />
+          <NavigationProperty Name="facts" Relationship="Self.FK__facts__animal_id__5165187F" FromRole="animals" ToRole="facts" />
+          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__animal__5441852A" FromRole="animals" ToRole="pictures" />
+          <NavigationProperty Name="sounds" Relationship="Self.FK__sounds__animal_i__571DF1D5" FromRole="animals" ToRole="sounds" />
         </EntityType>
         <EntityType Name="classes">
           <Key>
@@ -174,7 +174,7 @@
           </Key>
           <Property Name="class_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="animals" Relationship="Self.FK__animals__class_i__3B75D760" FromRole="classes" ToRole="animals" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__animals__class_i__4D94879B" FromRole="classes" ToRole="animals" />
         </EntityType>
         <EntityType Name="exhibits">
           <Key>
@@ -183,7 +183,7 @@
           <Property Name="exhibit_id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="animals" Relationship="Self.FK__animals__exhibit__3C69FB99" FromRole="exhibits" ToRole="animals" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__animals__exhibit__4E88ABD4" FromRole="exhibits" ToRole="animals" />
         </EntityType>
         <EntityType Name="facts">
           <Key>
@@ -192,7 +192,7 @@
           <Property Name="fact_id" Type="Int32" Nullable="false" />
           <Property Name="fact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="animal_id" Type="Int32" />
-          <NavigationProperty Name="animals" Relationship="Self.FK__facts__animal_id__3F466844" FromRole="facts" ToRole="animals" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__facts__animal_id__5165187F" FromRole="facts" ToRole="animals" />
         </EntityType>
         <EntityType Name="pictures">
           <Key>
@@ -202,7 +202,7 @@
           <Property Name="file_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="picture_file" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
           <Property Name="animal_id" Type="Int32" />
-          <NavigationProperty Name="animals" Relationship="Self.FK__pictures__animal__4222D4EF" FromRole="pictures" ToRole="animals" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__pictures__animal__5441852A" FromRole="pictures" ToRole="animals" />
         </EntityType>
         <EntityType Name="sounds">
           <Key>
@@ -212,9 +212,9 @@
           <Property Name="file_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sound_file" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
           <Property Name="animal_id" Type="Int32" />
-          <NavigationProperty Name="animals" Relationship="Self.FK__sounds__animal_i__44FF419A" FromRole="sounds" ToRole="animals" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__sounds__animal_i__571DF1D5" FromRole="sounds" ToRole="animals" />
         </EntityType>
-        <Association Name="FK__animals__class_i__3B75D760">
+        <Association Name="FK__animals__class_i__4D94879B">
           <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
           <End Role="animals" Type="Self.animals" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +226,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__animals__exhibit__3C69FB99">
+        <Association Name="FK__animals__exhibit__4E88ABD4">
           <End Role="exhibits" Type="Self.exhibits" Multiplicity="0..1" />
           <End Role="animals" Type="Self.animals" Multiplicity="*" />
           <ReferentialConstraint>
@@ -238,7 +238,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__facts__animal_id__3F466844">
+        <Association Name="FK__facts__animal_id__5165187F">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="facts" Type="Self.facts" Multiplicity="*" />
           <ReferentialConstraint>
@@ -250,7 +250,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__pictures__animal__4222D4EF">
+        <Association Name="FK__pictures__animal__5441852A">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
           <ReferentialConstraint>
@@ -262,7 +262,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__sounds__animal_i__44FF419A">
+        <Association Name="FK__sounds__animal_i__571DF1D5">
           <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
           <End Role="sounds" Type="Self.sounds" Multiplicity="*" />
           <ReferentialConstraint>
@@ -274,30 +274,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZooCompanionEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ZooCompanionWebApi_dbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="animals" EntityType="Self.animals" />
           <EntitySet Name="classes" EntityType="Self.classes" />
           <EntitySet Name="exhibits" EntityType="Self.exhibits" />
           <EntitySet Name="facts" EntityType="Self.facts" />
           <EntitySet Name="pictures" EntityType="Self.pictures" />
           <EntitySet Name="sounds" EntityType="Self.sounds" />
-          <AssociationSet Name="FK__animals__class_i__3B75D760" Association="Self.FK__animals__class_i__3B75D760">
+          <AssociationSet Name="FK__animals__class_i__4D94879B" Association="Self.FK__animals__class_i__4D94879B">
             <End Role="classes" EntitySet="classes" />
             <End Role="animals" EntitySet="animals" />
           </AssociationSet>
-          <AssociationSet Name="FK__animals__exhibit__3C69FB99" Association="Self.FK__animals__exhibit__3C69FB99">
+          <AssociationSet Name="FK__animals__exhibit__4E88ABD4" Association="Self.FK__animals__exhibit__4E88ABD4">
             <End Role="exhibits" EntitySet="exhibits" />
             <End Role="animals" EntitySet="animals" />
           </AssociationSet>
-          <AssociationSet Name="FK__facts__animal_id__3F466844" Association="Self.FK__facts__animal_id__3F466844">
+          <AssociationSet Name="FK__facts__animal_id__5165187F" Association="Self.FK__facts__animal_id__5165187F">
             <End Role="animals" EntitySet="animals" />
             <End Role="facts" EntitySet="facts" />
           </AssociationSet>
-          <AssociationSet Name="FK__pictures__animal__4222D4EF" Association="Self.FK__pictures__animal__4222D4EF">
+          <AssociationSet Name="FK__pictures__animal__5441852A" Association="Self.FK__pictures__animal__5441852A">
             <End Role="animals" EntitySet="animals" />
             <End Role="pictures" EntitySet="pictures" />
           </AssociationSet>
-          <AssociationSet Name="FK__sounds__animal_i__44FF419A" Association="Self.FK__sounds__animal_i__44FF419A">
+          <AssociationSet Name="FK__sounds__animal_i__571DF1D5" Association="Self.FK__sounds__animal_i__571DF1D5">
             <End Role="animals" EntitySet="animals" />
             <End Role="sounds" EntitySet="sounds" />
           </AssociationSet>
@@ -307,9 +307,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ZooCompanionModelStoreContainer" CdmEntityContainer="ZooCompanionEntities">
+        <EntityContainerMapping StorageEntityContainer="ZooCompanionWebApi_dbModelStoreContainer" CdmEntityContainer="ZooCompanionWebApi_dbEntities">
           <EntitySetMapping Name="animals">
-            <EntityTypeMapping TypeName="ZooCompanionModel.animals">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.animals">
               <MappingFragment StoreEntitySet="animals">
                 <ScalarProperty Name="animal_id" ColumnName="animal_id" />
                 <ScalarProperty Name="common_name" ColumnName="common_name" />
@@ -322,7 +322,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="classes">
-            <EntityTypeMapping TypeName="ZooCompanionModel.classes">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.classes">
               <MappingFragment StoreEntitySet="classes">
                 <ScalarProperty Name="class_id" ColumnName="class_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -330,7 +330,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="exhibits">
-            <EntityTypeMapping TypeName="ZooCompanionModel.exhibits">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.exhibits">
               <MappingFragment StoreEntitySet="exhibits">
                 <ScalarProperty Name="exhibit_id" ColumnName="exhibit_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -339,7 +339,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="facts">
-            <EntityTypeMapping TypeName="ZooCompanionModel.facts">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.facts">
               <MappingFragment StoreEntitySet="facts">
                 <ScalarProperty Name="fact_id" ColumnName="fact_id" />
                 <ScalarProperty Name="fact" ColumnName="fact" />
@@ -348,7 +348,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pictures">
-            <EntityTypeMapping TypeName="ZooCompanionModel.pictures">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.pictures">
               <MappingFragment StoreEntitySet="pictures">
                 <ScalarProperty Name="picture_id" ColumnName="picture_id" />
                 <ScalarProperty Name="file_name" ColumnName="file_name" />
@@ -358,7 +358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sounds">
-            <EntityTypeMapping TypeName="ZooCompanionModel.sounds">
+            <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.sounds">
               <MappingFragment StoreEntitySet="sounds">
                 <ScalarProperty Name="sound_id" ColumnName="sound_id" />
                 <ScalarProperty Name="file_name" ColumnName="file_name" />

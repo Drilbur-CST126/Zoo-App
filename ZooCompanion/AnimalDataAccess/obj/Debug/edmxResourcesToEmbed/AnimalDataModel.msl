@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ZooCompanionModelStoreContainer" CdmEntityContainer="ZooCompanionEntities">
+  <EntityContainerMapping StorageEntityContainer="ZooCompanionWebApi_dbModelStoreContainer" CdmEntityContainer="ZooCompanionWebApi_dbEntities">
     <EntitySetMapping Name="animals">
-      <EntityTypeMapping TypeName="ZooCompanionModel.animals">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.animals">
         <MappingFragment StoreEntitySet="animals">
           <ScalarProperty Name="animal_id" ColumnName="animal_id" />
           <ScalarProperty Name="common_name" ColumnName="common_name" />
@@ -15,7 +15,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="classes">
-      <EntityTypeMapping TypeName="ZooCompanionModel.classes">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.classes">
         <MappingFragment StoreEntitySet="classes">
           <ScalarProperty Name="class_id" ColumnName="class_id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -23,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="exhibits">
-      <EntityTypeMapping TypeName="ZooCompanionModel.exhibits">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.exhibits">
         <MappingFragment StoreEntitySet="exhibits">
           <ScalarProperty Name="exhibit_id" ColumnName="exhibit_id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -32,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="facts">
-      <EntityTypeMapping TypeName="ZooCompanionModel.facts">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.facts">
         <MappingFragment StoreEntitySet="facts">
           <ScalarProperty Name="fact_id" ColumnName="fact_id" />
           <ScalarProperty Name="fact" ColumnName="fact" />
@@ -41,7 +41,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="pictures">
-      <EntityTypeMapping TypeName="ZooCompanionModel.pictures">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.pictures">
         <MappingFragment StoreEntitySet="pictures">
           <ScalarProperty Name="picture_id" ColumnName="picture_id" />
           <ScalarProperty Name="file_name" ColumnName="file_name" />
@@ -51,7 +51,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sounds">
-      <EntityTypeMapping TypeName="ZooCompanionModel.sounds">
+      <EntityTypeMapping TypeName="ZooCompanionWebApi_dbModel.sounds">
         <MappingFragment StoreEntitySet="sounds">
           <ScalarProperty Name="sound_id" ColumnName="sound_id" />
           <ScalarProperty Name="file_name" ColumnName="file_name" />

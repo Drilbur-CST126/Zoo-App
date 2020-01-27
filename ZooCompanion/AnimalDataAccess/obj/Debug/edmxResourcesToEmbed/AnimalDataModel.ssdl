@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ZooCompanionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ZooCompanionWebApi_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="animals">
     <Key>
       <PropertyRef Name="animal_id" />
@@ -53,7 +53,7 @@
     <Property Name="sound_file" Type="binary" MaxLength="1" Nullable="false" />
     <Property Name="animal_id" Type="int" />
   </EntityType>
-  <Association Name="FK__animals__class_i__3B75D760">
+  <Association Name="FK__animals__class_i__4D94879B">
     <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
     <End Role="animals" Type="Self.animals" Multiplicity="*" />
     <ReferentialConstraint>
@@ -65,7 +65,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__animals__exhibit__3C69FB99">
+  <Association Name="FK__animals__exhibit__4E88ABD4">
     <End Role="exhibits" Type="Self.exhibits" Multiplicity="0..1" />
     <End Role="animals" Type="Self.animals" Multiplicity="*" />
     <ReferentialConstraint>
@@ -77,7 +77,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__facts__animal_id__3F466844">
+  <Association Name="FK__facts__animal_id__5165187F">
     <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
     <End Role="facts" Type="Self.facts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -89,7 +89,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__pictures__animal__4222D4EF">
+  <Association Name="FK__pictures__animal__5441852A">
     <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
     <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +101,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sounds__animal_i__44FF419A">
+  <Association Name="FK__sounds__animal_i__571DF1D5">
     <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
     <End Role="sounds" Type="Self.sounds" Multiplicity="*" />
     <ReferentialConstraint>
@@ -113,30 +113,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ZooCompanionModelStoreContainer">
+  <EntityContainer Name="ZooCompanionWebApi_dbModelStoreContainer">
     <EntitySet Name="animals" EntityType="Self.animals" Schema="animal" store:Type="Tables" />
     <EntitySet Name="classes" EntityType="Self.classes" Schema="animal" store:Type="Tables" />
     <EntitySet Name="exhibits" EntityType="Self.exhibits" Schema="animal" store:Type="Tables" />
     <EntitySet Name="facts" EntityType="Self.facts" Schema="animal" store:Type="Tables" />
     <EntitySet Name="pictures" EntityType="Self.pictures" Schema="animal" store:Type="Tables" />
     <EntitySet Name="sounds" EntityType="Self.sounds" Schema="animal" store:Type="Tables" />
-    <AssociationSet Name="FK__animals__class_i__3B75D760" Association="Self.FK__animals__class_i__3B75D760">
+    <AssociationSet Name="FK__animals__class_i__4D94879B" Association="Self.FK__animals__class_i__4D94879B">
       <End Role="classes" EntitySet="classes" />
       <End Role="animals" EntitySet="animals" />
     </AssociationSet>
-    <AssociationSet Name="FK__animals__exhibit__3C69FB99" Association="Self.FK__animals__exhibit__3C69FB99">
+    <AssociationSet Name="FK__animals__exhibit__4E88ABD4" Association="Self.FK__animals__exhibit__4E88ABD4">
       <End Role="exhibits" EntitySet="exhibits" />
       <End Role="animals" EntitySet="animals" />
     </AssociationSet>
-    <AssociationSet Name="FK__facts__animal_id__3F466844" Association="Self.FK__facts__animal_id__3F466844">
+    <AssociationSet Name="FK__facts__animal_id__5165187F" Association="Self.FK__facts__animal_id__5165187F">
       <End Role="animals" EntitySet="animals" />
       <End Role="facts" EntitySet="facts" />
     </AssociationSet>
-    <AssociationSet Name="FK__pictures__animal__4222D4EF" Association="Self.FK__pictures__animal__4222D4EF">
+    <AssociationSet Name="FK__pictures__animal__5441852A" Association="Self.FK__pictures__animal__5441852A">
       <End Role="animals" EntitySet="animals" />
       <End Role="pictures" EntitySet="pictures" />
     </AssociationSet>
-    <AssociationSet Name="FK__sounds__animal_i__44FF419A" Association="Self.FK__sounds__animal_i__44FF419A">
+    <AssociationSet Name="FK__sounds__animal_i__571DF1D5" Association="Self.FK__sounds__animal_i__571DF1D5">
       <End Role="animals" EntitySet="animals" />
       <End Role="sounds" EntitySet="sounds" />
     </AssociationSet>

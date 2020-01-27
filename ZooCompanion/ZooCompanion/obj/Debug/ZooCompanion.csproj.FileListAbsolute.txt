@@ -50,7 +50,6 @@ D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\roslyn\vbc.exe.config
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\roslyn\vbc.rsp
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\roslyn\VBCSCompiler.exe
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\roslyn\VBCSCompiler.exe.config
-D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\Antlr3.Runtime.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\EntityFramework.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\EntityFramework.SqlServer.dll
@@ -68,8 +67,6 @@ D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\System.Web.WebPages.Deployment.dl
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\System.Web.WebPages.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\System.Web.WebPages.Razor.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\WebGrease.dll
-D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.pdb
-D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.dll.config
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\EntityFramework.xml
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\EntityFramework.SqlServer.xml
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\Newtonsoft.Json.xml
@@ -89,3 +86,6 @@ D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\obj\Debug\ZooCompanion.csprojAssembly
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\obj\Debug\ZooCompanion.csproj.CopyComplete
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\obj\Debug\ZooCompanion.dll
 D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\obj\Debug\ZooCompanion.pdb
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.dll
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.pdb
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\AnimalDataAccess.dll.config
