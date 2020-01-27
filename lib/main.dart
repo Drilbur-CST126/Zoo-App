@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:zoo_app/AnimalList/AnimalListHead.dart';
-import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/fact.dart';
@@ -12,7 +12,6 @@ import 'controller/iControllerView.dart';
 import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 // an's test branch, test initial commit
@@ -133,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _getDrawerItemWidget(int pos){
     switch(pos){
       case 0:
-      // return ;
+        return new HomePage();
         break;
       case 1:
         return new AnimalListPage(controller: widget.controller);
@@ -189,25 +188,9 @@ class _MyHomePageState extends State<MyHomePage> {
       key: widget.scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text('Oregon Zoo App'),
-          flexibleSpace: Container(
-          ),       
+        title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
-      body: ListView(
-        children: <Widget>[
-          image_slider_carousel
-        ],
-      ),
-//      drawer: new Drawer(
-//          child: new Column(
-//            children: <Widget>[
-//              new Column(children: drawerOptions),
-//              new Container(
-//
-//              )
-//            ],
-//          )
-//      ),
+      body: _getDrawerItemWidget(_selectedDrawerIndex),
       drawer: new Drawer(
           child: new ListView(
             children: <Widget>[
@@ -221,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
               new Column(children: drawerOptions),
             ],
           )
-    ),
+      ),
     );
   }
 

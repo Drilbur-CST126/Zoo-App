@@ -5,9 +5,6 @@ class MissingPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      title: Text('Missing Page')
-      ),
       body: Center(
         child: Column( mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

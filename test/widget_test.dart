@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zoo_app/Clicker.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
@@ -74,7 +74,7 @@ testDrawer()
     await tester.tap(find.widgetWithText(ListTile, "Home"));
     await tester.pumpAndSettle();
 
-    expect(find.byType(Clicker, skipOffstage: false), findsWidgets);
+    expect(find.byType(HomePage, skipOffstage: false), findsWidgets);
   });
 }
 
