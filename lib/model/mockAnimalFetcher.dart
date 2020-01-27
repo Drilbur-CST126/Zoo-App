@@ -1,6 +1,5 @@
 // File created by Jordan Clark
 
-import 'package:test_api/src/frontend/expect_async.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 

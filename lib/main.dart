@@ -6,12 +6,9 @@ import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
-import 'package:zoo_app/model/fact.dart';
-import 'package:zoo_app/model/mockFactFetcher.dart';
 
 import 'controller/controller.dart';
 import 'controller/iControllerView.dart';
-import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -22,8 +19,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 void main() async {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
 
-  // TODO: Replace with the non-mock model, once the database can be connected to.
-  var model = Model(DbAnimalFetcher(), MockFactFetcher());
+  var model = Model(DbAnimalFetcher());
   var controller = Controller(model);
   var zooApp = MyApp(controller);
   runApp(zooApp);

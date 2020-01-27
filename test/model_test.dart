@@ -2,10 +2,8 @@
 
 import 'package:test/test.dart';
 import 'package:zoo_app/model/animal.dart';
-import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:zoo_app/model/mockAnimalFetcher.dart';
-import 'package:zoo_app/model/mockFactFetcher.dart';
 
 testMockAnimalFetcher()
 {
@@ -151,72 +149,72 @@ testMockAnimalFetcher()
   });
 }
 
-testMockFactFetcher()
-{
-  test("MockFactFetcher can add facts", ()
-  {
-    var fetcher = MockFactFetcher();
+// testMockFactFetcher()
+// {
+//   test("MockFactFetcher can add facts", ()
+//   {
+//     var fetcher = MockFactFetcher();
 
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
 
-    expect(fetcher.facts[0].factId, 0);
-  });
-  test("MockFactFetcher can retreive facts by Id", ()
-  {
-    var fetcher = MockFactFetcher();
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
-    fetcher.addFact(Fact(1, 0, "Test Fact 2"));
+//     expect(fetcher.facts[0].factId, 0);
+//   });
+//   test("MockFactFetcher can retreive facts by Id", ()
+//   {
+//     var fetcher = MockFactFetcher();
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     fetcher.addFact(Fact(1, 0, "Test Fact 2"));
 
-    var fact = fetcher.getFactByFactId(0);
+//     var fact = fetcher.getFactByFactId(0);
 
-    expect(fact.fact, "Test Fact 1");
-  });
-  test("MockFactFetcher.getFactByFactId returns null when no fact is found", ()
-  {
-    var fetcher = MockFactFetcher();
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
-    fetcher.addFact(Fact(1, 0, "Test Fact 2"));
+//     expect(fact.fact, "Test Fact 1");
+//   });
+//   test("MockFactFetcher.getFactByFactId returns null when no fact is found", ()
+//   {
+//     var fetcher = MockFactFetcher();
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     fetcher.addFact(Fact(1, 0, "Test Fact 2"));
 
-    var fact = fetcher.getFactByFactId(2);
+//     var fact = fetcher.getFactByFactId(2);
 
-    expect(fact, null);
-  });
-  test("MockFactFetcher can retrieve a singular fact by animalId", ()
-  {
-    var fetcher = MockFactFetcher();
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     expect(fact, null);
+//   });
+//   test("MockFactFetcher can retrieve a singular fact by animalId", ()
+//   {
+//     var fetcher = MockFactFetcher();
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
 
-    var facts = fetcher.getFactsByAnimalId(0);
+//     var facts = fetcher.getFactsByAnimalId(0);
 
-    expect(facts.length, 1);
-    expect(facts.first.fact, "Test Fact 1");
-  });
-  test("MockFactFetcher can retrieve a list of facts by animalId", ()
-  {
-    var fetcher = MockFactFetcher();
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
-    fetcher.addFact(Fact(1, 0, "Test Fact 2"));
+//     expect(facts.length, 1);
+//     expect(facts.first.fact, "Test Fact 1");
+//   });
+//   test("MockFactFetcher can retrieve a list of facts by animalId", ()
+//   {
+//     var fetcher = MockFactFetcher();
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     fetcher.addFact(Fact(1, 0, "Test Fact 2"));
 
-    var facts = fetcher.getFactsByAnimalId(0);
+//     var facts = fetcher.getFactsByAnimalId(0);
 
-    expect(facts.length, 2);
-    expect(facts.first.fact, "Test Fact 1");
-    expect(facts.elementAt(1).fact, "Test Fact 2");
-  });
-  test("MockFactFetcher.getFactsByAnimalId returns an empty list for a nonexistant animal", ()
-  {
-    var fetcher = MockFactFetcher();
-    fetcher.addFact(Fact(0, 0, "Test Fact 1"));
-    fetcher.addFact(Fact(1, 0, "Test Fact 2"));
+//     expect(facts.length, 2);
+//     expect(facts.first.fact, "Test Fact 1");
+//     expect(facts.elementAt(1).fact, "Test Fact 2");
+//   });
+//   test("MockFactFetcher.getFactsByAnimalId returns an empty list for a nonexistant animal", ()
+//   {
+//     var fetcher = MockFactFetcher();
+//     fetcher.addFact(Fact(0, 0, "Test Fact 1"));
+//     fetcher.addFact(Fact(1, 0, "Test Fact 2"));
 
-    var facts = fetcher.getFactsByAnimalId(1);
+//     var facts = fetcher.getFactsByAnimalId(1);
 
-    expect(facts.length, 0);
-  });
-}
+//     expect(facts.length, 0);
+//   });
+// }
 
 main()
 {
   testMockAnimalFetcher();
-  testMockFactFetcher();
+  //testMockFactFetcher();
 }
