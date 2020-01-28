@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zoo_app/HomePage.dart';
+import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
@@ -34,7 +34,7 @@ testDrawer()
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")]);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -45,7 +45,7 @@ testDrawer()
   testWidgets("Drawer navigates to animal page", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")]);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -61,7 +61,7 @@ testDrawer()
   testWidgets("Drawer returns to home page", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")]);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -74,7 +74,7 @@ testDrawer()
     await tester.tap(find.widgetWithText(ListTile, "Home"));
     await tester.pumpAndSettle();
 
-    expect(find.byType(HomePage, skipOffstage: false), findsWidgets);
+    expect(find.byType(Clicker, skipOffstage: false), findsWidgets);
   });
 }
 
@@ -87,7 +87,7 @@ testAnimalPage()
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test 0"),
       Animal(1, "Test 1", "Test 1")
-    ])));
+    ], [])));
 
     expect(find.widgetWithText(RaisedButton, "Test 0"), findsOneWidget);
     expect(find.widgetWithText(RaisedButton, "Test 1"), findsOneWidget);
@@ -97,7 +97,7 @@ testAnimalPage()
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
       Animal(0, "Test 0", "Test Scientific Name"),
-    ])));
+    ], [])));
 
     await tester.tap(find.widgetWithText(RaisedButton, "Test 0"));
     await tester.pumpAndSettle();
@@ -108,8 +108,11 @@ testAnimalPage()
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0", [Fact(0, 0, "Fact")]),
-    ],)));
+      Animal(0, "Test 0", "Test 0"),
+    ],
+    [
+      Fact(0, 0, "Fact"),
+    ])));
 
     await tester.tap(find.widgetWithText(RaisedButton, "Test 0"));
     await tester.pumpAndSettle();
@@ -120,9 +123,11 @@ testAnimalPage()
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0", [Fact(0, 0, "Fact")]),
+      Animal(0, "Test 0", "Test 0"),
     ],
-    )));
+    [
+      Fact(0, 0, "Fact"),
+    ])));
 
     await tester.tap(find.widgetWithText(RaisedButton, "Nonexistant animal"));
     await tester.pumpAndSettle();

@@ -30,7 +30,7 @@ class Controller implements IControllerView
 
   @override
   List<Fact> getAllFactsForAnimal(int animalId) {
-    return model.animalFetcher.getAnimalById(animalId).facts;
+    return model.factFetcher.getFactsByAnimalId(animalId);
   }
 
   @override

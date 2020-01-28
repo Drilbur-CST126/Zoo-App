@@ -6,6 +6,7 @@ import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
+import 'package:zoo_app/model/mockFactFetcher.dart';
 
 import 'controller/controller.dart';
 import 'controller/iControllerView.dart';
@@ -18,7 +19,7 @@ import 'view/app.dart';
 void main() async {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
 
-  var model = Model(DbAnimalFetcher());
+  var model = Model(DbAnimalFetcher(), MockFactFetcher());
   var controller = Controller(model);
   var zooApp = MyApp(controller);
   runApp(zooApp);

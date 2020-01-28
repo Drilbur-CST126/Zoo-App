@@ -3,8 +3,8 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:test_api/src/frontend/expect_async.dart';
 import 'package:zoo_app/model/animal.dart';
-import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:http/http.dart' as http;
 
@@ -70,11 +70,7 @@ class DbAnimalFetcher implements IAnimalFetcher
   void decodeResponses(List<dynamic> json) {
     var newAnimals = List<Animal>();
     for (var jsonAnimal in json) {
-      var facts = List<Fact>();
-      for (var jsonFact in jsonAnimal["facts"]) {
-        facts.add(Fact(jsonFact["fact_id"], jsonAnimal["animal_id"], jsonAnimal["fact"]));
-      }
-      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], facts, jsonAnimal["tags"]);
+      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["tags"]);
       newAnimals.add(animal);
     }
     animals = newAnimals;
