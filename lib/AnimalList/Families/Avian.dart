@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/view/animalPage.dart';
 
 class Avian extends StatefulWidget{
+  Avian({Key key, @required this.controller}) : super(key: key);
+
+  final IControllerView controller;
   var animals = [
     Animal(5, "African Red-Billed Hornbill", "Tockus Erythro"),
   ];
@@ -20,7 +24,7 @@ class AvianState extends State<Avian>{
       buttons.add(RaisedButton(
         child: Text(widget.animals[i].commonName),
         onPressed: (){
-          Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalPage()));
+          widget.controller.goToAnimalPage(context, widget.animals[i].animalId);
         },
       ));
     }

@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
 import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
+import 'package:zoo_app/controller/iControllerView.dart';
 
 class AnimalListHead extends StatefulWidget{
+  AnimalListHead({Key key, @required this.controller}) : super(key: key);
+
+  final IControllerView controller;
+
   @override
   AnimalListHeadState createState() => AnimalListHeadState();
 }
@@ -24,7 +29,7 @@ class AnimalListHeadState extends State<AnimalListHead>{
 
                     child: Text("Search by Region"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListRegion()));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListRegion(controller: widget.controller)));
                     },
                   )
                 ),
@@ -33,7 +38,7 @@ class AnimalListHeadState extends State<AnimalListHead>{
                   child: RaisedButton(
                     child: Text("Search by Family"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListFamily()));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListFamily(controller: widget.controller)));
                     },
                   )
                 ),
