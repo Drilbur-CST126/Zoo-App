@@ -1,11 +1,14 @@
 
 
 import 'package:test/test.dart';
+import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
+import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:zoo_app/model/mockAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
+import 'package:zoo_app/model/model.dart';
 
 testMockAnimalFetcher()
 {
@@ -212,6 +215,31 @@ testMockFactFetcher()
     var facts = fetcher.getFactsByAnimalId(1);
 
     expect(facts.length, 0);
+  });
+}
+
+void testDbAnimalFetcher() {
+  // NOTE: Tests do not include anything that would rely on a specific animal's name. For example,
+  // a test could be written for DbAnimalFetcher's "getAnimalByName" for African Bullfrog. If the
+  // database updates to not have african bullfrogs in it anymore though, then the test fails for
+  // no good reason.
+  test("DbAnimalFetcher starts empty", () {
+    var fetcher = DbAnimalFetcher();
+
+    expect(fetcher.animals.length, 0);
+  });
+  test("DbAnimalFetcher updates to include animals", () async {
+    var fetcher = DbAnimalFetcher();
+    await fetcher.update();
+
+    expect(fetcher.animals.length, greaterThan(0));
+  });
+  test("DbAnimalFetcher updates through the Controller", () async {
+    var model = Model(DbAnimalFetcher(), MockFactFetcher());
+    var controller = Controller(model);
+    await controller.updateAnimals();
+
+    expect(model.animalFetcher.getAllAnimals().length, greaterThan(0));
   });
 }
 

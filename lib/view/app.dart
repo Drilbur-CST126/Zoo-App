@@ -1,8 +1,8 @@
 // app.dart
 // File created by Jordan Clark
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
+import 'loadingWidget.dart';
 
 class AnimalListPage extends StatefulWidget{
   AnimalListPage({Key key, @required this.controller}) : super(key: key);
@@ -47,6 +47,7 @@ class AnimalListPage extends StatefulWidget{
 class AnimalListPageState extends State<AnimalListPage>
 {
   String searchTerm;
+  bool updated = false;
 
   void _changeSearchTerm(String text) {
     setState(() {
@@ -54,28 +55,45 @@ class AnimalListPageState extends State<AnimalListPage>
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    var listItems = <Widget>[
-      TextField(onChanged: _changeSearchTerm, 
+  Widget _createPage(BuildContext context, [AsyncSnapshot<bool> snapshot]) {
+    var listItems = <Widget>[];
+
+    if (updated || snapshot.hasData) {
+      listItems.add(TextField(onChanged: _changeSearchTerm, 
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           hintText: "Search",
           icon: Icon(Icons.search),
         ),
-      )
-    ];
-    listItems.addAll(widget._displayAnimals(context, searchTerm));
-    listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
+      ));
+      listItems.addAll(widget._displayAnimals(context, searchTerm));
+      //listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
+    } else {
+      listItems.add(LoadingWidget());
+    }
+    updated = true;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Animal List"),
-      ),
+      //appBar: AppBar(
+      //  title: Text("Animal List"),
+      //),
       body: Center(
         child: ListView(
           children: listItems
         ),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!updated) {
+      return FutureBuilder<bool>(
+        future: widget.controller.updateAnimals(), 
+        builder: _createPage
+      );
+    } else {
+      return _createPage(context);
+    }
   }
 }
