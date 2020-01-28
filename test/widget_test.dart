@@ -18,6 +18,7 @@ import 'package:zoo_app/model/model.dart';
 import 'package:zoo_app/view/animalPage.dart';
 import 'package:zoo_app/view/app.dart';
 import 'package:zoo_app/main.dart';
+import 'package:zoo_app/view/notFoundErrorPage.dart';
 
 Widget _getAnimalListPage(WidgetTester tester, Model model)
 {
@@ -289,6 +290,7 @@ void testExhibit() {
     await tester.pumpAndSettle();
 
     expect(find.byType(AnimalPage), findsOneWidget);
+    expect(find.byType(NotFoundErrorPage), findsNothing);
   });
 }
 
