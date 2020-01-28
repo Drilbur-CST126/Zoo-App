@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return new AnimalListPage(controller: widget.controller);
         break;
       case 2:
-        return new AnimalListHead();
+        return new AnimalListHead(controller: widget.controller);
         break;
       default:
         return new MissingPage();
