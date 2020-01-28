@@ -11,7 +11,6 @@ import 'controller/controller.dart';
 import 'controller/iControllerView.dart';
 import 'model/model.dart';
 import 'view/app.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 // an's test branch, test initial commit
 
@@ -39,7 +38,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Oregon Zoo', controller: controller, scaffoldKey: scaffoldKey,),
-
     );
   }
 }
@@ -93,25 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget image_slider_carousel = Container(
-      height: 800,
-      child: Carousel(
-        boxFit: BoxFit.fill,
-        images: [
-          AssetImage('assets/elephant.jpg'),
-          AssetImage('assets/otter2.jpg'),
-          AssetImage('assets/tiger1.jpg'),
-          AssetImage('assets/bear.jpg')
-        ],
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 2000),
-        autoplay: true,
-        indicatorBgPadding: 0.25,
-        dotSize: .5,
-        dotColor: Colors.transparent,
-        dotBgColor: Colors.white70,
-      ),
-    );
     var drawerOptions = <Widget>[];
     for (var i = 0; i < widget.drawerItems.length; i++) {
       var d = widget.drawerItems[i];
