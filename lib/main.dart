@@ -167,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.green,
         title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
+
       body: _getDrawerItemWidget(_selectedDrawerIndex),
       drawer: new Drawer(
           child: new ListView(
