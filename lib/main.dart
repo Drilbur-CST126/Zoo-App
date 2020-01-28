@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:zoo_app/AnimalList/AnimalListHead.dart';
-import 'package:zoo_app/Clicker.dart';
 import 'package:zoo_app/DrawerItem.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/fact.dart';
@@ -12,16 +12,12 @@ import 'controller/iControllerView.dart';
 import 'model/animal.dart';
 import 'model/model.dart';
 import 'view/app.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_pro/carousel_pro.dart';
 
 // an's test branch, test initial commit
 
 // MyApp factored out into view/app.dart, done by Jordan Clark
 void main() {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
-
-  // TODO: Replace with the non-mock model, once the database can be connected to.
   var model = Model.mockModel([
     Animal(1, "African Bullfrog", "Pyxicephalus Adspersus"),
     Animal(2, "African Crested Porcupine", "Hystix Cristata"),
@@ -101,7 +97,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Oregon Zoo', controller: controller, scaffoldKey: scaffoldKey,),
-
     );
   }
 }
@@ -133,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
   _getDrawerItemWidget(int pos){
     switch(pos){
       case 0:
-      // return ;
+        return new HomePage();
         break;
       case 1:
         return new AnimalListPage(controller: widget.controller);
@@ -154,25 +149,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget image_slider_carousel = Container(
-      height: 800,
-      child: Carousel(
-        boxFit: BoxFit.fill,
-        images: [
-          AssetImage('assets/elephant.jpg'),
-          AssetImage('assets/otter2.jpg'),
-          AssetImage('assets/tiger1.jpg'),
-          AssetImage('assets/bear.jpg')
-        ],
-        animationCurve: Curves.fastOutSlowIn,
-        animationDuration: Duration(milliseconds: 2000),
-        autoplay: true,
-        indicatorBgPadding: 0.25,
-        dotSize: .5,
-        dotColor: Colors.transparent,
-        dotBgColor: Colors.white70,
-      ),
-    );
     var drawerOptions = <Widget>[];
     for (var i = 0; i < widget.drawerItems.length; i++) {
       var d = widget.drawerItems[i];
@@ -189,27 +165,10 @@ class _MyHomePageState extends State<MyHomePage> {
       key: widget.scaffoldKey,
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text('Oregon Zoo App'),
-          flexibleSpace: Container(
-          ),       
+        title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
-      body: ListView(
-        children: <Widget>[
-          image_slider_carousel
-        ],
-      ),
-//      drawer: new Drawer(
-//          child: new Column(
-//            children: <Widget>[
-//              new Column(children: drawerOptions),
-//              new Container(
-//
-//              )
-//            ],
-//          )
-//      ),
 
-    //test comment - ani
+      body: _getDrawerItemWidget(_selectedDrawerIndex),
       drawer: new Drawer(
           child: new ListView(
             children: <Widget>[
@@ -223,7 +182,7 @@ class _MyHomePageState extends State<MyHomePage> {
               new Column(children: drawerOptions),
             ],
           )
-    ),
+      ),
     );
   }
 
