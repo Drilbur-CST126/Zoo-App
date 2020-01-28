@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return new HomePage();
         break;
       case 2:
-        return new AnimalListHead();
+        return new AnimalListHead(controller: widget.controller);
         break;
       case 3:
         return new AnimalListPage(controller: widget.controller);
@@ -110,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.green,
         title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
+
       body: _getDrawerItemWidget(_selectedDrawerIndex),
       drawer: new Drawer(
           child: new ListView(
