@@ -54,6 +54,13 @@ class DbAnimalFetcher implements IAnimalFetcher
     });
   }
 
+  @override
+  Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.exhibitid == requestedregionid;
+    });
+  }
+
   // This function contacts the database to get the animals, then calls decodeResponses to put them in 'animals'.
   Future<void> update() async {
     final response = await http.get(url, headers: {"Accept" : "application/json"});
@@ -70,7 +77,7 @@ class DbAnimalFetcher implements IAnimalFetcher
   void decodeResponses(List<dynamic> json) {
     var newAnimals = List<Animal>();
     for (var jsonAnimal in json) {
-      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["tags"]);
+      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"]);
       newAnimals.add(animal);
     }
     animals = newAnimals;

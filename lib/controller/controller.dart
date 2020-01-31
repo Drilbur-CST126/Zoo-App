@@ -42,6 +42,10 @@ class Controller implements IControllerView
     return model.animalFetcher.searchAnimals(searchTerm);
   }
 
+  Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
+    return model.animalFetcher.searchAnimalByRegion(requestedregionid);
+  }
+
   @override
   Future<bool> updateAnimals() async {
     try {

@@ -7,9 +7,28 @@ class Avian extends StatefulWidget{
   Avian({Key key, @required this.controller}) : super(key: key);
 
   final IControllerView controller;
-  var animals = [
-    Animal(5, "African Red-Billed Hornbill", "Tockus Erythro"),
-  ];
+
+  Widget _animalButton(BuildContext context, String name, int animalId)
+  {
+    return RaisedButton(
+      child: Text(name),
+      autofocus: false,
+      onPressed: () {
+        controller.goToAnimalPage(context, animalId);
+      },
+    );
+  }
+
+  List<Widget> _displayAnimals(BuildContext context)
+  {
+    var animals = controller.getAllAnimals();  //this will be where changes need to be made for the database pull
+    var buttons = List<Widget>();
+    for (var animal in animals)
+    {
+      buttons.add(_animalButton(context, animal.commonName, animal.animalId));
+    }
+    return buttons;
+  }
 
   @override
   AvianState createState() => AvianState();
@@ -18,23 +37,13 @@ class Avian extends StatefulWidget{
 class AvianState extends State<Avian>{
   @override
   Widget build(BuildContext context) {
-    var buttons = <Widget>[];
-    for(int i = 0; i < widget.animals.length; ++i)
-    {
-      buttons.add(RaisedButton(
-        child: Text(widget.animals[i].commonName),
-        onPressed: (){
-          widget.controller.goToAnimalPage(context, widget.animals[i].animalId);
-        },
-      ));
-    }
     return Scaffold(
         appBar: AppBar(
             title: Text('Avian')
         ),
         body: Center(
-            child: Column(
-                children: buttons
+            child: ListView(
+                children: widget._displayAnimals(context)
             )
         )
     );

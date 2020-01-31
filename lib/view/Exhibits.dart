@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
-import 'package:zoo_app/model/animal.dart';
-import 'package:zoo_app/view/animalPage.dart';
 
-class Fish extends StatefulWidget{
-  Fish({Key key, @required this.controller}) : super(key: key);
+class Exhibits extends StatefulWidget{
+  Exhibits({Key key, @required this.controller, @required this.buildcontext, @required this.parameter}) : super(key: key);
 
   final IControllerView controller;
+  final String buildcontext;
+  final int parameter;
 
   Widget _animalButton(BuildContext context, String name, int animalId)
   {
@@ -21,7 +21,7 @@ class Fish extends StatefulWidget{
 
   List<Widget> _displayAnimals(BuildContext context)
   {
-    var animals = controller.getAllAnimals();  //this will be where changes need to be made for the database pull
+    var animals = controller.searchAnimalByRegion(1);  //this will be where changes need to be made for the database pull
     var buttons = List<Widget>();
     for (var animal in animals)
     {
@@ -31,15 +31,15 @@ class Fish extends StatefulWidget{
   }
 
   @override
-  FishState createState() => FishState();
+  ExhibitsState createState() => ExhibitsState();
 }
 
-class FishState extends State<Fish>{
+class ExhibitsState extends State<Exhibits>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Fish')
+            title: Text('Africa')
         ),
         body: Center(
             child: ListView(

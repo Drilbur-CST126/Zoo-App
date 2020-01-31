@@ -52,4 +52,10 @@ class MockAnimalFetcher implements IAnimalFetcher
   Future<void> update() {
     return null;
   }
+
+  @override
+  Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
+    // TODO: implement searchAnimalByRegion
+    return null;
+  }
 }

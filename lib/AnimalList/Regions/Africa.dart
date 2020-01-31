@@ -21,7 +21,7 @@ class Africa extends StatefulWidget{
 
   List<Widget> _displayAnimals(BuildContext context)
   {
-    var animals = controller.getAllAnimals();  //this will be where changes need to be made for the database pull
+    var animals = controller.searchAnimalByRegion(1);  //this will be where changes need to be made for the database pull
     var buttons = List<Widget>();
     for (var animal in animals)
     {

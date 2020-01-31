@@ -8,9 +8,27 @@ class Amphibia extends StatefulWidget{
 
   final IControllerView controller;
 
-  var animals = [
-    Animal(1, "African Bullfrog", "Pyxicephalus Adspersus"),
-  ];
+  Widget _animalButton(BuildContext context, String name, int animalId)
+  {
+    return RaisedButton(
+      child: Text(name),
+      autofocus: false,
+      onPressed: () {
+        controller.goToAnimalPage(context, animalId);
+      },
+    );
+  }
+
+  List<Widget> _displayAnimals(BuildContext context)
+  {
+    var animals = controller.getAllAnimals();  //this will be where changes need to be made for the database pull
+    var buttons = List<Widget>();
+    for (var animal in animals)
+    {
+      buttons.add(_animalButton(context, animal.commonName, animal.animalId));
+    }
+    return buttons;
+  }
 
   @override
   AmphibiaState createState() => AmphibiaState();
@@ -19,23 +37,13 @@ class Amphibia extends StatefulWidget{
 class AmphibiaState extends State<Amphibia>{
   @override
   Widget build(BuildContext context) {
-    var buttons = <Widget>[];
-    for(int i = 0; i < widget.animals.length; ++i)
-    {
-      buttons.add(RaisedButton(
-        child: Text(widget.animals[i].commonName),
-        onPressed: (){
-          widget.controller.goToAnimalPage(context, widget.animals[i].animalId);
-        },
-      ));
-    }
     return Scaffold(
         appBar: AppBar(
             title: Text('Amphibia')
         ),
         body: Center(
-            child: Column(
-                children: buttons
+            child: ListView(
+                children: widget._displayAnimals(context)
             )
         )
     );
