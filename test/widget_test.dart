@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
-import 'package:zoo_app/AnimalList/AnimalListHead.dart';
+import 'package:zoo_app/AnimalList/ExploreBy.dart';
 import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
 import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/controller.dart';
@@ -53,7 +53,7 @@ Widget _getExhibitPage(WidgetTester tester)
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimalListHead(controller: controller),
+      home: ExploreBy(controller: controller),
     );
 
   return app;

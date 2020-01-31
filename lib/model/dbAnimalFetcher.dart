@@ -54,6 +54,7 @@ class DbAnimalFetcher implements IAnimalFetcher
     });
   }
 
+  // This function returns all animals that have the same region as the one passed in as the parameter
   @override
   Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
     return getAllAnimals(where: (Animal animal) {
