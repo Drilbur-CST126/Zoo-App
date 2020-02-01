@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
-import 'package:zoo_app/model/animal.dart';
-import 'package:zoo_app/view/animalPage.dart';
 
 class Africa extends StatefulWidget{
   Africa({Key key, @required this.controller}) : super(key: key);
@@ -21,7 +19,7 @@ class Africa extends StatefulWidget{
 
   List<Widget> _displayAnimals(BuildContext context)
   {
-    var animals = controller.searchAnimalByRegion(1);  //this will be where changes need to be made for the database pull
+    var animals = controller.searchAnimalByExhibit(1);  //this will be where changes need to be made for the database pull
     var buttons = List<Widget>();
     for (var animal in animals)
     {

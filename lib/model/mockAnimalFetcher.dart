@@ -54,8 +54,20 @@ class MockAnimalFetcher implements IAnimalFetcher
   }
 
   @override
-  Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
-    // TODO: implement searchAnimalByRegion
+  List<int> getExhibitIds() {
+    // TODO: implement getExhibitIds
+    return null;
+  }
+
+  @override
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId) {
+    // TODO: implement searchAnimalByExhibit
+    return null;
+  }
+
+  @override
+  List<int> getClassIds() {
+    // TODO: implement getClassIds
     return null;
   }
 }

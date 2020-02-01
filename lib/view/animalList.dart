@@ -6,7 +6,7 @@ class AnimalList extends StatefulWidget{
   AnimalList({Key key, @required this.controller, @required this.animalList}) : super(key: key);
 
   final IControllerView controller;
-  final Animal animalList;
+  final Iterable<Animal> animalList;
 
   Widget _animalButton(BuildContext context, String name)
   {
@@ -21,9 +21,8 @@ class AnimalList extends StatefulWidget{
 
   List<Widget> _displayAnimals(BuildContext context)
   {
-    var animals = controller.searchAnimalByRegion(1);  //this will be where we make a call to populate the list. Might be worth while to make a new variable and work with that instead
     var buttons = List<Widget>();
-    for (var animal in animals)
+    for (var animal in animalList)
     {
       buttons.add(_animalButton(context, animal.commonName));
     }

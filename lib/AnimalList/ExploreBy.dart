@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
 import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
+import 'package:zoo_app/view/exhibits.dart';
+import 'package:zoo_app/view/family.dart';
 import 'package:zoo_app/view/loadingWidget.dart';
 
 class ExploreBy extends StatefulWidget{
@@ -34,16 +36,16 @@ class ExploreByState extends State<ExploreBy>{
                   child: RaisedButton(
                     child: Text("Explore by Exhibit"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListRegion(controller: widget.controller)));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Exhibits(controller: widget.controller)));
                     },
                   )
                 ),
                 Container(
                   padding: EdgeInsets.all(5),
                   child: RaisedButton(
-                    child: Text("Explore by Family"),
+                    child: Text("Explore by Class"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListFamily(controller: widget.controller)));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Family(controller: widget.controller)));
                     },
                   )
                 ),

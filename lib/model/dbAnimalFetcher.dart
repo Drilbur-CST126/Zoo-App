@@ -56,10 +56,43 @@ class DbAnimalFetcher implements IAnimalFetcher
 
   // This function returns all animals that have the same region as the one passed in as the parameter
   @override
-  Iterable<Animal> searchAnimalByRegion(int requestedregionid) {
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId) {
     return getAllAnimals(where: (Animal animal) {
-      return animal.exhibitid == requestedregionid;
+      return animal.exhibitid == requestedRegionId;
     });
+  }
+
+  // This function will return a list of unique values for Exhibit_id within the database for all animals
+  // TODO: replace with more efficient function. Perhaps one that touches that part the database directly.
+  @override
+  List<int> getExhibitIds() {
+    var animals = getAllAnimals();
+    List<int> exhibitIds = List();
+    for (var animal in animals)
+      {
+        if (!exhibitIds.contains(animal.exhibitid))
+          {
+            exhibitIds.add(animal.exhibitid);
+          }
+      }
+    return exhibitIds;
+  }
+
+
+  // This function will return a list of unique values for class_id within the database for all animals
+  // TODO: replace with more efficient function. Perhaps one that touches that part of database directly.
+  @override
+  List<int> getClassIds() {
+    var animals = getAllAnimals();
+    List<int> classIds = List();
+    for (var animal in animals)
+    {
+      if (!classIds.contains(animal.classid))
+      {
+        classIds.add(animal.classid);
+      }
+    }
+    return classIds;
   }
 
   // This function contacts the database to get the animals, then calls decodeResponses to put them in 'animals'.

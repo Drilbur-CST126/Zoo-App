@@ -10,6 +10,8 @@ abstract class IAnimalFetcher
   Iterable<Animal> searchAnimals(String query);
   Animal getAnimalById(int id);
   Iterable<Animal> getAllAnimals({bool Function(Animal) where});
-  Iterable<Animal> searchAnimalByRegion(int requestedregionid);
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId);
+  List<int> getExhibitIds();
+  List<int> getClassIds();
   Future<void> update();
 }

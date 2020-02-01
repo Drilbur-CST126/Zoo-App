@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
-import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/view/animalList.dart';
 
 class Exhibits extends StatefulWidget{
@@ -8,24 +7,25 @@ class Exhibits extends StatefulWidget{
 
   final IControllerView controller;
 
-  Widget _buttonMaker(BuildContext context, Animal animallist)
+  Widget _buttonMaker(BuildContext context, int exhibitid)
   {
     return RaisedButton(
-      child: Text("Something"),
+      child: Text(exhibitid.toString()),
       autofocus: false,
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller, animalList: animallist)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller, animalList: controller.searchAnimalByExhibit(exhibitid))));
       },
     );
   }
 
   List<Widget> _displayExhibits(BuildContext context)
   {
-    var exhiibits = controller.searchAnimalByRegion(1);  //this will be where changes need to be made for the database pull
+    var exhibits = controller.getExhibitIds();
+    exhibits.sort(); //this line is pointless, as when it isn't numbers, it can be in any order. But it might work for letters as well
     var buttons = List<Widget>();
-    for (var animal in exhiibits)
+    for (var exhibitid in exhibits)
     {
-      buttons.add(_buttonMaker(context, animal));
+      buttons.add(_buttonMaker(context, exhibitid));
     }
     return buttons;
   }
