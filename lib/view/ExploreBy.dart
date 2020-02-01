@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
-import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/view/exhibits.dart';
 import 'package:zoo_app/view/family.dart';

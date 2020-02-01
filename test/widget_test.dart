@@ -7,9 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
-import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
 import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
@@ -18,6 +16,8 @@ import 'package:zoo_app/model/model.dart';
 import 'package:zoo_app/view/animalPage.dart';
 import 'package:zoo_app/view/app.dart';
 import 'package:zoo_app/main.dart';
+import 'package:zoo_app/view/exhibits.dart';
+import 'package:zoo_app/view/family.dart';
 import 'package:zoo_app/view/notFoundErrorPage.dart';
 
 Widget _getAnimalListPage(WidgetTester tester, Model model)
@@ -37,16 +37,16 @@ Widget _getAnimalListPage(WidgetTester tester, Model model)
 Widget _getExhibitPage(WidgetTester tester)
 {
   var controller = Controller(Model.mockModel([
-    Animal(1, "African Bullfrog", "Pyxicephalus Adspersus"),
-    Animal(2, "African Crested Porcupine", "Hystix Cristata"),
-    Animal(3, "African Lungfish", "Protopterus Annectens"),
-    Animal(4, "African Painted Dog", "Lycaon Pictus"),
-    Animal(5, "African Red-Billed Hornbill", "Tockus Erythro"),
-    Animal(6, "African Rock Python", "Python Sebae"),
-    Animal(7, "African Slender-Snouted Crocodile", "Mecistops Cataphractus"),
-    Animal(8, "African Spurred Tortoise", "Centrochelys Sulcata"),
-    Animal(9, "Allen's Swamp Monkey", "Allenopithecus Nigroviridis"),
-    Animal(10, "American Beaver", "Castor Canadensis"),
+    Animal(1, "African Bullfrog", "Pyxicephalus Adspersus", 1, 1),
+    Animal(2, "African Crested Porcupine", "Hystix Cristata", 1, 1),
+    Animal(3, "African Lungfish", "Protopterus Annectens", 1, 1),
+    Animal(4, "African Painted Dog", "Lycaon Pictus", 1, 1),
+    Animal(5, "African Red-Billed Hornbill", "Tockus Erythro", 1, 1),
+    Animal(6, "African Rock Python", "Python Sebae", 1, 1),
+    Animal(7, "African Slender-Snouted Crocodile", "Mecistops Cataphractus", 1, 1),
+    Animal(8, "African Spurred Tortoise", "Centrochelys Sulcata", 1, 1),
+    Animal(9, "Allen's Swamp Monkey", "Allenopithecus Nigroviridis", 1, 1),
+    Animal(10, "American Beaver", "Castor Canadensis", 1, 1),
   ], []));
   Widget app = MaterialApp(
       title: 'Flutter Demo',
@@ -64,7 +64,7 @@ testDrawer()
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal", 1, 1)], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -75,7 +75,7 @@ testDrawer()
   testWidgets("Drawer navigates to animal page", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal", 1, 1)], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -91,7 +91,7 @@ testDrawer()
   testWidgets("Drawer returns to home page", (WidgetTester tester) async
   {
     final scaffoldKey = GlobalKey<ScaffoldState>();
-    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal")], []);
+    var model = Model.mockModel([new Animal(0, "Test animal", "Test animal", 1, 1)], []);
     var controller = Controller(model);
     await tester.pumpWidget(MyApp(controller, scaffoldKey: scaffoldKey,));
 
@@ -115,8 +115,8 @@ testAnimalPage()
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -127,7 +127,7 @@ testAnimalPage()
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test Scientific Name"),
+      Animal(0, "Test 0", "Test Scientific Name", 1, 1),
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -140,7 +140,7 @@ testAnimalPage()
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
+      Animal(0, "Test 0", "Test 0", 1, 1),
     ],
     [
       Fact(0, 0, "Fact"),
@@ -177,8 +177,8 @@ void testSearch() {
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -188,8 +188,8 @@ void testSearch() {
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -202,8 +202,8 @@ void testSearch() {
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -216,8 +216,8 @@ void testSearch() {
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -230,8 +230,8 @@ void testSearch() {
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
-      Animal(0, "Test 0", "Test 0"),
-      Animal(1, "Test 1", "Test 1")
+      Animal(0, "Test 0", "Test 0", 1, 1),
+      Animal(1, "Test 1", "Test 1", 1, 1)
     ], [])));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
@@ -242,48 +242,48 @@ void testSearch() {
   });
 }
 
-void testExhibit() {
-  testWidgets("AnimalListHead has region and family buttons", (WidgetTester tester) async
+void testExplore() {
+  testWidgets("ExploreBy has Exhibit and Family buttons", (WidgetTester tester) async
   {
 
     await tester.pumpWidget(_getExhibitPage(tester));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
-    expect(find.widgetWithText(RaisedButton, "Search by Region"), findsOneWidget);
-    expect(find.widgetWithText(RaisedButton, "Search by Family"), findsOneWidget);
+    expect(find.widgetWithText(RaisedButton, "Explore by Exhibit"), findsOneWidget);
+    expect(find.widgetWithText(RaisedButton, "Explore by Class"), findsOneWidget);
   });
-  testWidgets("AnimalListHead navigates to AnimalListFamily when the button is pressed", (WidgetTester tester) async
+  testWidgets("ExploreBy navigates to exhibits when the button is pressed", (WidgetTester tester) async
   {
 
     await tester.pumpWidget(_getExhibitPage(tester));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
-    await tester.tap(find.widgetWithText(RaisedButton, "Search by Family"));
+    await tester.tap(find.widgetWithText(RaisedButton, "Explore by Exhibit"));
     await tester.pumpAndSettle();
 
-    expect(find.byType(AnimalListFamily), findsOneWidget);
+    expect(find.byType(Exhibits), findsOneWidget);
   });
-  testWidgets("AnimalListHead navigates to AnimalListRegion when the button is pressed", (WidgetTester tester) async
+  testWidgets("ExploreBy navigates to family when the button is pressed", (WidgetTester tester) async
   {
 
     await tester.pumpWidget(_getExhibitPage(tester));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
-    await tester.tap(find.widgetWithText(RaisedButton, "Search by Region"));
+    await tester.tap(find.widgetWithText(RaisedButton, "Explore by Class"));
     await tester.pumpAndSettle();
 
-    expect(find.byType(AnimalListRegion), findsOneWidget);
+    expect(find.byType(Family), findsOneWidget);
   });
-  testWidgets("AnimalListHead can navigate to an animal page", (WidgetTester tester) async
+  testWidgets("ExploreBy can navigate to an animal page", (WidgetTester tester) async
   {
 
     await tester.pumpWidget(_getExhibitPage(tester));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
-    await tester.tap(find.widgetWithText(RaisedButton, "Search by Family"));
+    await tester.tap(find.widgetWithText(RaisedButton, "Explore by Exhibit"));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.widgetWithText(RaisedButton, "Amphibia"));
+    await tester.tap(find.byType(RaisedButton).first);
     await tester.pumpAndSettle();
 
     await tester.tap(find.byType(RaisedButton).first);
@@ -316,5 +316,5 @@ void main() {
   testAnimalPage();
   testDrawer();
   testSearch();
-  testExhibit();
+  testExplore();
 }
