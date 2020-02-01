@@ -7,13 +7,14 @@ class Family extends StatefulWidget{
 
   final IControllerView controller;
 
-  Widget _buttonMaker(BuildContext context, int familyid)
+  Widget _buttonMaker(BuildContext context, int familyId)
   {
     return RaisedButton(
-      child: Text(familyid.toString()),
+      child: Text(familyId.toString()),
       autofocus: false,
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller, animalList: controller.searchAnimalByExhibit(familyid))));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller,
+            animalList: controller.searchAnimalByClass(familyId), title: familyId.toString())));
       },
     );
   }
@@ -39,7 +40,7 @@ class FamilyState extends State<Family>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Exhibits')
+            title: Text('Classes')
         ),
         body: Center(
             child: ListView(

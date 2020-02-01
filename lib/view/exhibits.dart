@@ -13,7 +13,8 @@ class Exhibits extends StatefulWidget{
       child: Text(exhibitid.toString()),
       autofocus: false,
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller, animalList: controller.searchAnimalByExhibit(exhibitid))));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller,
+            animalList: controller.searchAnimalByExhibit(exhibitid), title: exhibitid.toString())));
       },
     );
   }

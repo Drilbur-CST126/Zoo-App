@@ -70,4 +70,10 @@ class MockAnimalFetcher implements IAnimalFetcher
     // TODO: implement getClassIds
     return null;
   }
+
+  @override
+  Iterable<Animal> searchAnimalByClass(int requestedClassId) {
+    // TODO: implement searchAnimalByClass
+    return null;
+  }
 }

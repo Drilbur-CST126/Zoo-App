@@ -62,6 +62,13 @@ class DbAnimalFetcher implements IAnimalFetcher
     });
   }
 
+  @override
+  Iterable<Animal> searchAnimalByClass(int requestedClassId) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.classid == requestedClassId;
+    });
+  }
+
   // This function will return a list of unique values for Exhibit_id within the database for all animals
   // TODO: replace with more efficient function. Perhaps one that touches that part the database directly.
   @override

@@ -3,18 +3,19 @@ import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/model/animal.dart';
 
 class AnimalList extends StatefulWidget{
-  AnimalList({Key key, @required this.controller, @required this.animalList}) : super(key: key);
+  AnimalList({Key key, @required this.controller, @required this.animalList, @required this.title}) : super(key: key);
 
   final IControllerView controller;
   final Iterable<Animal> animalList;
+  final String title;
 
-  Widget _animalButton(BuildContext context, String name)
+  Widget _animalButton(BuildContext context, Animal animal)
   {
     return RaisedButton(
-      child: Text(name),
+      child: Text(animal.commonName),
       autofocus: false,
       onPressed: () {
-        //need to create a pass to the new page
+        controller.goToAnimalPage(context, animal.animalId);
       },
     );
   }
@@ -24,7 +25,7 @@ class AnimalList extends StatefulWidget{
     var buttons = List<Widget>();
     for (var animal in animalList)
     {
-      buttons.add(_animalButton(context, animal.commonName));
+      buttons.add(_animalButton(context, animal));
     }
     return buttons;
   }
@@ -38,7 +39,7 @@ class AnimalListState extends State<AnimalList>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('Exhibits')
+            title: Text(widget.title)
         ),
         body: Center(
             child: ListView(

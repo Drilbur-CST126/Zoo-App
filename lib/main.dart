@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:zoo_app/AnimalList/ExploreBy.dart';
+import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
