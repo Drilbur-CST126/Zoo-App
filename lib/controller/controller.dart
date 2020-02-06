@@ -41,4 +41,14 @@ class Controller implements IControllerView
   Iterable<Animal> searchAnimals(String searchTerm) {
     return model.animalFetcher.searchAnimals(searchTerm);
   }
+
+  @override
+  Future<bool> updateAnimals() async {
+    try {
+      await model.animalFetcher.update();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
