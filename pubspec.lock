@@ -421,15 +421,9 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-<<<<<<< Updated upstream
     version: "0.2.6+3"
-=======
     version: "2.3.1"
->>>>>>> Stashed changes
-=======
     version: "2.3.1"
->>>>>>> 7a4b9d0305d10bccb76aeee828316cd666339a92
   watcher:
     dependency: transitive
     description:
