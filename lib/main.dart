@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
 
+import 'ZooInformation/ZooInfo.dart';
 import 'controller/controller.dart';
 import 'controller/iControllerView.dart';
 import 'model/model.dart';
@@ -78,7 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return new AnimalListPage(controller: widget.controller);
         break;
       case 4:
-        //return new ZooInfo
+        return new ZooInfo();
+        break;
       default:
         return new MissingPage();
         break;
