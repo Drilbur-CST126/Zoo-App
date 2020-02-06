@@ -14,13 +14,7 @@ class ExploreBy extends StatefulWidget{
   ExploreByState createState() => ExploreByState();
 }
 
-<<<<<<< HEAD:lib/AnimalList/AnimalListHead.dart
-class AnimalListHeadState extends State<AnimalListHead>{
-=======
 class ExploreByState extends State<ExploreBy>{
-
-
->>>>>>> 8b139b05755a462431d2f3e30e0afdb8f8142c8c:lib/view/ExploreBy.dart
   @override
   Widget build(BuildContext context) {
     return Scaffold(
