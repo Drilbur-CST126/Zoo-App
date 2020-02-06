@@ -16,7 +16,7 @@ testMockAnimalFetcher()
   {
     var fetcher = MockAnimalFetcher();
 
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
 
     expect(fetcher.animals[0].commonName, "Giraffe");
   });
@@ -24,8 +24,8 @@ testMockAnimalFetcher()
   test("getAnimalByName can retrieve animals", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animal = fetcher.getAnimalByName("Dog");
 
@@ -35,8 +35,8 @@ testMockAnimalFetcher()
   test("getAnimalByName can retrieve animals as an IAnimalFetcher", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     IAnimalFetcher ifetcher = fetcher;
     var animal = ifetcher.getAnimalByName("Dog");
@@ -47,8 +47,8 @@ testMockAnimalFetcher()
   test("getAnimalByName will return null for nonexistant animal", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     IAnimalFetcher ifetcher = fetcher;
     var animal = ifetcher.getAnimalByName("Cat");
@@ -59,8 +59,8 @@ testMockAnimalFetcher()
   test("getAnimalById can retrieve animals", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animal = fetcher.getAnimalById(1);
 
@@ -70,8 +70,8 @@ testMockAnimalFetcher()
   test("getAnimalById can retrieve animals as an IAnimalFetcher", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     IAnimalFetcher ifetcher = fetcher;
     var animal = ifetcher.getAnimalById(1);
@@ -82,8 +82,8 @@ testMockAnimalFetcher()
   test("getAnimalById will return null for nonexistant animal", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     IAnimalFetcher ifetcher = fetcher;
     var animal = ifetcher.getAnimalById(2);
@@ -94,8 +94,8 @@ testMockAnimalFetcher()
   test("searchAnimals returns an animal with its full name", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animals = fetcher.searchAnimals("Dog");
 
@@ -107,8 +107,8 @@ testMockAnimalFetcher()
   test("searchAnimals returns an animal with part of its name", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animals = fetcher.searchAnimals("Do");
 
@@ -119,9 +119,9 @@ testMockAnimalFetcher()
   test("searchAnimals returns multiple animals that all fit the search", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog 1", "Canis lupus familiaris"));
-    fetcher.addAnimal(Animal(2, "Dog 2", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog 1", "Canis lupus familiaris", 1, 1));
+    fetcher.addAnimal(Animal(2, "Dog 2", "Canis lupus familiaris", 1, 1));
 
     var animals = fetcher.searchAnimals("Do");
 
@@ -133,8 +133,8 @@ testMockAnimalFetcher()
   test("searchAnimals returns nothing for a search that doesn't work", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animals = fetcher.searchAnimals("Cat");
 
@@ -144,8 +144,8 @@ testMockAnimalFetcher()
   test("searchAnimals returns results even for a non-matching case", ()
   {
     var fetcher = MockAnimalFetcher();
-    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis"));
-    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris"));
+    fetcher.addAnimal(Animal(0, "Giraffe", "Giraffa camelopardalis", 1, 1));
+    fetcher.addAnimal(Animal(1, "Dog", "Canis lupus familiaris", 1, 1));
 
     var animals = fetcher.searchAnimals("dOg");
 

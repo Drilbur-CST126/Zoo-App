@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zoo_app/AnimalList/AnimalListFamily.dart';
-import 'package:zoo_app/AnimalList/AnimalListRegion.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
+import 'package:zoo_app/view/exhibits.dart';
+import 'package:zoo_app/view/family.dart';
 import 'package:zoo_app/view/loadingWidget.dart';
 
-class AnimalListHead extends StatefulWidget{
-  AnimalListHead({Key key, @required this.controller}) : super(key: key);
+class ExploreBy extends StatefulWidget{
+  ExploreBy({Key key, @required this.controller}) : super(key: key);
 
   final IControllerView controller;
 
   @override
-  AnimalListHeadState createState() => AnimalListHeadState();
+  ExploreByState createState() => ExploreByState();
 }
 
-class AnimalListHeadState extends State<AnimalListHead>{
+class ExploreByState extends State<ExploreBy>{
 
 
   @override
@@ -32,18 +32,18 @@ class AnimalListHeadState extends State<AnimalListHead>{
                 Container(
                   padding: EdgeInsets.all(5),
                   child: RaisedButton(
-                    child: Text("Search by Region"),
+                    child: Text("Explore by Exhibit"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListRegion(controller: widget.controller)));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Exhibits(controller: widget.controller)));
                     },
                   )
                 ),
                 Container(
                   padding: EdgeInsets.all(5),
                   child: RaisedButton(
-                    child: Text("Search by Family"),
+                    child: Text("Explore by Class"),
                     onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => AnimalListFamily(controller: widget.controller)));
+                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Family(controller: widget.controller)));
                     },
                   )
                 ),

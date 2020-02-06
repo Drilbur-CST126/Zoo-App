@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:zoo_app/AnimalList/AnimalListHead.dart';
+import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/MissingPage.dart';
@@ -48,7 +48,7 @@ class MyHomePage extends StatefulWidget {
   final drawerItems = [
     new DrawerItem("Home", Icons.home),
     new DrawerItem("Zoo Map", Icons.map),
-    new DrawerItem("Exhibits", Icons.camera_alt),
+    new DrawerItem("Explore", Icons.camera_alt),
     new DrawerItem("Search", Icons.folder_open),
     new DrawerItem("Visiting the Zoo", Icons.location_on),
     new DrawerItem("Daily Schedule", Icons.calendar_today),
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return new HomePage();
         break;
       case 2:
-        return new AnimalListHead(controller: widget.controller);
+        return new ExploreBy(controller: widget.controller);
         break;
       case 3:
         return new AnimalListPage(controller: widget.controller);
@@ -128,5 +128,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
 }
