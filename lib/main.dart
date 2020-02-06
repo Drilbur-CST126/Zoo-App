@@ -13,8 +13,6 @@ import 'controller/iControllerView.dart';
 import 'model/model.dart';
 import 'view/app.dart';
 
-// an's test branch, test initial commit
-
 // MyApp factored out into view/app.dart, done by Jordan Clark
 void main() async {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
@@ -79,6 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         return new AnimalListPage(controller: widget.controller);
         break;
+      case 4:
+        //return new ZooInfo
       default:
         return new MissingPage();
         break;

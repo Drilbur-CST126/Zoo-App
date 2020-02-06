@@ -15,8 +15,6 @@ class AnimalListHead extends StatefulWidget{
 }
 
 class AnimalListHeadState extends State<AnimalListHead>{
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
