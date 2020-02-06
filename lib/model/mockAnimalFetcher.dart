@@ -52,4 +52,46 @@ class MockAnimalFetcher implements IAnimalFetcher
   Future<void> update() {
     return null;
   }
+
+  @override
+  List<int> getExhibitIds() {
+    var animals = getAllAnimals();
+    List<int> exhibitIds = List();
+    for (var animal in animals)
+    {
+      if (!exhibitIds.contains(animal.exhibitid))
+      {
+        exhibitIds.add(animal.exhibitid);
+      }
+    }
+    return exhibitIds;
+  }
+
+  @override
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.exhibitid == requestedRegionId;
+    });
+  }
+
+  @override
+  List<int> getClassIds() {
+    var animals = getAllAnimals();
+    List<int> classIds = List();
+    for (var animal in animals)
+    {
+      if (!classIds.contains(animal.classid))
+      {
+        classIds.add(animal.classid);
+      }
+    }
+    return classIds;
+  }
+
+  @override
+  Iterable<Animal> searchAnimalByClass(int requestedClassId) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.classid == requestedClassId;
+    });
+  }
 }

@@ -54,6 +54,54 @@ class DbAnimalFetcher implements IAnimalFetcher
     });
   }
 
+  // This function returns all animals that have the same region as the one passed in as the parameter
+  @override
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.exhibitid == requestedRegionId;
+    });
+  }
+
+  @override
+  Iterable<Animal> searchAnimalByClass(int requestedClassId) {
+    return getAllAnimals(where: (Animal animal) {
+      return animal.classid == requestedClassId;
+    });
+  }
+
+  // This function will return a list of unique values for Exhibit_id within the database for all animals
+  // TODO: replace with more efficient function. Perhaps one that touches that part the database directly.
+  @override
+  List<int> getExhibitIds() {
+    var animals = getAllAnimals();
+    List<int> exhibitIds = List();
+    for (var animal in animals)
+      {
+        if (!exhibitIds.contains(animal.exhibitid))
+          {
+            exhibitIds.add(animal.exhibitid);
+          }
+      }
+    return exhibitIds;
+  }
+
+
+  // This function will return a list of unique values for class_id within the database for all animals
+  // TODO: replace with more efficient function. Perhaps one that touches that part of database directly.
+  @override
+  List<int> getClassIds() {
+    var animals = getAllAnimals();
+    List<int> classIds = List();
+    for (var animal in animals)
+    {
+      if (!classIds.contains(animal.classid))
+      {
+        classIds.add(animal.classid);
+      }
+    }
+    return classIds;
+  }
+
   // This function contacts the database to get the animals, then calls decodeResponses to put them in 'animals'.
   Future<void> update() async {
     final response = await http.get(url, headers: {"Accept" : "application/json"});
@@ -70,7 +118,7 @@ class DbAnimalFetcher implements IAnimalFetcher
   void decodeResponses(List<dynamic> json) {
     var newAnimals = List<Animal>();
     for (var jsonAnimal in json) {
-      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["tags"]);
+      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"]);
       newAnimals.add(animal);
     }
     animals = newAnimals;

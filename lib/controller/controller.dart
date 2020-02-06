@@ -42,6 +42,22 @@ class Controller implements IControllerView
     return model.animalFetcher.searchAnimals(searchTerm);
   }
 
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId) {
+    return model.animalFetcher.searchAnimalByExhibit(requestedRegionId);
+  }
+
+  Iterable<Animal> searchAnimalByClass(int requestedClassId) {
+    return model.animalFetcher.searchAnimalByClass(requestedClassId);
+  }
+
+  List<int> getExhibitIds(){
+    return model.animalFetcher.getExhibitIds();
+  }
+
+  List<int> getClassIds(){
+    return model.animalFetcher.getClassIds();
+  }
+
   @override
   Future<bool> updateAnimals() async {
     try {
