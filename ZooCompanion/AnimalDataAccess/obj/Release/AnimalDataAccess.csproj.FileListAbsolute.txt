@@ -1,0 +1,11 @@
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.dll.config
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.dll
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.pdb
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.dll
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.SqlServer.dll
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.xml
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.SqlServer.xml
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.csprojAssemblyReference.cache
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.csproj.CopyComplete
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.dll
+D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.pdb
