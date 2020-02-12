@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: widget.scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen,
         title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
 
