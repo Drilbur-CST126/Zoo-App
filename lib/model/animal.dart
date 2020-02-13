@@ -7,7 +7,9 @@ class Animal
   int animalId;
   String commonName;
   String scientificName;
-  List<String> tags;
+  String tags;
+  int classid;
+  int exhibitid;
 
-  Animal(this.animalId, this.commonName, this.scientificName, [this.tags]);
+  Animal(this.animalId, this.commonName, this.scientificName, this.classid, this.exhibitid, [this.tags]);
 }
