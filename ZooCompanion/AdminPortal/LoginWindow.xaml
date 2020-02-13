@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:AdminPortal"
         mc:Ignorable="d"
         Title="Please Log In" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Label Content="Username:"/>
+        <TextBox/>
+        <Label Content="Password:"/>
+        <PasswordBox/>
+    </StackPanel>
 </Window>
