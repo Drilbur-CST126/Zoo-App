@@ -20,3 +20,14 @@ C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AnimalDataAccess\obj\Debug\A
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csproj.CopyComplete
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.dll
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.pdb
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\AnimalDataAccess.dll.config
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\AnimalDataAccess.dll
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\AnimalDataAccess.pdb
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.dll
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.xml
+D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csprojAssemblyReference.cache
+D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csproj.CopyComplete
+D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.dll
+D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.pdb
