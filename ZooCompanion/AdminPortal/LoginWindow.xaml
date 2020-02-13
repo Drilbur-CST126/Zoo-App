@@ -8,8 +8,9 @@
         Title="Please Log In" Height="450" Width="800">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Label Content="Username:"/>
-        <TextBox/>
+        <TextBox x:Name="txtUsername"/>
         <Label Content="Password:"/>
-        <PasswordBox/>
+        <PasswordBox x:Name="txtPassword"/>
+        <Button Content="Submit" Width="75" Click="Button_Click"/>
     </StackPanel>
 </Window>
