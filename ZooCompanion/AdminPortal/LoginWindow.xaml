@@ -11,5 +11,7 @@
         <TextBox/>
         <Label Content="Password:"/>
         <PasswordBox/>
+        <Label Content="Loading..."/>
+        <Button Content="Submit"/>
     </StackPanel>
 </Window>
