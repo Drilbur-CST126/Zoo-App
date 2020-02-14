@@ -10,7 +10,7 @@ namespace AdminPortal.ViewModels
     public interface ILoginPageViewModel
     {
         string Username { get; set; }
-        string Password { get; set; }
+        //Password is not here because password cannot be set up w/ MVVM & it's unsafe to store it locally at all.
         string Status { get; }
         ICommand LoginCommand { get; }
     }

@@ -3,13 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
+using AdminPortal.Components;
 
 namespace AdminPortal.ViewModels
 {
     public class LoginPageViewModel : ViewModelNotifyPropertyChanged, ILoginPageViewModel
     {
-        
+        public LoginPageViewModel()
+        {
+            LoginCommand = new Command(Login, CanLogin);
+        }
+
+        private void Login(object o)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanLogin(object o)
+        {
+            return !string.IsNullOrEmpty(Username) && o is PasswordBox pw && !string.IsNullOrEmpty(pw.Password);
+        }
 
         private string _username;
         public string Username
@@ -19,16 +34,6 @@ namespace AdminPortal.ViewModels
             {
                 _username = value;
                 OnPropertyChanged(nameof(Username));
-            }
-        }
-        private string _password;
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
             }
         }
 
