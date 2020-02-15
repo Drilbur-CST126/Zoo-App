@@ -55,22 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
-    <Compile Include="ZooCompanionWebApi_dbDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZooCompanionWebApi_dbDataSet.xsd</DependentUpon>
-    </Compile>
-=======
     <Compile Include="Components\Command.cs" />
-    <Compile Include="PortalWindow.xaml.cs">
-      <DependentUpon>PortalWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\ILoginPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelNotifyPropertyChanged.cs" />
->>>>>>> 0db5699ca4336a640f04392a571d3996193ccbe1
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
