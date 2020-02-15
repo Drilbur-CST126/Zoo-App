@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AdminPortal
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for PortalWindow.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class PortalWindow : Window
     {
-        public MainPage()
+        public PortalWindow()
         {
             InitializeComponent();
         }
