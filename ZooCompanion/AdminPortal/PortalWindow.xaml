@@ -15,7 +15,7 @@
             <Label Content="Hello user!"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <Button Content="Add New Admin"></Button>
+            <Button Content="Add New Admin"/>
         </StackPanel>
     </Grid>
 </Window>

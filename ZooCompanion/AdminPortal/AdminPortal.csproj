@@ -60,6 +60,11 @@
     <Compile Include="ViewModels\ILoginPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelNotifyPropertyChanged.cs" />
+    <Compile Include="ZooCompanionWebApi_dbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZooCompanionWebApi_dbDataSet.xsd</DependentUpon>
+    </Compile>
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
