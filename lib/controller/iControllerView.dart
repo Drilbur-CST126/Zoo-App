@@ -10,4 +10,10 @@ abstract class IControllerView
   goToAnimalPage(dynamic context, int animalId);
   List<Fact> getAllFactsForAnimal(int animalId);
   Iterable<Animal> getAllAnimals({bool Function(Animal) where});
+  Future<bool> updateAnimals();
+  Iterable<Animal> searchAnimals(String searchTerm);
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId);
+  Iterable<Animal> searchAnimalByClass(int requestedClassId);
+  List<int> getExhibitIds();
+  List<int> getClassIds();
 }

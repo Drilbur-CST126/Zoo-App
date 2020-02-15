@@ -7,6 +7,12 @@ import 'package:zoo_app/model/animal.dart';
 abstract class IAnimalFetcher
 {
   Animal getAnimalByName(String name);
+  Iterable<Animal> searchAnimals(String query);
   Animal getAnimalById(int id);
   Iterable<Animal> getAllAnimals({bool Function(Animal) where});
+  Iterable<Animal> searchAnimalByExhibit(int requestedRegionId);
+  Iterable<Animal> searchAnimalByClass(int requestedClassId);
+  List<int> getExhibitIds();
+  List<int> getClassIds();
+  Future<void> update();
 }
