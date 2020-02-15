@@ -28,6 +28,7 @@ C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\AdminP
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csproj.CoreCompileInputs.cache
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.exe
 C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.pdb
+<<<<<<< HEAD
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.exe.config
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.exe
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.pdb
@@ -44,3 +45,7 @@ D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.Properties.Resources.res
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csproj.GenerateResource.cache
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.exe
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.pdb
+=======
+C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\PortalWindow.g.cs
+C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\obj\Debug\PortalWindow.baml
+>>>>>>> 0db5699ca4336a640f04392a571d3996193ccbe1

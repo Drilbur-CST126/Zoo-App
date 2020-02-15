@@ -9,12 +9,21 @@ AdminPortal
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 D:\Repos\Zoo-App\ZooCompanion\AdminPortal\App.xaml
 2-2103888539
 
 8-448240037
 13738642453
 LoginWindow.xaml;MainPage.xaml;
+=======
+C:\Users\jnich\Desktop\Flutter\zoo_app\ZooCompanion\AdminPortal\App.xaml
+2-611406788
+
+121781245228
+13738642453
+LoginWindow.xaml;PortalWindow.xaml;
+>>>>>>> 0db5699ca4336a640f04392a571d3996193ccbe1
 
 True
 

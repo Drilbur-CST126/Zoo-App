@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AdminPortal.ViewModels;
 
 namespace AdminPortal
 {
@@ -22,12 +23,18 @@ namespace AdminPortal
     {
         public MainWindow()
         {
+            ViewModel = new LoginPageViewModel();
+            DataContext = ViewModel;
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
+=======
+        public ILoginPageViewModel ViewModel { get; }
+>>>>>>> 0db5699ca4336a640f04392a571d3996193ccbe1
     }
 }
