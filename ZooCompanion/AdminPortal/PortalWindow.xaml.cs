@@ -30,6 +30,7 @@ namespace AdminPortal
 
         // TODO: add admin edit feature
         // TODO: add admin delete feature
+        // TODO: hashed passwords?
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
