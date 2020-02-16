@@ -13,6 +13,51 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 {
     public class HomeBusinessLogic
     {
+        public static bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spAddNewAdmin " +
+                               "@username = '" + username + "', " +
+                               "@first_name = '" + firstname + "', " +
+                               "@last_name = '" + lastname + "', " +
+                               "@email = '" + email + "', " +
+                               "@password = '" + password + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool CheckUsernameExists(string username)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spUsernameExists @username = '" + username + "';";
+
+                // Execute.  
+                int result = DAL.getCount(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static bool CheckAdminCredentials(string username, string password)
         {
             try

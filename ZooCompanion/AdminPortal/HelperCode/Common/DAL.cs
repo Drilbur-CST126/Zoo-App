@@ -105,7 +105,7 @@ namespace AdminPortal.HelperCode.Common
 
                 // Open.  
                 sqlConnection.Open();
-
+                
                 // Result.  
                 rowCount = sqlCommand.ExecuteNonQuery();
 

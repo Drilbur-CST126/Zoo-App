@@ -54,7 +54,9 @@ namespace AdminPortal
                 if (HomeBusinessLogic.CheckAdminCredentials(username, password))
                 {
                     // Display Message
-                    MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Open admin portal window
                     PortalWindow portal = new PortalWindow();
                     portal.Show();
                 }
