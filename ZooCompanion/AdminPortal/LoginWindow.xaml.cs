@@ -55,6 +55,9 @@ namespace AdminPortal
                 {
                     // Display Message
                     // MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Clear credentials
+                    txtUsername.Clear();
+                    txtPassword.Clear();
 
                     // Open admin portal window
                     PortalWindow portal = new PortalWindow();

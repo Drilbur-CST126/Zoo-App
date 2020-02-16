@@ -28,6 +28,9 @@ namespace AdminPortal
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
         }
 
+        // TODO: add admin edit feature
+        // TODO: add admin delete feature
+
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -95,6 +98,13 @@ namespace AdminPortal
                     {
                         // Display Message  
                         MessageBox.Show("New admin added.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        txtUsername.Clear();
+                        txtFirstName.Clear();
+                        txtLastName.Clear();
+                        txtEmail.Clear();
+                        txtConfirmEmail.Clear();
+                        txtPassword.Clear();
+                        txtConfirmPassword.Clear();
                     }
                     else
                     {
