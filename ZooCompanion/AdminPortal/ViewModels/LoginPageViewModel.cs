@@ -30,7 +30,7 @@ namespace AdminPortal.ViewModels
 
         private bool CanLogin(object o)
         {
-            return !string.IsNullOrEmpty(Username) && o is MainWindow window && !string.IsNullOrEmpty(window.PasswordBox.Password);
+            return !string.IsNullOrEmpty(Username) && o is MainWindow window && !string.IsNullOrEmpty(window.txtPassword.Password);
         }
 
         private string _username;

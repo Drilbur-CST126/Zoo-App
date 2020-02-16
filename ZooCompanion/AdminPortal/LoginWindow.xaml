@@ -9,10 +9,10 @@
         Title="Please Log In" Height="450" Width="800">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <Label Content="Username:"/>
-        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtUsername" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Password:"/>
-        <PasswordBox x:Name="PasswordBox"/>
+        <PasswordBox x:Name="txtPassword"/>
         <Label Content="Loading..."/>
-        <Button Content="Submit" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LoginWindow}"/>
+        <Button x:Name="btnLogin" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LoginWindow}" Click="btnLogin_Click"/>
     </StackPanel>
 </Window>

@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Components\Command.cs" />
+    <Compile Include="HelperCode\Common\DAL.cs" />
+    <Compile Include="Models\BusinessLogic\HomeBusinessLogic.cs" />
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\ILoginPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />

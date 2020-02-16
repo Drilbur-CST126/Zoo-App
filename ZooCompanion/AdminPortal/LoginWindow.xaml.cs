@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdminPortal.ViewModels;
+using AdminPortal.HelperCode.Common;
+using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 
 namespace AdminPortal
 {
@@ -23,11 +25,52 @@ namespace AdminPortal
     {
         public MainWindow()
         {
-            ViewModel = new LoginPageViewModel();
-            DataContext = ViewModel;
+            //ViewModel = new LoginPageViewModel();
+            //DataContext = ViewModel;
             InitializeComponent();
         }
 
-        public ILoginPageViewModel ViewModel { get; }
+        //public ILoginPageViewModel ViewModel { get; }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Initialization.  
+                string username = this.txtUsername.Text;
+                string password = this.txtPassword.Password;
+
+                // Verification.  
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    // Display Message  
+                    MessageBox.Show("This field can not be empty. Please enter username and password", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    // Info  
+                    return;
+                }
+
+                // Check username and password
+                if (HomeBusinessLogic.CheckAdminCredentials(username, password))
+                {
+                    // Display Message
+                    MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    // Display Message
+                    MessageBox.Show("Login has failed!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something goes wrong, Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
