@@ -28,5 +28,9 @@ namespace AdminPortal
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
         }
 
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
