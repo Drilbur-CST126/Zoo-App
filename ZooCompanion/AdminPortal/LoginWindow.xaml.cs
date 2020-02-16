@@ -55,6 +55,8 @@ namespace AdminPortal
                 {
                     // Display Message
                     MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    PortalWindow portal = new PortalWindow();
+                    portal.Show();
                 }
                 else
                 {

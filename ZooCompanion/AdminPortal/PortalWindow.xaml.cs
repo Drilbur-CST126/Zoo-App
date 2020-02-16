@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AdminPortal.HelperCode.Common;
+using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 
 namespace AdminPortal
 {
@@ -22,6 +25,8 @@ namespace AdminPortal
         public PortalWindow()
         {
             InitializeComponent();
+            tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
         }
+
     }
 }

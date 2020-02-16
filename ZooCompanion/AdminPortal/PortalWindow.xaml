@@ -7,15 +7,23 @@
         mc:Ignorable="d"
         Title="PortalWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <Label Content="Hello user!"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <Button Content="Add New Admin"/>
-        </StackPanel>
+        <Label x:Name="lblWelcome" Content="Welcome!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TabControl HorizontalAlignment="Left" Height="337" Margin="10,41,0,0" VerticalAlignment="Top" Width="772">
+            <TabItem Header="Admin Listing">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="tblAdminListing" HorizontalAlignment="Left" Height="255" Margin="10,10,0,0" VerticalAlignment="Top" Width="746" ItemsSource="{Binding}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add Admin">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="741*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="707,389,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using AdminPortal.Models;
+using System.Data;
 
 namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 {
@@ -25,6 +27,24 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 if (result > 0)
                     return true;
                 else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable GetAdmins()
+        {
+            DataTable admins;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetAdmins;";
+
+                // Execute. 
+                return admins = DAL.getTable(query);
             }
             catch (Exception ex)
             {
