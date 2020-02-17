@@ -13,4 +13,12 @@ namespace AdminPortal.Models
         public string LastName { get; set; }
         public string Email { get; set; }
     }
+
+    public class ListedAdmin 
+    {
+        public int AdminId { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
+
 }
