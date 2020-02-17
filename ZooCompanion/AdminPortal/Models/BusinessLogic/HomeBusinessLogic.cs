@@ -13,6 +13,19 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 {
     public class HomeBusinessLogic
     {
+        public static bool DeleteAdmin(string username)
+        {
+            // Query.  
+            string query = "EXEC spDeleteAdmin @username = '" + username + "';";
+
+            // Execute.  
+            int result = DAL.executeQuery(query);
+
+            if (result > 0)
+                return true;
+            else return false;
+        }
+
         public static bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
         {
             try

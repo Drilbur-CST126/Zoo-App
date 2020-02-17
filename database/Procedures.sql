@@ -21,6 +21,11 @@ as
 INSERT INTO admin.admins (username, first_name, last_name, email, password)
 VALUES (@username, @first_name, @last_name, @email, @password);
 
+CREATE PROC spDeleteAdmin @username varchar(20)
+as
+DELETE FROM admin.admins
+WHERE username = @username;
+
 
 
 
