@@ -9,7 +9,7 @@ using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 
 namespace AdminPortal.ViewModels
 {
-    class PortalWindowViewModel
+    public class PortalWindowViewModel
     {
         private int adminId = 0;
 
