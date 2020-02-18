@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AdminPortal.HelperCode.Common;
 using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 using AdminPortal.Models;
+using AdminPortal.Models.BusinessLogic;
 using AdminPortal.ViewModels;
 
 namespace AdminPortal
@@ -26,12 +27,14 @@ namespace AdminPortal
     {
         private int adminId = 0;
         private PortalWindowViewModel viewModel;
+        private readonly IHomeBusinessLogic HomeBusinessLogic;
 
         public PortalWindow()
         {
+            HomeBusinessLogic = new HomeBusinessLogic();
             InitializeComponent();
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
-            viewModel = new PortalWindowViewModel();
+            viewModel = new PortalWindowViewModel(HomeBusinessLogic);
         }
 
         // TODO: add admin edit feature

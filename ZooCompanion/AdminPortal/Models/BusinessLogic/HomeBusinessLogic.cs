@@ -11,9 +11,9 @@ using System.Data;
 
 namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 {
-    public class HomeBusinessLogic
+    public class HomeBusinessLogic : IHomeBusinessLogic
     {
-        public static bool DeleteAdmin(int adminId)
+        public bool DeleteAdmin(int adminId)
         {
             // Query.  
             string query = "EXEC spDeleteAdmin @admin_id = '" + adminId + "';";
@@ -26,7 +26,7 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             else return false;
         }
 
-        public static bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
+        public bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
-        public static bool CheckUsernameExists(string username)
+        public bool CheckUsernameExists(string username)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
-        public static bool CheckAdminCredentials(string username, string password)
+        public bool CheckAdminCredentials(string username, string password)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
-        public static DataTable GetAdmins()
+        public DataTable GetAdmins()
         {
             DataTable admins;
 

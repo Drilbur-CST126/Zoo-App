@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AdminPortal.ViewModels;
 using AdminPortal.HelperCode.Common;
+using AdminPortal.Models.BusinessLogic;
 using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 
 namespace AdminPortal
@@ -23,8 +24,10 @@ namespace AdminPortal
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly IHomeBusinessLogic HomeBusinessLogic;
         public MainWindow()
         {
+            HomeBusinessLogic = new HomeBusinessLogic();
             //ViewModel = new LoginPageViewModel();
             //DataContext = ViewModel;
             InitializeComponent();

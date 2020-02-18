@@ -1,11 +1,16 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using AdminPortal.Models;
+using AdminPortal.Models.BusinessLogic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AdminPortal.ViewModels;
 
 namespace AdminPortalBackendTests
 {
-    // NOTE: Tests rely on a user "clarkj" with a password "MyPassw0rd!" in the database. 
+    // NOTE: Some parts of the functionality, such as checking for repeat users, are done
+    // on the database side of things. Testing around the database would require integration
+    // testing more than unit testing, so these tests mostly just cover the C# portions of
+    // code.
 
     [TestClass]
     public class PortalWindowTests
@@ -15,7 +20,7 @@ namespace AdminPortalBackendTests
         [TestInitialize]
         public void Init()
         {
-            viewModel = new PortalWindowViewModel((str) => { }, (str) => { });
+            viewModel = new PortalWindowViewModel(new MockHomeBusinessLogic(), (str) => { }, (str) => { });
         }
 
         [TestMethod]
@@ -172,11 +177,11 @@ namespace AdminPortalBackendTests
         }
 
         [TestMethod]
-        public void AddAnAdmin_CannotAddOverExistingUser()
+        public void AddAnAdmin_ContinuesToDbIfClientInfoCorrect()
         {
             var admin = new Admin
             {
-                Username = "clarkj",
+                Username = Guid.NewGuid().ToString(),
                 Email = "email@email.com",
                 FirstName = "First",
                 LastName = "Last"
@@ -185,7 +190,7 @@ namespace AdminPortalBackendTests
             var confirm_email = "email@email.com";
             var confirm_password = "a";
 
-            Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
+            Assert.IsTrue(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
         }
     }
 }
