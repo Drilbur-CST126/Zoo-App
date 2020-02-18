@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AdminPortal.HelperCode.Common;
 using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 using AdminPortal.Models;
+using AdminPortal.Models.BusinessLogic;
 using AdminPortal.ViewModels;
 
 namespace AdminPortal
@@ -24,14 +25,15 @@ namespace AdminPortal
     /// </summary>
     public partial class PortalWindow : Window
     {
-        private int adminId = 0;
         private PortalWindowViewModel viewModel;
+        private readonly IHomeBusinessLogic HomeBusinessLogic;
 
         public PortalWindow()
         {
+            HomeBusinessLogic = new HomeBusinessLogic();
             InitializeComponent();
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
-            viewModel = new PortalWindowViewModel();
+            viewModel = new PortalWindowViewModel(HomeBusinessLogic);
         }
 
         // TODO: add admin edit feature
@@ -81,6 +83,8 @@ namespace AdminPortal
             }
         }
 
+        /*
+         TODO: Finish delete implementation
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -130,5 +134,6 @@ namespace AdminPortal
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        */
     }
 }
