@@ -26,7 +26,7 @@ namespace AdminPortal.Models.BusinessLogic
 
         public bool CheckAdminCredentials(string username, string password)
         {
-            return true;
+            return !(username == "Wrong" && password == "Wrong");
         }
 
         public DataTable GetAdmins()

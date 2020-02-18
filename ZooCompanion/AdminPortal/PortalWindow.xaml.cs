@@ -25,7 +25,6 @@ namespace AdminPortal
     /// </summary>
     public partial class PortalWindow : Window
     {
-        private int adminId = 0;
         private PortalWindowViewModel viewModel;
         private readonly IHomeBusinessLogic HomeBusinessLogic;
 
@@ -84,6 +83,8 @@ namespace AdminPortal
             }
         }
 
+        /*
+         TODO: Finish delete implementation
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -133,5 +134,6 @@ namespace AdminPortal
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        */
     }
 }

@@ -11,8 +11,7 @@
         <TabControl HorizontalAlignment="Left" Height="292" Margin="10,41,0,0" VerticalAlignment="Top" Width="577">
             <TabItem Header="Admin Listing">
                 <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
-                    <DataGrid x:Name="tblAdminListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblAdminListing_SelectionChanged"/>
-                    <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+                    <DataGrid x:Name="tblAdminListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}"/>
                 </Grid>
                 <!--TODO: add ability to edit an admin's information-->
             </TabItem>

@@ -64,7 +64,6 @@
       <DependentUpon>PortalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations1.cs" />
-    <Compile Include="ViewModels\ILoginPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\PortalWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelNotifyPropertyChanged.cs" />

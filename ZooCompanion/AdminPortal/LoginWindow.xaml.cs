@@ -25,9 +25,11 @@ namespace AdminPortal
     public partial class MainWindow : Window
     {
         private readonly IHomeBusinessLogic HomeBusinessLogic;
+        private readonly LoginPageViewModel viewModel;
         public MainWindow()
         {
             HomeBusinessLogic = new HomeBusinessLogic();
+            viewModel = new LoginPageViewModel(HomeBusinessLogic);
             //ViewModel = new LoginPageViewModel();
             //DataContext = ViewModel;
             InitializeComponent();
@@ -43,18 +45,7 @@ namespace AdminPortal
                 string username = this.txtUsername.Text;
                 string password = this.txtPassword.Password;
 
-                // Verification.  
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                {
-                    // Display Message  
-                    MessageBox.Show("This field can not be empty. Please enter username and password", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    // Info  
-                    return;
-                }
-
-                // Check username and password
-                if (HomeBusinessLogic.CheckAdminCredentials(username, password))
+                if (viewModel.Login(username, password))
                 {
                     // Display Message
                     // MessageBox.Show("Login Successful!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -65,12 +56,6 @@ namespace AdminPortal
                     // Open admin portal window
                     PortalWindow portal = new PortalWindow();
                     portal.Show();
-                }
-                else
-                {
-                    // Display Message
-                    MessageBox.Show("Login has failed!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Information);
-                    return;
                 }
 
             }

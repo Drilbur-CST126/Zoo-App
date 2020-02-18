@@ -13,7 +13,6 @@ namespace AdminPortal.ViewModels
 {
     public class PortalWindowViewModel
     {
-        private int adminId = 0;
         private readonly IHomeBusinessLogic HomeBusinessLogic;
 
         // Error and success shuffled out into function ptrs because backend tests cannot show UI
