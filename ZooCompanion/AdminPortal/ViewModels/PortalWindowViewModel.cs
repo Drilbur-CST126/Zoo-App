@@ -12,6 +12,21 @@ namespace AdminPortal.ViewModels
     public class PortalWindowViewModel
     {
         private int adminId = 0;
+        // Error and success shuffled out into function ptrs because backend tests cannot show UI
+        private readonly Action<string> showError;
+        private readonly Action<string> showSuccess;
+
+        public PortalWindowViewModel()
+        {
+            showError = (str) => { MessageBox.Show(str, "Fail", MessageBoxButton.OK, MessageBoxImage.Error); };
+            showSuccess = (str) => { MessageBox.Show(str, "Success!", MessageBoxButton.OK, MessageBoxImage.Information); };
+        }
+
+        public PortalWindowViewModel(Action<string> error, Action<string> success)
+        {
+            showError = error;
+            showSuccess = success;
+        }
 
         public bool AddNewAdmin(Admin profile, string password, string confirm_email, string confirm_password)
         {
@@ -28,8 +43,7 @@ namespace AdminPortal.ViewModels
                 string.IsNullOrEmpty(confirm_password))
             {
                 // Display Message  
-                MessageBox.Show("Please complete all fields.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                showError("Please complete all fields.");
                 // Info  
                 return false;
             }
@@ -38,7 +52,7 @@ namespace AdminPortal.ViewModels
             if (email != confirm_email)
             {
                 // Display Message  
-                MessageBox.Show("Emails do not match. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                showError("Emails do not match. Please try again.");
 
                 // Info  
                 return false;
@@ -48,7 +62,7 @@ namespace AdminPortal.ViewModels
             if (password != confirm_password)
             {
                 // Display Message  
-                MessageBox.Show("Passwords do not match. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                showError("Passwords do not match. Please try again.");
 
                 // Info  
                 return false;
@@ -58,7 +72,7 @@ namespace AdminPortal.ViewModels
             if (HomeBusinessLogic.CheckUsernameExists(username))
             {
                 // Display Message  
-                MessageBox.Show("Username already exists. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                showError("Username already exists. Please try again.");
 
                 // Info  
                 return false;
@@ -68,14 +82,15 @@ namespace AdminPortal.ViewModels
                 if (HomeBusinessLogic.AddNewAdmin(username, firstname, lastname, email, password))
                 {
                     // Display Message  
-                    MessageBox.Show("New admin added.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
+                    showSuccess("New admin added.");
+
                     return true;
                 }
                 else
                 {
                     // Display Message  
-                    MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    showError("Something went wrong! Please try again.");
+
                     return false;
                 }
             }

@@ -5,7 +5,7 @@ using AdminPortal.ViewModels;
 
 namespace AdminPortalBackendTests
 {
-    // NOTE: Tests rely on a user "jclark" with a password "MyPassw0rd!" in the database. 
+    // NOTE: Tests rely on a user "clarkj" with a password "MyPassw0rd!" in the database. 
 
     [TestClass]
     public class PortalWindowTests
@@ -15,7 +15,7 @@ namespace AdminPortalBackendTests
         [TestInitialize]
         public void Init()
         {
-            viewModel = new PortalWindowViewModel();
+            viewModel = new PortalWindowViewModel((str) => { }, (str) => { });
         }
 
         [TestMethod]
@@ -133,6 +133,57 @@ namespace AdminPortalBackendTests
             var password = "a";
             var confirm_email = "email@email.com";
             var confirm_password = "";
+
+            Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
+        }
+
+        [TestMethod]
+        public void AddAnAdmin_CannotAddWithMismatchedPasswords()
+        {
+            var admin = new Admin
+            {
+                Username = Guid.NewGuid().ToString(),
+                Email = "email@email.com",
+                FirstName = "First",
+                LastName = "Last"
+            };
+            var password = "a";
+            var confirm_email = "email@email.com";
+            var confirm_password = "b";
+
+            Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
+        }
+
+        [TestMethod]
+        public void AddAnAdmin_CannotAddWithMismatchedEmails()
+        {
+            var admin = new Admin
+            {
+                Username = Guid.NewGuid().ToString(),
+                Email = "email@email.com",
+                FirstName = "First",
+                LastName = "Last"
+            };
+            var password = "a";
+            var confirm_email = "email@yahoo.com";
+            var confirm_password = "a";
+
+            Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
+        }
+
+        [TestMethod]
+        public void AddAnAdmin_CannotAddOverExistingUser()
+        {
+            var admin = new Admin
+            {
+                Username = "clarkj",
+                Email = "email@email.com",
+                FirstName = "First",
+                LastName = "Last"
+            };
+            var password = "a";
+            var confirm_email = "email@email.com";
+            var confirm_password = "a";
 
             Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
         }

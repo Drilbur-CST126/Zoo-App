@@ -64,6 +64,7 @@
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\ILoginPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\PortalWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelNotifyPropertyChanged.cs" />
     <Compile Include="ZooCompanionWebApi_dbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
