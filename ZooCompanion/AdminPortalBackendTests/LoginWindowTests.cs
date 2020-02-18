@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AdminPortalBackendTests
 {
     [TestClass]
-    class LoginWindowTests
+    public class LoginWindowTests
     {
         private LoginPageViewModel viewModel;
 
