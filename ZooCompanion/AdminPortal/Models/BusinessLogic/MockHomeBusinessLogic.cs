@@ -21,7 +21,7 @@ namespace AdminPortal.Models.BusinessLogic
 
         public bool CheckUsernameExists(string username)
         {
-            return false;
+            return username == "Duplicate";
         }
 
         public bool CheckAdminCredentials(string username, string password)

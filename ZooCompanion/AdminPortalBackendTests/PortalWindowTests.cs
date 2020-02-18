@@ -177,6 +177,23 @@ namespace AdminPortalBackendTests
         }
 
         [TestMethod]
+        public void AddAnAdmin_CannotAddIfDuplicateName()
+        {
+            var admin = new Admin
+            {
+                Username = "Duplicate", // In the mock, "Duplicate" is always marked as a duplicate name
+                Email = "email@email.com",
+                FirstName = "First",
+                LastName = "Last"
+            };
+            var password = "a";
+            var confirm_email = "email@email.com";
+            var confirm_password = "a";
+
+            Assert.IsFalse(viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password));
+        }
+
+        [TestMethod]
         public void AddAnAdmin_ContinuesToDbIfClientInfoCorrect()
         {
             var admin = new Admin
