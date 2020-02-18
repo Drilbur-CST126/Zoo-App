@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/controller.dart';
@@ -56,9 +57,22 @@ Widget _getExhibitPage(WidgetTester tester)
       home: ExploreBy(controller: controller),
     );
 
+
   return app;
 }
 
+Widget _getZooInfoPage(WidgetTester tester)
+{
+  Widget app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: ZooInfo(),
+  );
+
+  return app;
+}
 testDrawer()
 {
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
@@ -291,6 +305,22 @@ void testExplore() {
 
     expect(find.byType(AnimalPage), findsOneWidget);
     expect(find.byType(NotFoundErrorPage), findsNothing);
+  });
+
+  testWidgets("Zoo Info Page Opens With Information", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getZooInfoPage(tester));
+    await tester.pumpAndSettle(Duration(seconds: 1));
+
+    expect(find.byType(ZooInfo), findsOneWidget);
+  });
+
+  testWidgets("Zoo Info Page Opens With RichText", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getZooInfoPage(tester));
+    await tester.pumpAndSettle(Duration(seconds: 1));
+
+    expect(find.byType(RichText), findsOneWidget);
   });
 }
 

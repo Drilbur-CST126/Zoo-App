@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage>{
           child: Carousel(
             boxFit: BoxFit.fill,
             images: [
-              AssetImage('assets/elephant.jpg'),
+              AssetImage('assets/elephant3.jpg'),
               AssetImage('assets/otter2.jpg'),
               AssetImage('assets/tiger1.jpg'),
               AssetImage('assets/bear.jpg')

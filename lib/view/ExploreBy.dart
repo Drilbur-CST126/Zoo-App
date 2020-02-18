@@ -15,8 +15,6 @@ class ExploreBy extends StatefulWidget{
 }
 
 class ExploreByState extends State<ExploreBy>{
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

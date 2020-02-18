@@ -8,12 +8,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
 
+import 'ZooInformation/ZooInfo.dart';
 import 'controller/controller.dart';
 import 'controller/iControllerView.dart';
 import 'model/model.dart';
 import 'view/app.dart';
-
-// an's test branch, test initial commit
 
 // MyApp factored out into view/app.dart, done by Jordan Clark
 void main() async {
@@ -79,6 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         return new AnimalListPage(controller: widget.controller);
         break;
+      case 4:
+        return new ZooInfo();
+        break;
       default:
         return new MissingPage();
         break;
@@ -107,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: widget.scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightGreen,
         title: Text(widget.drawerItems[_selectedDrawerIndex].title),
       ),
 
