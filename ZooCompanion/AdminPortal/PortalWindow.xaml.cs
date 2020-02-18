@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using AdminPortal.HelperCode.Common;
 using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 using AdminPortal.Models;
+using AdminPortal.ViewModels;
 
 namespace AdminPortal
 {
@@ -24,11 +25,13 @@ namespace AdminPortal
     public partial class PortalWindow : Window
     {
         private int adminId = 0;
+        private PortalWindowViewModel viewModel;
 
         public PortalWindow()
         {
             InitializeComponent();
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
+            viewModel = new PortalWindowViewModel();
         }
 
         // TODO: add admin edit feature
@@ -44,81 +47,30 @@ namespace AdminPortal
         {
             try
             {
+                var admin = new Admin
+                {
+                    Username = this.txtUsername.Text,
+                    FirstName = this.txtFirstName.Text,
+                    LastName = this.txtLastName.Text,
+                    Email = this.txtEmail.Text
+                };
                 // Initialization.  
-                string username = this.txtUsername.Text;
-                string firstname = this.txtFirstName.Text;
-                string lastname = this.txtLastName.Text;
-                string email = this.txtEmail.Text;
                 string confirm_email = this.txtConfirmEmail.Text;
                 string password = this.txtPassword.Password;
                 string confirm_password = this.txtConfirmPassword.Password;
 
-                // Verification.
-                // Check if null or empty
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstname) ||
-                    string.IsNullOrEmpty(lastname) || string.IsNullOrEmpty(email) ||
-                    string.IsNullOrEmpty(confirm_email) || string.IsNullOrEmpty(password) ||
-                    string.IsNullOrEmpty(confirm_password))
-                {
-                    // Display Message  
-                    MessageBox.Show("Please complete all fields.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                var successful = viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password);
+                if (!successful) return;
 
-                    // Info  
-                    return;
-                }
-
-                // check if emails match
-                if (email != confirm_email)
-                {
-                    // Display Message  
-                    MessageBox.Show("Emails do not match. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    // Info  
-                    return;
-                }
-
-                // check if passwords match
-                if (password != confirm_password)
-                {
-                    // Display Message  
-                    MessageBox.Show("Passwords do not match. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    // Info  
-                    return;
-                }
-
-                // check if username already exists
-                if (HomeBusinessLogic.CheckUsernameExists(username))
-                {
-                    // Display Message  
-                    MessageBox.Show("Username already exists. Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    // Info  
-                    return;
-                }
-                else
-                {
-                    if(HomeBusinessLogic.AddNewAdmin(username, firstname, lastname, email, password))
-                    {
-                        // Display Message  
-                        MessageBox.Show("New admin added.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        txtUsername.Clear();
-                        txtFirstName.Clear();
-                        txtLastName.Clear();
-                        txtEmail.Clear();
-                        txtConfirmEmail.Clear();
-                        txtPassword.Clear();
-                        txtConfirmPassword.Clear();
-                        // Refresh AdminListing
-                        tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
-                    }
-                    else
-                    {
-                        // Display Message  
-                        MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                }
+                txtUsername.Clear();
+                txtFirstName.Clear();
+                txtLastName.Clear();
+                txtEmail.Clear();
+                txtConfirmEmail.Clear();
+                txtPassword.Clear();
+                txtConfirmPassword.Clear();
+                // Refresh AdminListing
+                tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
             }
             catch (Exception ex)
             {
