@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ZooInfo extends StatefulWidget {
   @override
@@ -7,6 +8,15 @@ class ZooInfo extends StatefulWidget {
 }
 
 class ZooInfoState extends State<ZooInfo> {
+  void _purchaseTickets(BuildContext context)
+  {
+    Navigator.push(context, 
+      MaterialPageRoute(builder: (context) => 
+        WebView(initialUrl: "https://shop.oregonzoo.org/#/Admission",)
+       )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +75,12 @@ class ZooInfoState extends State<ZooInfo> {
               ),
             ),
           ),
+          RaisedButton(
+            onPressed: () => _purchaseTickets(context), 
+            child: Text(
+              "Purchase Tickets"
+            ),
+          )
         ]),
       ),
     );

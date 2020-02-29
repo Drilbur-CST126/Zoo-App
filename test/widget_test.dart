@@ -320,7 +320,15 @@ void testExplore() {
     await tester.pumpWidget(_getZooInfoPage(tester));
     await tester.pumpAndSettle(Duration(seconds: 1));
 
-    expect(find.byType(RichText), findsOneWidget);
+    expect(find.byType(RichText), findsWidgets);
+  });
+
+  testWidgets("Zoo Info Page Containes Button To Purchase Tickets", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getZooInfoPage(tester));
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(RaisedButton, "Purchase Tickets"), findsOneWidget);
   });
 }
 
