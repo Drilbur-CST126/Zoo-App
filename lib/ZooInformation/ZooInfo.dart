@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:zoo_app/view/notFoundErrorPage.dart';
 
 class ZooInfo extends StatefulWidget {
   @override
@@ -8,13 +9,21 @@ class ZooInfo extends StatefulWidget {
 }
 
 class ZooInfoState extends State<ZooInfo> {
-  void _purchaseTickets(BuildContext context)
+  void _purchaseTickets(BuildContext context) async
   {
-    Navigator.push(context, 
+    const ticketUrl = "https://shop.oregonzoo.org/#/Admission";
+    if (await canLaunch(ticketUrl))
+    {
+      await launch(ticketUrl);
+    }
+    else
+    {
+      Navigator.push(context, 
       MaterialPageRoute(builder: (context) => 
-        WebView(initialUrl: "https://shop.oregonzoo.org/#/Admission",)
+        NotFoundErrorPage()
        )
     );
+    }
   }
 
   @override
