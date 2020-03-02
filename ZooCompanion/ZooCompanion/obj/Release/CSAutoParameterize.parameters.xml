@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="ZooCompanionWebApi_dbEntities-Web.config Connection String" description="ZooCompanionWebApi_dbEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=zoocompanionwebapidbserver.database.windows.net;Initial Catalog=ZooCompanionWebApi_db;Persist Security Info=True;User ID=zooadmin;Password=Elephant!34" tags="SqlConnectionString">
+  <parameter name="ZooCompanionWebApi_dbEntities-Web.config Connection String" description="ZooCompanionWebApi_dbEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/AnimalDataModel.csdl|res://*/AnimalDataModel.ssdl|res://*/AnimalDataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=zoocompanionwebapidbserver.database.windows.net;initial catalog=ZooCompanionWebApi_db;persist security info=True;Trusted_Connection=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="D:\\Repos\\Zoo-App\\ZooCompanion\\ZooCompanion\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ZooCompanionWebApi_dbEntities']/@connectionString" />
   </parameter>
 </parameters>
