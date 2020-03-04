@@ -13,7 +13,6 @@ D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.Properties.Resou
 D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csproj.GenerateResource.cache
 D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.exe
 D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.pdb
-D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csprojAssemblyReference.cache
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.exe.config
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.exe
 D:\Repos\ZooCompanion\AdminPortal\bin\Debug\AdminPortal.pdb
@@ -30,3 +29,4 @@ D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.Properties.Resources.res
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csproj.GenerateResource.cache
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.exe
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.pdb
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csprojAssemblyReference.cache
