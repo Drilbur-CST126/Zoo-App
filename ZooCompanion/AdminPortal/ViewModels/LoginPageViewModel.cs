@@ -7,53 +7,51 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using AdminPortal.Components;
+using AdminPortal.Models.BusinessLogic;
 
 namespace AdminPortal.ViewModels
 {
-    public class LoginPageViewModel : ViewModelNotifyPropertyChanged, ILoginPageViewModel
+    public class LoginPageViewModel
     {
-        public LoginPageViewModel()
+        private readonly IHomeBusinessLogic HomeBusinessLogic;
+
+        // Error and success shuffled out into function ptrs because backend tests cannot show UI
+        private readonly Action<string> showError;
+
+        public LoginPageViewModel(IHomeBusinessLogic homeBusinessLogic)
         {
-            LoginCommand = new Command(Login, CanLogin);
+            HomeBusinessLogic = homeBusinessLogic;
+            showError = (str) => { MessageBox.Show(str, "Fail", MessageBoxButton.OK, MessageBoxImage.Error); };
         }
 
-        private void Login(object o)
+        public LoginPageViewModel(IHomeBusinessLogic homeBusinessLogic, Action<string> error)
         {
-            //throw new NotImplementedException();
-            if (o is Window window && true) // TODO: Replace w/ actual check
+            HomeBusinessLogic = homeBusinessLogic;
+            showError = error;
+        }
+
+        public bool Login(string username, string password)
+        {
+            // Verification.  
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                var portalWindow = new PortalWindow();
-                portalWindow.Show();
-                window.Close();
+                // Display Message  
+                showError("This field can not be empty. Please enter username and password");
+                // Info  
+                return false;
+            }
+
+            // Check username and password
+            if (HomeBusinessLogic.CheckAdminCredentials(username, password))
+            {
+                return true;
+            }
+            else
+            {
+                // Display Message
+                showError("Login has failed!");
+                return false;
             }
         }
-
-        private bool CanLogin(object o)
-        {
-            return !string.IsNullOrEmpty(Username) && o is MainWindow window && !string.IsNullOrEmpty(window.txtPassword.Password);
-        }
-
-        private string _username;
-        public string Username
-        {
-            get => _username;
-            set
-            {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
-            }
-        }
-
-        private string _status;
-        public string Status
-        {
-            get => _status;
-            set
-            {
-                _status = value;
-                OnPropertyChanged(nameof(Status));
-            }
-        }
-        public ICommand LoginCommand { get; }
     }
 }

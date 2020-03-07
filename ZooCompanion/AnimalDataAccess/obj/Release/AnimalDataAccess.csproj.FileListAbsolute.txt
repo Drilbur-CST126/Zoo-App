@@ -9,14 +9,3 @@ D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.cspr
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.csproj.CopyComplete
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.dll
 D:\Repos\Zoo-App\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.pdb
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.dll.config
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.dll
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\AnimalDataAccess.pdb
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.dll
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.SqlServer.dll
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.xml
-D:\Repos\ZooCompanion\AnimalDataAccess\bin\Release\EntityFramework.SqlServer.xml
-D:\Repos\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.csprojAssemblyReference.cache
-D:\Repos\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.csproj.CopyComplete
-D:\Repos\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.dll
-D:\Repos\ZooCompanion\AnimalDataAccess\obj\Release\AnimalDataAccess.pdb
