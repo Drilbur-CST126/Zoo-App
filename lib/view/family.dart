@@ -10,12 +10,15 @@ class Family extends StatefulWidget{
   Widget _buttonMaker(BuildContext context, int familyId)
   {
     return RaisedButton(
+      elevation: 5.0,
       child: Text(classes[familyId].toString()),
       autofocus: false,
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller,
             animalList: controller.searchAnimalByClass(familyId), title: classes[familyId].toString())));
       },
+      shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+      color: Colors.orange[200],
     );
   }
 
@@ -40,6 +43,7 @@ class FamilyState extends State<Family>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.lightGreenAccent[100],
         appBar: AppBar(
             title: Text('Classes')
         ),

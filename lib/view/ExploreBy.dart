@@ -25,7 +25,8 @@ class ExploreByState extends State<ExploreBy>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<bool>(
+        backgroundColor: Colors.lightGreenAccent[100],
+        body: FutureBuilder<bool>(
         future: ()async{
           bool result = await widget.controller.updateAnimals();
           await updateExhibit();
@@ -40,21 +41,32 @@ class ExploreByState extends State<ExploreBy>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(5),
+                    //height: 80,
+                    width: 180,
                   child: RaisedButton(
+                    elevation: 5.0,
                     child: Text("Explore by Exhibit"),
                     onPressed: (){
                       Navigator.push(this.context, MaterialPageRoute(builder: (context) => Exhibits(controller: widget.controller, exhibits: _exhibits,)));
                     },
+                    color: Colors.orangeAccent,
+                    textColor: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                   )
                 ),
                 Container(
                   padding: EdgeInsets.all(5),
-                  child: RaisedButton(
-                    child: Text("Explore by Class"),
+                    width: 180,
+                    child: RaisedButton(
+                      elevation: 5.0,
+                      child: Text("Explore by Class"),
                     onPressed: (){
                       Navigator.push(this.context, MaterialPageRoute(builder: (context) => Family(controller: widget.controller, classes: _class,)));
                     },
+                      color: Colors.orangeAccent[200],
+                    textColor: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                   )
                 ),
               ] //children

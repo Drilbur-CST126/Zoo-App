@@ -11,12 +11,15 @@ class Exhibits extends StatefulWidget{
   Widget _buttonMaker(BuildContext context, int exhibitid)
   {
     return RaisedButton(
+      elevation: 5.0,
       child: Text(exhibits[exhibitid].toString()),
       autofocus: false,
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => AnimalList(controller: controller,
             animalList: controller.searchAnimalByExhibit(exhibitid), title: exhibits[exhibitid].toString())));
       },
+      shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+      color: Colors.yellow[200],
     );
   }
 
@@ -34,15 +37,13 @@ class Exhibits extends StatefulWidget{
 
   @override
   ExhibitsState createState() => ExhibitsState();
-
-
-
 }
 
 class ExhibitsState extends State<Exhibits>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.lightGreenAccent[100],
         appBar: AppBar(
             title: Text('Exhibits')
         ),
