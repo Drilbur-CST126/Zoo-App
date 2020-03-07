@@ -62,3 +62,4 @@ D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AdminPortal\obj\Debug\AdminPortal
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csproj.GenerateResource.cache
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.exe
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.pdb
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csprojAssemblyReference.cache

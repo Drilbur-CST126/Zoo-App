@@ -27,6 +27,7 @@ namespace AdminPortal
     {
         private PortalWindowViewModel viewModel;
         private readonly IHomeBusinessLogic HomeBusinessLogic;
+        private int adminId = 0;
 
         public PortalWindow()
         {
@@ -83,12 +84,12 @@ namespace AdminPortal
             }
         }
 
-        /*
-         TODO: Finish delete implementation
+
+        // Delete implementation
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 if (adminId == 0)
                 {
                     MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -100,6 +101,8 @@ namespace AdminPortal
                     {
                         // Display Message  
                         MessageBox.Show("Admin deleted.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // tblAdminListing.SelectedIndex = 0;
+                        tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
                         return;
                     }
                     else
@@ -123,8 +126,16 @@ namespace AdminPortal
         {
             try
             {
-                ListedAdmin admin = tblAdminListing.SelectedItem as ListedAdmin;
-                adminId = admin.AdminId;
+                object item = tblAdminListing.SelectedItem;
+                if (item == null)
+                {
+                    adminId = 0;
+                }
+                else
+                {
+                    string ID = (tblAdminListing.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    adminId = Convert.ToInt32(ID);
+                }
             }
             catch (Exception ex)
             {
@@ -134,6 +145,5 @@ namespace AdminPortal
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        */
     }
 }
