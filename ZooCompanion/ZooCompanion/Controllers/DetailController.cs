@@ -4,17 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using AnimalDataAccess;
+using CalendarDataAccess;
 
 namespace ZooCompanion.Controllers
 {
-    public class AnimalController : ApiController
+    public class DetailController : ApiController
     {
-        public List<animals> Get()
+        public List<details> Get()
         {
-            using (AnimalEntities entities = new AnimalEntities())
+            using (CalendarEntities entities = new CalendarEntities())
             {
-                return entities.animals.ToList();
+                return entities.details.ToList();
             }
         }
     }

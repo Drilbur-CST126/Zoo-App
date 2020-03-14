@@ -166,6 +166,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ExhibitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -174,6 +176,8 @@
     </Compile>
     <Compile Include="Models\Animal.cs" />
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Detail.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Exhibit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -269,6 +273,10 @@
     <ProjectReference Include="..\AnimalDataAccess\AnimalDataAccess.csproj">
       <Project>{8f841977-b86f-44d8-a91c-9735b6ef8206}</Project>
       <Name>AnimalDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarDataAccess\CalendarDataAccess.csproj">
+      <Project>{415e3852-6bed-4b10-8c13-4f7e561a3e65}</Project>
+      <Name>CalendarDataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

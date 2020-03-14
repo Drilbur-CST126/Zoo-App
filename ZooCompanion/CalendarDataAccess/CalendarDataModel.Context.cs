@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnimalDataAccess
+namespace CalendarDataAccess
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AnimalEntities : DbContext
+    public partial class CalendarEntities : DbContext
     {
-        public AnimalEntities()
-            : base("name=AnimalEntities")
+        public CalendarEntities()
+            : base("name=CalendarEntities")
         {
             this.Configuration.ProxyCreationEnabled = false;
         }
@@ -26,11 +26,7 @@ namespace AnimalDataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<animals> animals { get; set; }
-        public virtual DbSet<classes> classes { get; set; }
-        public virtual DbSet<exhibits> exhibits { get; set; }
-        public virtual DbSet<facts> facts { get; set; }
-        public virtual DbSet<pictures> pictures { get; set; }
-        public virtual DbSet<sounds> sounds { get; set; }
+        public virtual DbSet<details> details { get; set; }
+        public virtual DbSet<events> events { get; set; }
     }
 }

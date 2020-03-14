@@ -180,3 +180,6 @@ D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\ZooCompanion\obj\Release\ZooCompa
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\ZooCompanion\obj\Release\ZooCompanion.csproj.CopyComplete
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\ZooCompanion\obj\Release\ZooCompanion.dll
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\ZooCompanion\obj\Release\ZooCompanion.pdb
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\CalendarDataAccess.dll
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\CalendarDataAccess.pdb
+D:\Repos\Zoo-App\ZooCompanion\ZooCompanion\bin\CalendarDataAccess.dll.config
