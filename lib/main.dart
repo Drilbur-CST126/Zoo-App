@@ -51,7 +51,7 @@ class MyHomePage extends StatefulWidget {
     new DrawerItem("Search", Icons.folder_open),
     new DrawerItem("Visiting the Zoo", Icons.location_on),
     new DrawerItem("Daily Schedule", Icons.calendar_today),
-    new DrawerItem("Tickets", Icons.attach_money),
+    //new DrawerItem("Tickets", Icons.attach_money),
   ];
 
   final String title;
