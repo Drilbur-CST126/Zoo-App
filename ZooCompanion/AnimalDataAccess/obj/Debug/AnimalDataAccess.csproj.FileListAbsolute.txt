@@ -17,7 +17,6 @@ D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.dll
 D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.SqlServer.dll
 D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.xml
 D:\Repos\ZooCompanion\AnimalDataAccess\bin\Debug\EntityFramework.SqlServer.xml
-D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csprojAssemblyReference.cache
 D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csproj.CopyComplete
 D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.dll
 D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.pdb

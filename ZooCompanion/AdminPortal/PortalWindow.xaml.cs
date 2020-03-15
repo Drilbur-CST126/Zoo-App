@@ -48,45 +48,13 @@ namespace AdminPortal
 
         private void btnAddNewAdmin_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var admin = new Admin
-                {
-                    Username = this.txtUsername.Text,
-                    FirstName = this.txtFirstName.Text,
-                    LastName = this.txtLastName.Text,
-                    Email = this.txtEmail.Text
-                };
-                // Initialization.  
-                string confirm_email = this.txtConfirmEmail.Text;
-                string password = this.txtPassword.Password;
-                string confirm_password = this.txtConfirmPassword.Password;
-
-                var successful = viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password);
-                if (!successful) return;
-
-                txtUsername.Clear();
-                txtFirstName.Clear();
-                txtLastName.Clear();
-                txtEmail.Clear();
-                txtConfirmEmail.Clear();
-                txtPassword.Clear();
-                txtConfirmPassword.Clear();
                 // Refresh AdminListing
                 tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-
-                // Display Message  
-                MessageBox.Show("Something goes wrong, Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
 
         // Delete implementation
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnDeleteAdmin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -144,6 +112,11 @@ namespace AdminPortal
                 // Display Message  
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnDeleteExhibit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
