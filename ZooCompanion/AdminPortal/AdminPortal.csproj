@@ -58,16 +58,21 @@
     <Compile Include="AddEditAdmin.xaml.cs">
       <DependentUpon>AddEditAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditExhibit.xaml.cs">
+      <DependentUpon>AddEditExhibit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Command.cs" />
     <Compile Include="HelperCode\Common\DAL.cs" />
     <Compile Include="Models\BusinessLogic\HomeBusinessLogic.cs" />
     <Compile Include="Models\BusinessLogic\IHomeBusinessLogic.cs" />
     <Compile Include="Models\BusinessLogic\MockHomeBusinessLogic.cs" />
+    <Compile Include="Models\Exhibit.cs" />
     <Compile Include="PortalWindow.xaml.cs">
       <DependentUpon>PortalWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\AddEditAdminViewModel.cs" />
+    <Compile Include="ViewModels\AddEditExhibitViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\PortalWindowViewModel.cs" />
     <Compile Include="ViewModels\ViewModelNotifyPropertyChanged.cs" />
@@ -77,6 +82,10 @@
       <DependentUpon>ZooCompanionWebApi_dbDataSet.xsd</DependentUpon>
     </Compile>
     <Page Include="AddEditAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditExhibit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

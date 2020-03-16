@@ -26,6 +26,19 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             else return false;
         }
 
+        public bool DeleteExhibit(int exhibitId)
+        {
+            // Query.  
+            string query = "EXEC spDeleteExhibit @exhibit_id = '" + exhibitId + "';";
+
+            // Execute.  
+            int result = DAL.executeQuery(query);
+
+            if (result > 0)
+                return true;
+            else return false;
+        }
+
         public bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
         {
             try
@@ -51,12 +64,77 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
+        public bool AddNewExhibit(string name, string description)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spAddNewExhibit " +
+                               "@name = '" + name + "', " +
+                               "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool EditExhibit(int exhibitId, string name, string description)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spEditExhibit " +
+                               "@exhibit_id = '" + exhibitId + "', " +
+                               "@name = '" + name + "', " +
+                               "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool CheckUsernameExists(string username)
         {
             try
             {
                 // Query.  
                 string query = "EXEC spUsernameExists @username = '" + username + "';";
+
+                // Execute.  
+                int result = DAL.getCount(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CheckExhibitExists(string name)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spExhibitExists @name = '" + name + "';";
 
                 // Execute.  
                 int result = DAL.getCount(query);
@@ -109,5 +187,52 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 throw ex;
             }
         }
+
+        public DataTable GetExhibits()
+        {
+            DataTable admins;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetExhibits;";
+
+                // Execute. 
+                return admins = DAL.getTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public ListedExhibit GetExhibit(int exhibitId)
+        {
+            DataTable tbl;
+            DataRow row;
+            ListedExhibit exhibit = new ListedExhibit();
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetExhibit @exhibit_id = '" + exhibitId + "';";
+
+                // Execute. 
+                tbl = DAL.getTable(query);
+                row = tbl.Rows[0];
+
+                // Get Record.
+                exhibit.ExhibitId = Convert.ToInt32(row["exhibit_id"]);
+                exhibit.Name = (row["name"]).ToString();
+                exhibit.Description = (row["description"]).ToString();
+
+                return exhibit;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

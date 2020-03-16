@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Repos\ZooCompanion\AdminPortal\App.xaml
-3-735061418
+4803412314
 
-19-1522007483
+22-1325900488
 13738642453
-AddEditAdmin.xaml;LoginWindow.xaml;PortalWindow.xaml;
+AddEditAdmin.xaml;AddEditExhibit.xaml;LoginWindow.xaml;PortalWindow.xaml;
 
-True
+False
 

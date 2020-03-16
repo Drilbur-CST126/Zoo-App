@@ -2,6 +2,7 @@ USE ZooCompanion;
 
 --Adding data...
 
+SET IDENTITY_INSERT animal.classes ON;
 INSERT INTO animal.classes (class_id, name)
 VALUES	(1, 'Mammals');
 INSERT INTO animal.classes (class_id, name)
@@ -16,9 +17,12 @@ INSERT INTO animal.classes (class_id, name)
 VALUES	(6, 'Arthropods');
 INSERT INTO animal.classes (class_id, name)
 VALUES	(7, 'Arachnida');
+SET IDENTITY_INSERT animal.classes OFF;
 
 
 --based off of Oregon Zoo map
+
+SET IDENTITY_INSERT animal.exhibits ON;
 INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (1, 'African Rainforest', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
@@ -67,8 +71,10 @@ INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (23, 'Steller Cover', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (24, 'Wildlife Live', '');
+SET IDENTITY_INSERT animal.exhibits OFF;
 
 
+SET IDENTITY_INSERT animal.animals ON;
 INSERT INTO animal.animals (animal_id, common_name, scientific_name, qr_code, tags, class_id, exhibit_id)
 VALUES (1, 'African Bullfrog', 'Pyxicephalus Adspersus', 0, '', 5, 1);
 INSERT INTO animal.animals (animal_id, common_name, scientific_name, qr_code, tags, class_id, exhibit_id)
@@ -243,9 +249,10 @@ INSERT INTO animal.animals (animal_id, common_name, scientific_name, qr_code, ta
 VALUES (84, 'White-faced whistling duck', 'Dendrocygna viduata', 0, '', 2, 2);
 INSERT INTO animal.animals (animal_id, common_name, scientific_name, qr_code, tags, class_id, exhibit_id)
 VALUES (85, 'Wood duck', 'Aix sponsa', 0, '', 2, 8);
+SET IDENTITY_INSERT animal.animals OFF;
 
-
---African Bullfrong
+--African Bullfong
+SET IDENTITY_INSERT animal.facts ON;
 INSERT INTO animal.facts (fact_id, fact, animal_id)
 VALUES (1, 'Bullfrogs'' fingers are short and blunt, without webbing.', 1);
 INSERT INTO animal.facts (fact_id, fact, animal_id)
@@ -929,3 +936,4 @@ Redheads are migratory – it is estimated that 80 percent of redheads spend the w
 INSERT INTO animal.facts (fact_id, fact, animal_id)
 VALUES (106, 'Sea otters spend most of their time near the shore. They eat, rest, groom themselves, and breed in the water. They swim belly-up, moving through the water at 3-5 miles an hour with their webbed hind feet. They use their long, flat tails as rudders.
 A sea otter dives for food, usually in water no deeper than 60 feet, but it can hold its breath for 5 minutes and dive to 300 feet or more if needed. It eats bottom-dwelling sea animals, including sea urchins, abalone, crabs, clams, and squid. Because its metabolism is 2-3 times the rate of other mammals its size, it needs to eat about 25% of its weight every day.', 88);
+SET IDENTITY_INSERT animal.facts OFF;

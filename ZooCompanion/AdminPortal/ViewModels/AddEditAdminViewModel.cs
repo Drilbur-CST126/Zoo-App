@@ -6,6 +6,8 @@ namespace AdminPortal.ViewModels
 {
     class AddEditAdminViewModel
     {
+        HomeBusinessLogic HomeBusinessLogic = new HomeBusinessLogic();
+
         public bool AddNewAdmin(Admin profile, string password, string confirm_email, string confirm_password)
         {
             var username = profile.Username;

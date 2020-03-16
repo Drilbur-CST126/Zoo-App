@@ -27,5 +27,36 @@ DELETE FROM admin.admins
 WHERE admin_id = @admin_id;
 
 
+CREATE PROC spGetExhibits
+as
+SELECT exhibit_id as 'ID', name as 'Name', description as 'Description'
+FROM animal.exhibits
+ORDER BY CAST(name as VARCHAR(60));
 
+CREATE PROC spDeleteExhibit @exhibit_id int
+as
+DELETE FROM animal.exhibits
+WHERE exhibit_id = @exhibit_id;
 
+CREATE PROC spExhibitExists @name varchar
+as
+SELECT *
+FROM animal.exhibits 
+WHERE CAST(name AS VARCHAR(60))= @name;
+
+CREATE PROC spAddNewExhibit @name text, @description text
+as
+INSERT INTO animal.exhibits (name, description)
+VALUES (@name, @description);
+
+CREATE PROC spEditExhibit @exhibit_id int, @name text, @description text
+as
+UPDATE animal.exhibits
+SET name = @name, description = @description
+WHERE exhibit_id = @exhibit_id;
+
+CREATE PROC spGetExhibit @exhibit_id int
+as
+SELECT *
+FROM animal.exhibits
+WHERE exhibit_id = @exhibit_id;
