@@ -23,13 +23,13 @@ class CalendarState extends State<CalendarPage>{
       _selectedDay.subtract(Duration(days: 10)): ['Event A4', 'Event B4', 'Event C4'],
       _selectedDay.subtract(Duration(days: 4)): ['Event A5', 'Event B5', 'Event C5'],
       _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Some Event', 'Event A7', 'Event B7', 'Event C7', 'Event D7', 'Events J12', 'Event A8', 'Event B8', 'Event C8', 'Event D8'],
+      _selectedDay: ['Event A2', 'Event A7', 'Event B7', 'Event C7'],
       _selectedDay.add(Duration(days: 1)): ['Event A8', 'Event B8', 'Event C8', 'Event D8'],
       _selectedDay.add(Duration(days: 3)): ['Event A9', 'Event A9', 'Event B9'],
       _selectedDay.add(Duration(days: 7)): ['Event A10', 'Event B10', 'Event C10'],
     };
 
-    _selectedEvents = _events[_selectedDay] ?? [];
+    _selectedEvents = _events[_selectedDay];
   }
 
   @override
