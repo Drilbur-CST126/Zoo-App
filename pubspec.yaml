@@ -24,6 +24,7 @@ dependencies:
   test:
   carousel_slider: ^1.3.0
   carousel_pro: ^1.0.0
+  table_calendar: ^2.2.2
 
   # This dependency is for the embedded web browser
   url_launcher:
