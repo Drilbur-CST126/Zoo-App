@@ -14,6 +14,11 @@ namespace AdminPortal.Models.BusinessLogic
             return true;
         }
 
+        public bool DeleteExhibit(int exhibitId)
+        {
+            return true;
+        }
+
         public bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
         {
             return true;
@@ -32,6 +37,16 @@ namespace AdminPortal.Models.BusinessLogic
         public DataTable GetAdmins()
         {
             return new DataTable();
+        }
+
+        public DataTable GetExhibits()
+        {
+            return new DataTable();
+        }
+
+        public ListedExhibit GetExhibit(int exhibitId)
+        {
+            return new ListedExhibit();
         }
     }
 }

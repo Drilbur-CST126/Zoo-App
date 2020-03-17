@@ -10,6 +10,7 @@ namespace AdminPortal.HelperCode.Common
 {
     public class DAL
     {
+
         public static DataTable getTable(string query)
         {
             // Initialization.

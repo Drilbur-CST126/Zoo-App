@@ -56,6 +56,9 @@ namespace AdminPortal
                     // Open admin portal window
                     PortalWindow portal = new PortalWindow();
                     portal.Show();
+
+                    // Close login window
+                    this.Close();
                 }
 
             }

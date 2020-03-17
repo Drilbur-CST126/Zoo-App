@@ -12,7 +12,7 @@ namespace ZooCompanion.Controllers
     {
         public List<animals> Get()
         {
-            using (ZooCompanionWebApi_dbEntities entities = new ZooCompanionWebApi_dbEntities())
+            using (AnimalEntities entities = new AnimalEntities())
             {
                 return entities.animals.ToList();
             }
