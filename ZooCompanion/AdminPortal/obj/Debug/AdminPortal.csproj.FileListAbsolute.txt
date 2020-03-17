@@ -66,3 +66,8 @@ D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AddEditAdmin.g.cs
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AddEditAdmin.baml
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AddEditExhibit.g.cs
 D:\Repos\ZooCompanion\AdminPortal\obj\Debug\AddEditExhibit.baml
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AdminPortal.csprojAssemblyReference.cache
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AddEditAdmin.g.cs
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AddEditExhibit.g.cs
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AddEditAdmin.baml
+D:\Repos\Zoo-App\ZooCompanion\AdminPortal\obj\Debug\AddEditExhibit.baml
