@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:test_api/src/frontend/expect_async.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:http/http.dart' as http;

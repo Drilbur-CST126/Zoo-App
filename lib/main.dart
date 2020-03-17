@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -51,7 +52,7 @@ class MyHomePage extends StatefulWidget {
     new DrawerItem("Search", Icons.folder_open),
     new DrawerItem("Visiting the Zoo", Icons.location_on),
     new DrawerItem("Daily Schedule", Icons.calendar_today),
-    new DrawerItem("Tickets", Icons.attach_money),
+    //new DrawerItem("Tickets", Icons.attach_money),
   ];
 
   final String title;
@@ -80,6 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case 4:
         return new ZooInfo();
+        break;
+      case 5:
+        return new CalendarPage();
         break;
       default:
         return new MissingPage();
