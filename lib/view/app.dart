@@ -20,11 +20,14 @@ class AnimalListPage extends StatefulWidget{
   Widget _animalButton(BuildContext context, String name, int animalId)
   {
     return RaisedButton(
+      elevation: 5.0,
       child: Text(name),
       autofocus: false,
       onPressed: () {
         controller.goToAnimalPage(context, animalId);
       },
+      color: Colors.purple[100],
+      shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
     );
   }
 
@@ -74,6 +77,7 @@ class AnimalListPageState extends State<AnimalListPage>
     updated = true;
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       //appBar: AppBar(
       //  title: Text("Animal List"),
       //),
