@@ -12,11 +12,15 @@ class AnimalList extends StatefulWidget{
   Widget _animalButton(BuildContext context, Animal animal)
   {
     return RaisedButton(
+      elevation: 5.0,
       child: Text(animal.commonName),
       autofocus: false,
       onPressed: () {
         controller.goToAnimalPage(context, animal.animalId);
       },
+      color: Colors.lightBlueAccent[100],
+      textColor: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
     );
   }
 
@@ -38,6 +42,7 @@ class AnimalListState extends State<AnimalList>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.lightGreenAccent[100],
         appBar: AppBar(
             title: Text(widget.title)
         ),
