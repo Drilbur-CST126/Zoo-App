@@ -24,11 +24,11 @@ SET IDENTITY_INSERT animal.classes OFF;
 
 SET IDENTITY_INSERT animal.exhibits ON;
 INSERT INTO animal.exhibits (exhibit_id, name, description)
-VALUES (1, 'African Rainforest', '');
+VALUES (1, 'Africa Rainforest', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
-VALUES (2, 'African Rainforest Avery', '');
+VALUES (2, 'Africa Rainforest Avery', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
-VALUES (3, 'African Savannah', '');
+VALUES (3, 'Africa Savanna', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (4, 'Ambassador Animals', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
@@ -45,8 +45,7 @@ INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (10, 'Chimpanzees', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (11, 'Condors of the Columbia', '');
-INSERT INTO animal.exhibits (exhibit_id, name, description)
-VALUES (12, 'Cascade Crest', '');
+
 INSERT INTO animal.exhibits (exhibit_id, name, description)
 VALUES (13, 'Cougar Crossing', '');
 INSERT INTO animal.exhibits (exhibit_id, name, description)

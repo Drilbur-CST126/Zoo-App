@@ -38,7 +38,7 @@ as
 DELETE FROM animal.exhibits
 WHERE exhibit_id = @exhibit_id;
 
-CREATE PROC spExhibitExists @name varchar
+CREATE PROC spExhibitExists @name varchar(60)
 as
 SELECT *
 FROM animal.exhibits 

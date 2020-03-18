@@ -13,6 +13,10 @@ namespace AdminPortal.ViewModels
             var name = exhibit.Name;
             var description = exhibit.Description;
 
+            // check for apostrophes and add one before they go into the query
+            name = name.Replace("'", "''");
+            description = description.Replace("'", "''");
+
             // Verification.
             // Check if null or empty
             if (string.IsNullOrEmpty(name))
@@ -22,9 +26,8 @@ namespace AdminPortal.ViewModels
                 // Info  
                 return false;
             }
-
             // check if name already exists
-            if (HomeBusinessLogic.CheckExhibitExists(name))
+            else if (HomeBusinessLogic.CheckExhibitExists(name))
             {
                 // Display Message  
                 MessageBox.Show("Exhibit name already exists. Please try again.");
@@ -56,6 +59,10 @@ namespace AdminPortal.ViewModels
             var exhibitId = exhibit.ExhibitId;
             var name = exhibit.Name;
             var description = exhibit.Description;
+
+            // check for apostrophes and add one before they go into the query
+            name = name.Replace("'", "''");
+            description = description.Replace("'", "''");
 
             // Verification.
             // Check if null or empty
