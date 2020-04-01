@@ -29,7 +29,8 @@ class CalendarState extends State<CalendarPage>{
       _selectedDay.add(Duration(days: 7)): ['Event A10', 'Event B10', 'Event C10'],
     };
 
-    _selectedEvents = _events[_selectedDay];
+    _selectedEvents = _events.containsKey(_selectedDay) ? _events[_selectedDay] : List();
+
   }
 
   @override

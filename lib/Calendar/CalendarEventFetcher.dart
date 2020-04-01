@@ -54,4 +54,8 @@ class CalendarEventFetcher
       events.firstWhere((e) => e.ID == detail.eventID).details.add(detail);
     }
   }
+
+  List<Event> getEvents(){
+    return events;
+  }
 }
