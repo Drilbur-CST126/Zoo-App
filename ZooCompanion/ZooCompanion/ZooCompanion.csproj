@@ -169,6 +169,7 @@
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ExhibitController.cs" />
+    <Compile Include="Controllers\FactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -179,6 +180,7 @@
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Exhibit.cs" />
+    <Compile Include="Models\Fact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

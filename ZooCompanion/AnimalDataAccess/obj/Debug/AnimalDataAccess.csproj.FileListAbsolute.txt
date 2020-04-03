@@ -41,3 +41,4 @@ D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AnimalDataAccess\obj\Debug\Animal
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csproj.CopyComplete
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.dll
 D:\foxyd\OneDrive\Desktop\Working\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.pdb
+D:\Repos\ZooCompanion\AnimalDataAccess\obj\Debug\AnimalDataAccess.csprojAssemblyReference.cache
