@@ -5,6 +5,7 @@
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/fact.dart';
 
+
 abstract class IControllerView
 {
   goToAnimalPage(dynamic context, int animalId);
