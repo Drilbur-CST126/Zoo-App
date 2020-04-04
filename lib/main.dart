@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:zoo_app/Calendar.dart';
+import 'package:zoo_app/model/dbFactFetcher.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -19,7 +20,7 @@ import 'view/app.dart';
 void main() async {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
 
-  var model = Model(DbAnimalFetcher(), MockFactFetcher());
+  var model = Model(DbAnimalFetcher(), DbFactFetcher());
   var controller = Controller(model);
   var zooApp = MyApp(controller);
   runApp(zooApp);

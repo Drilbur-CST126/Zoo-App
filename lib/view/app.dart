@@ -93,7 +93,11 @@ class AnimalListPageState extends State<AnimalListPage>
   Widget build(BuildContext context) {
     if (!updated) {
       return FutureBuilder<bool>(
-        future: widget.controller.updateAnimals(), 
+        future: () async {
+        await widget.controller.updateAnimals();
+        await widget.controller.updateFacts();
+        return true;
+        }(),
         builder: _createPage
       );
     } else {
