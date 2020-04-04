@@ -41,16 +41,18 @@ class CalendarEventFetcher
 
   // This function gets all Events from the json list and puts them in 'events'.
   void decodeEventResponses(List<dynamic> json) {
+    int i = -3;
     for (var jsonEvent in json) {
-      var event = Event(jsonEvent["event_id"], jsonEvent["title"], DateTime.now(), new List<Detail>());
+      var event = Event(jsonEvent["event_id"], jsonEvent["title"], DateTime.now().add(Duration(days: i)), new List<Detail>());
       events.add(event);
+      ++i;
     }
   }
 
   // This function gets all details, and puts them in their event.
   void decodeDetailResponses(List<dynamic> json) {
-    for (var jsonEvent in json) {
-      var detail = Detail(jsonEvent["detail_id"], jsonEvent["event_id"], new List());
+    for (var jsonDetail in json) {
+      var detail = Detail(jsonDetail["detail_id"], jsonDetail["event_id"], jsonDetail["description"]);
       events.firstWhere((e) => e.ID == detail.eventID).details.add(detail);
     }
   }

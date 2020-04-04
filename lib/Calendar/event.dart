@@ -10,7 +10,7 @@ class Event {
 class Detail {
   int ID;
   int eventID;
-  List<String> descriptions;
+  String descriptions;
 
   Detail(this.ID, this.eventID, this.descriptions);
 }

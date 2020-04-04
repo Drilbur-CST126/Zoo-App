@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:zoo_app/Calendar/CalendarEventFetcher.dart';
 
+import 'view/loadingWidget.dart';
 import 'Calendar/event.dart';
 import 'Event.dart';
 
@@ -14,18 +15,72 @@ class CalendarPage extends StatefulWidget{
 class CalendarState extends State<CalendarPage>{
   Map<DateTime, List> _events = Map<DateTime,List>();
   List _selectedEvents;
+  final _selectedDay = DateTime.now();
   CalendarController _calendarController = new CalendarController();
-  CalendarEventFetcher fetcher = new CalendarEventFetcher();
+  bool updated = false;
 
   @override
   void initState() {
     super.initState();
-    final _selectedDay = DateTime.now();
+    _events = {
+      _selectedDay: []
+    };
+    _selectedEvents = _events[_selectedDay];
+  }
 
-    List<Event> events = fetcher.getEvents();
+  Future<void> initilizaion() async {
+    _events.clear();
+    List<Event> events = await GetEvents();
 
+    for (int i = 0; i < events.length; ++i)
+      {
+        Duration daydifference = events[i].time.difference(_selectedDay);
+
+        if(daydifference < Duration(days: 1) && daydifference > Duration(days: -1))
+          {
+            _events.putIfAbsent(_selectedDay, () => []);
+          }
+        else if(daydifference > Duration(days: 1) && events[i].time.isAfter(_selectedDay))
+          {
+            _events.putIfAbsent(_selectedDay.add(Duration(days: daydifference.inDays)), () => []);
+          }
+        else if(daydifference > Duration(days: 1) && events[i].time.isBefore(_selectedDay))
+          {
+            _events.putIfAbsent(_selectedDay.subtract(Duration(days: daydifference.inDays)), () => []);
+          }
+        else
+          {
+            _events = {
+              _selectedDay: []
+            };
+          }
+      }
+
+    for (int i = 0; i < events.length; ++i)
+      {
+        Duration daydifference = events[i].time.difference(_selectedDay);
+
+        if(daydifference < Duration(days: 1) && daydifference > Duration(days: -1))
+        {
+          _events[_selectedDay].add(events[i]);
+        }
+        else if(daydifference > Duration(days: 1) && events[i].time.isAfter(_selectedDay))
+        {
+          _events[_selectedDay.add(Duration(days: daydifference.inDays))].add(events[i]);
+        }
+        else if(daydifference > Duration(days: 1) && events[i].time.isBefore(_selectedDay))
+        {
+          _events[_selectedDay.subtract(Duration(days: daydifference.inDays))].add(events[i]);
+        }
+      }
 
     _selectedEvents = _events.containsKey(_selectedDay) ? _events[_selectedDay] : List();
+  }
+
+  Future<List<Event>> GetEvents() async {
+    CalendarEventFetcher fetcher = new CalendarEventFetcher();
+    await fetcher.update();
+    return fetcher.getEvents();
   }
 
   @override
@@ -42,13 +97,34 @@ class CalendarState extends State<CalendarPage>{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        buildCalendar(),
-        Expanded(child: buildEventList()),
-      ]
-    );
+    if (!updated) {
+      return FutureBuilder<void>(
+          future: initilizaion(),
+          builder: CreatePage,
+      );
+    } else {
+      return CreatePage(context);
+    }
+  }
+
+  Widget CreatePage(BuildContext context, [AsyncSnapshot snapshot]) {
+
+    if(updated || snapshot.hasData)
+      {
+        updated = true;
+        return Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              buildCalendar(),
+              Expanded(child: buildEventList()),
+            ]
+        );
+      }
+    else
+      {
+        updated = true;
+        return LoadingWidget();
+      }
   }
 
   Widget buildCalendar(){
