@@ -68,7 +68,7 @@ class AnimalListPageState extends State<AnimalListPage>
         decoration: InputDecoration(
           border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
           hintText: "Search for animals at the zoo",
-          hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 24, color: Colors.red),
+          hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
 
           icon: Icon(Icons.search),
         ),

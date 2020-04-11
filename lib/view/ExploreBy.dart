@@ -7,6 +7,7 @@ import 'package:zoo_app/view/loadingWidget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+
 class ExploreBy extends StatefulWidget {
   ExploreBy({Key key, @required this.controller}) : super(key: key);
 
@@ -29,12 +30,12 @@ class ExploreByState extends State<ExploreBy> {
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent[100],
         body: Container(
-            width: 600,
-            height: 600,
+            width: 400,
+            height: 700,
             decoration: BoxDecoration(
                 image: DecorationImage(
               image: AssetImage("assets/giraffeclipart.jpg"),
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
             )),
             child: FutureBuilder<bool>(
               future: () async {
@@ -47,8 +48,8 @@ class ExploreByState extends State<ExploreBy> {
                 if (!snapshot.hasData) {
                   return LoadingWidget();
                 } else {
-                  return Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                  return Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
                             padding: EdgeInsets.only(
@@ -57,12 +58,12 @@ class ExploreByState extends State<ExploreBy> {
                                 right: 25.0,
                                 bottom: 10.0),
                             height: 80,
-                            width: 200,
+                            width: 300,
                             child: RaisedButton(
                               elevation: 5.0,
                               child: Text("Explore by Exhibit",
                                   style: new TextStyle(
-                                      fontWeight: FontWeight.bold)),
+                                      fontWeight: FontWeight.bold, fontSize: 20)),
                               onPressed: () {
                                 Navigator.push(
                                     this.context,
@@ -85,12 +86,12 @@ class ExploreByState extends State<ExploreBy> {
                                 right: 25.0,
                                 bottom: 10.0),
                             height: 80,
-                            width: 200,
+                            width: 300,
                             child: RaisedButton(
                               elevation: 5.0,
                               child: Text("Explore by Class",
                                   style: new TextStyle(
-                                      fontWeight: FontWeight.bold)),
+                                      fontWeight: FontWeight.bold, fontSize: 20)),
                               onPressed: () {
                                 Navigator.push(
                                     this.context,
