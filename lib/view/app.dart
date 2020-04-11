@@ -61,6 +61,7 @@ class AnimalListPageState extends State<AnimalListPage>
     });
   }
 
+
   Widget _createPage(BuildContext context, [AsyncSnapshot<bool> snapshot]) {
     var listItems = <Widget>[];
 
