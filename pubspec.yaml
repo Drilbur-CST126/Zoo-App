@@ -49,6 +49,8 @@ flutter:
     - assets/tiger1.jpg
     - assets/otter2.jpg
     - assets/parrot.jpg
+    - assets/grass.jpg
+    - assets/giraffeclipart.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

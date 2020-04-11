@@ -1,8 +1,11 @@
 // app.dart
 // File created by Jordan Clark
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
 import 'loadingWidget.dart';
+import 'package:flutter/widgets.dart';
+
 
 class AnimalListPage extends StatefulWidget{
   AnimalListPage({Key key, @required this.controller}) : super(key: key);
@@ -26,7 +29,7 @@ class AnimalListPage extends StatefulWidget{
       onPressed: () {
         controller.goToAnimalPage(context, animalId);
       },
-      color: Colors.purple[100],
+      color: Colors.yellowAccent[100],
       shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
     );
   }
@@ -62,10 +65,12 @@ class AnimalListPageState extends State<AnimalListPage>
     var listItems = <Widget>[];
 
     if (updated || snapshot.hasData) {
-      listItems.add(TextField(onChanged: _changeSearchTerm, 
+      listItems.add(TextField(onChanged: _changeSearchTerm,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: "Search",
+          border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
+          hintText: "Search for animals at the zoo",
+          hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 24, color: Colors.red),
+
           icon: Icon(Icons.search),
         ),
       ));
@@ -75,15 +80,18 @@ class AnimalListPageState extends State<AnimalListPage>
       listItems.add(LoadingWidget());
     }
     updated = true;
-
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      //appBar: AppBar(
-      //  title: Text("Animal List"),
-      //),
-      body: Center(
+      backgroundColor: Colors.orange[200],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/grass.jpg"),
+            fit: BoxFit.cover,
+
+          )
+        ),
         child: ListView(
-          children: listItems
+          children: listItems,
         ),
       ),
     );
@@ -93,12 +101,12 @@ class AnimalListPageState extends State<AnimalListPage>
   Widget build(BuildContext context) {
     if (!updated) {
       return FutureBuilder<bool>(
-        future: () async {
-        await widget.controller.updateAnimals();
-        await widget.controller.updateFacts();
-        return true;
-        }(),
-        builder: _createPage
+          future: () async {
+            await widget.controller.updateAnimals();
+            await widget.controller.updateFacts();
+            return true;
+          }(),
+          builder: _createPage
       );
     } else {
       return _createPage(context);

@@ -7,7 +7,7 @@ import 'package:zoo_app/view/loadingWidget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class ExploreBy extends StatefulWidget{
+class ExploreBy extends StatefulWidget {
   ExploreBy({Key key, @required this.controller}) : super(key: key);
 
   final IControllerView controller;
@@ -16,69 +16,106 @@ class ExploreBy extends StatefulWidget{
   ExploreByState createState() => ExploreByState();
 }
 
-class ExploreByState extends State<ExploreBy>{
-  static const String exhibitUrl = "https://zoocompanionwebapi.azurewebsites.net/api/exhibit";
-  static const String classUrl = "https://zoocompanionwebapi.azurewebsites.net/api/class";
+class ExploreByState extends State<ExploreBy> {
+  static const String exhibitUrl =
+      "https://zoocompanionwebapi.azurewebsites.net/api/exhibit";
+  static const String classUrl =
+      "https://zoocompanionwebapi.azurewebsites.net/api/class";
   Map<int, String> _exhibits;
   Map<int, String> _class;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightGreenAccent[100],
-        body: FutureBuilder<bool>(
-        future: ()async{
-          bool result = await widget.controller.updateAnimals();
-          await updateExhibit();
-          await updateClass();
-          return result;
-        }(),
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return LoadingWidget();
-          } else {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                    padding: EdgeInsets.all(5),
-                    //height: 80,
-                    width: 180,
-                  child: RaisedButton(
-                    elevation: 5.0,
-                    child: Text("Explore by Exhibit"),
-                    onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Exhibits(controller: widget.controller, exhibits: _exhibits,)));
-                    },
-                    color: Colors.orangeAccent,
-                    textColor: Colors.black,
-                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                  )
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                    width: 180,
-                    child: RaisedButton(
-                      elevation: 5.0,
-                      child: Text("Explore by Class"),
-                    onPressed: (){
-                      Navigator.push(this.context, MaterialPageRoute(builder: (context) => Family(controller: widget.controller, classes: _class,)));
-                    },
-                      color: Colors.orangeAccent[200],
-                    textColor: Colors.black,
-                    shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                  )
-                ),
-              ] //children
-            );
-          }
-        },
-      )
-          
-    );
+        backgroundColor: Colors.lightBlueAccent[100],
+        body: Container(
+            width: 600,
+            height: 600,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage("assets/giraffeclipart.jpg"),
+              fit: BoxFit.fill,
+            )),
+            child: FutureBuilder<bool>(
+              future: () async {
+                bool result = await widget.controller.updateAnimals();
+                await updateExhibit();
+                await updateClass();
+                return result;
+              }(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return LoadingWidget();
+                } else {
+                  return Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.only(
+                                left: 25.0,
+                                top: 10.0,
+                                right: 25.0,
+                                bottom: 10.0),
+                            height: 80,
+                            width: 200,
+                            child: RaisedButton(
+                              elevation: 5.0,
+                              child: Text("Explore by Exhibit",
+                                  style: new TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              onPressed: () {
+                                Navigator.push(
+                                    this.context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Exhibits(
+                                              controller: widget.controller,
+                                              exhibits: _exhibits,
+                                            )));
+                              },
+                              color: Colors.orangeAccent,
+                              textColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(30.0),
+                                  side: BorderSide(color: Colors.yellow)),
+                            )),
+                        Container(
+                            padding: EdgeInsets.only(
+                                left: 25.0,
+                                top: 10.0,
+                                right: 25.0,
+                                bottom: 10.0),
+                            height: 80,
+                            width: 200,
+                            child: RaisedButton(
+                              elevation: 5.0,
+                              child: Text("Explore by Class",
+                                  style: new TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              onPressed: () {
+                                Navigator.push(
+                                    this.context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Family(
+                                              controller: widget.controller,
+                                              classes: _class,
+                                            )));
+                              },
+                              color: Colors.orangeAccent[200],
+                              textColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(30.0),
+                                  side: BorderSide(color: Colors.yellow)),
+                            )),
+                      ] //children
+                      );
+                }
+              },
+            )));
   }
+
   Future<void> updateExhibit() async {
-    final response = await http.get(exhibitUrl, headers: {"Accept" : "application/json"});
+    final response =
+        await http.get(exhibitUrl, headers: {"Accept": "application/json"});
 
     if (response.statusCode == 200) {
       debugPrint("update call");
@@ -98,7 +135,8 @@ class ExploreByState extends State<ExploreBy>{
   }
 
   Future<void> updateClass() async {
-    final response = await http.get(classUrl, headers: {"Accept" : "application/json"});
+    final response =
+        await http.get(classUrl, headers: {"Accept": "application/json"});
 
     if (response.statusCode == 200) {
       debugPrint("update call");
