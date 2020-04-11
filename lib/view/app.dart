@@ -60,8 +60,6 @@ class AnimalListPageState extends State<AnimalListPage>
       searchTerm = text;
     });
   }
-
-
   Widget _createPage(BuildContext context, [AsyncSnapshot<bool> snapshot]) {
     var listItems = <Widget>[];
 
