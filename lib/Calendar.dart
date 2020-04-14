@@ -44,7 +44,7 @@ class CalendarState extends State<CalendarPage>{
           {
             _events.putIfAbsent(_selectedDay.add(Duration(days: daydifference.inDays)), () => []);
           }
-        else if(daydifference > Duration(days: 1) && events[i].time.isBefore(_selectedDay))
+        else if(daydifference < Duration(days: -1) && events[i].time.isBefore(_selectedDay))
           {
             _events.putIfAbsent(_selectedDay.subtract(Duration(days: daydifference.inDays)), () => []);
           }
@@ -68,7 +68,7 @@ class CalendarState extends State<CalendarPage>{
         {
           _events[_selectedDay.add(Duration(days: daydifference.inDays))].add(events[i]);
         }
-        else if(daydifference > Duration(days: 1) && events[i].time.isBefore(_selectedDay))
+        else if(daydifference < Duration(days: -1) && events[i].time.isBefore(_selectedDay))
         {
           _events[_selectedDay.subtract(Duration(days: daydifference.inDays))].add(events[i]);
         }

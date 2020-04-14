@@ -4,7 +4,10 @@ class Event {
   DateTime time;
   List<Detail> details;
 
-  Event(this.ID, this.title, this.time, this.details);
+  Event(this.ID, this.title, this.details);
+  SetTime(DateTime inputtime) {
+    time = inputtime;
+  }
 }
 
 class Detail {
