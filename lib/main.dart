@@ -8,6 +8,7 @@ import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
+import 'package:zoo_app/view/mapPage.dart';
 
 import 'ZooInformation/ZooInfo.dart';
 import 'controller/controller.dart';
@@ -72,6 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
     switch(pos){
       case 0:
         return new HomePage();
+        break;
+      case 1:
+        return new MapPage();
         break;
       case 2:
         return new ExploreBy(controller: widget.controller);
