@@ -51,8 +51,10 @@ class CalendarEventFetcher
   void decodeDetailResponses(List<dynamic> json) {
     for (var jsonDetail in json) {
       var detail = Detail(jsonDetail["detail_id"], jsonDetail["event_id"], jsonDetail["description"]);
-      events.firstWhere((e) => e.ID == detail.eventID).SetTime(jsonDetail["date"]);
       events.firstWhere((e) => e.ID == detail.eventID).details.add(detail);
+      if (events.firstWhere((e) => e.ID == detail.eventID).time == null){
+        events.firstWhere((e) => e.ID == detail.eventID).SetTime(jsonDetail["date"]);
+      }
     }
   }
 
