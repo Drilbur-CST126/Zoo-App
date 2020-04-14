@@ -116,7 +116,7 @@ class CalendarState extends State<CalendarPage>{
         child: ListTile(
           title: Text(event.title.toString()),
           onTap: (){
-            Navigator.push(this.context, MaterialPageRoute(builder: (context) => EventPage()));
+            Navigator.push(this.context, MaterialPageRoute(builder: (context) => EventPage(event: event)));
           },
           ),
         )
