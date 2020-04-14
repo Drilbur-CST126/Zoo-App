@@ -114,12 +114,13 @@ class CalendarState extends State<CalendarPage>{
         ),
         margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
         child: ListTile(
-          title: Text(event.toString()),
+          title: Text(event.title.toString()),
           onTap: (){
             Navigator.push(this.context, MaterialPageRoute(builder: (context) => EventPage()));
           },
-        ),
-      )).toList(),
+          ),
+        )
+      ).toList(),
     );
   }
 }
