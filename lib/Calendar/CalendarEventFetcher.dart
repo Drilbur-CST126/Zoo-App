@@ -53,12 +53,19 @@ class CalendarEventFetcher
       var detail = Detail(jsonDetail["detail_id"], jsonDetail["event_id"], jsonDetail["description"]);
       events.firstWhere((e) => e.ID == detail.eventID).details.add(detail);
       if (events.firstWhere((e) => e.ID == detail.eventID).time == null){
-        events.firstWhere((e) => e.ID == detail.eventID).SetTime(jsonDetail["date"]);
+        events.firstWhere((e) => e.ID == detail.eventID).SetTime(DateTime.parse(jsonDetail["date"]));
       }
     }
   }
 
   List<Event> getEvents(){
-    return events;
+    List<Event> returnList = new List<Event>();
+    for (var event in events){
+      if(event.time != null){
+        returnList.add(event);
+      }
+    }
+
+    return returnList;
   }
 }

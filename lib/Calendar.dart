@@ -15,13 +15,16 @@ class CalendarPage extends StatefulWidget{
 class CalendarState extends State<CalendarPage>{
   Map<DateTime, List> _events = Map<DateTime,List>();
   List _selectedEvents;
-  final _selectedDay = DateTime.now();
+  DateTime _selectedDay;
   CalendarController _calendarController = new CalendarController();
   bool updated = false;
 
   @override
   void initState() {
     super.initState();
+    String todayDate = DateTime.now().toString();
+    todayDate = todayDate.substring(0,10);
+    _selectedDay = DateTime.parse(todayDate);
     _events = {
       _selectedDay: []
     };
@@ -32,47 +35,10 @@ class CalendarState extends State<CalendarPage>{
     _events.clear();
     List<Event> events = await GetEvents();
 
-    for (int i = 0; i < events.length; ++i)
-      {
-        Duration daydifference = events[i].time.difference(_selectedDay);
-
-        if(daydifference < Duration(days: 1) && daydifference > Duration(days: -1))
-          {
-            _events.putIfAbsent(_selectedDay, () => []);
-          }
-        else if(daydifference > Duration(days: 1) && events[i].time.isAfter(_selectedDay))
-          {
-            _events.putIfAbsent(_selectedDay.add(Duration(days: daydifference.inDays)), () => []);
-          }
-        else if(daydifference < Duration(days: -1) && events[i].time.isBefore(_selectedDay))
-          {
-            _events.putIfAbsent(_selectedDay.subtract(Duration(days: daydifference.inDays)), () => []);
-          }
-        else
-          {
-            _events = {
-              _selectedDay: []
-            };
-          }
-      }
-
-    for (int i = 0; i < events.length; ++i)
-      {
-        Duration daydifference = events[i].time.difference(_selectedDay);
-
-        if(daydifference < Duration(days: 1) && daydifference > Duration(days: -1))
-        {
-          _events[_selectedDay].add(events[i]);
-        }
-        else if(daydifference > Duration(days: 1) && events[i].time.isAfter(_selectedDay))
-        {
-          _events[_selectedDay.add(Duration(days: daydifference.inDays))].add(events[i]);
-        }
-        else if(daydifference < Duration(days: -1) && events[i].time.isBefore(_selectedDay))
-        {
-          _events[_selectedDay.subtract(Duration(days: daydifference.inDays))].add(events[i]);
-        }
-      }
+    for (var event in events) {
+      _events.putIfAbsent(event.time, () => []);
+      _events[event.time].add(event);
+    }
 
     _selectedEvents = _events.containsKey(_selectedDay) ? _events[_selectedDay] : List();
   }
