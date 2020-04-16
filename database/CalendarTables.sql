@@ -16,8 +16,8 @@ DROP TABLE IF EXISTS calendar.details;
 CREATE TABLE calendar.details (
 	detail_id	INT		PRIMARY KEY IDENTITY,
 	event_id	INT 	REFERENCES calendar.events (event_id),
-	date		DATE	NOT NULL,
-	time		TIME	NOT NULL,
+	date		DATETIME	NOT NULL,
+	time		DATETIME	NOT NULL,
     	duration    	DECIMAL(3,2),
 	description	TEXT
 	);
