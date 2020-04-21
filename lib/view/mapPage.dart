@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_full_pdf_viewer/flutter_full_pdf_viewer.dart';
+import 'package:flutter/material.dart';
 import 'dart:io';
-
 import 'package:path_provider/path_provider.dart';
 import 'package:zoo_app/view/loadingWidget.dart';
 
@@ -37,7 +34,7 @@ class MapPageState extends State<MapPage>
     file.writeAsBytesSync(list);
   }
 
-  Widget _createPdfViewer(BuildContext context, AsyncSnapshot<void> snapshot)
+  Widget _createTempMessage()
   {
     if (_tempPath == "")
     {
@@ -45,12 +42,16 @@ class MapPageState extends State<MapPage>
     }
     else
     {
-      return PDFViewerScaffold(path: _tempPath,);
+      return Text("Click back to return to return to the app!");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(builder: _createPdfViewer, future: openPdfInTempDirectory(),);
+    openPdfInTempDirectory().whenComplete(() =>
+    {
+
+    });
+    return _createTempMessage();
   }
 }

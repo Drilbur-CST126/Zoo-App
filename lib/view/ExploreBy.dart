@@ -40,6 +40,7 @@ class ExploreByState extends State<ExploreBy> {
             child: FutureBuilder<bool>(
               future: () async {
                 bool result = await widget.controller.updateAnimals();
+                await widget.controller.updateFacts();
                 await updateExhibit();
                 await updateClass();
                 return result;
