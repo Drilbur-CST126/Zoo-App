@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
@@ -19,6 +20,7 @@ import 'package:zoo_app/view/app.dart';
 import 'package:zoo_app/main.dart';
 import 'package:zoo_app/view/exhibits.dart';
 import 'package:zoo_app/view/family.dart';
+import 'package:zoo_app/view/mapPage.dart';
 import 'package:zoo_app/view/notFoundErrorPage.dart';
 
 Widget _getAnimalListPage(WidgetTester tester, Model model)
@@ -73,6 +75,20 @@ Widget _getZooInfoPage(WidgetTester tester)
 
   return app;
 }
+
+Widget _getMapPage(WidgetTester tester)
+{
+  Widget app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: MapPage(),
+  );
+
+  return app;
+}
+
 testDrawer()
 {
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
@@ -323,13 +339,26 @@ void testExplore() {
     expect(find.byType(RichText), findsWidgets);
   });
 
-  testWidgets("Zoo Info Page Containes Button To Purchase Tickets", (WidgetTester tester) async
+  testWidgets("Zoo Info Page Contains Button To Purchase Tickets", (WidgetTester tester) async
   {
     await tester.pumpWidget(_getZooInfoPage(tester));
     await tester.pumpAndSettle();
 
     expect(find.widgetWithText(RaisedButton, "Purchase Tickets"), findsOneWidget);
   });
+}
+
+void testMapPage() {
+  testWidgets("Zoo Map Page Contains PDFViewerScaffold", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getMapPage(tester));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(PDFViewerScaffold), findsOneWidget);
+  });
+
+  // I'd write more tests for our PDFViewerScaffold, making sure the file loads and such, but
+  // the library we are using has seemingly no external means of detecting a failed load of the PDF
 }
 
 void main() {
