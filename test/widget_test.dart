@@ -7,6 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:table_calendar/table_calendar.dart';
+import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -332,6 +334,17 @@ void testExplore() {
   });
 }
 
+void testCalendar() {
+  testWidgets("Calendar can be created", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(CalendarPage());
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Column), findsOneWidget);
+  });
+}
+
+
 void main() {
   // Example
   /*testWidgets('Counter increments smoke test', (WidgetTester tester) async {
@@ -355,4 +368,5 @@ void main() {
   testDrawer();
   testSearch();
   testExplore();
+  testCalendar();
 }

@@ -13,10 +13,10 @@ class CalendarPage extends StatefulWidget{
 }
 
 class CalendarState extends State<CalendarPage>{
+  CalendarController _calendarController = new CalendarController();
   Map<DateTime, List> _events = Map<DateTime,List>();
   List _selectedEvents;
   DateTime _selectedDay;
-  CalendarController _calendarController = new CalendarController();
   bool updated = false;
 
   @override

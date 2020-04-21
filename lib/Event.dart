@@ -17,7 +17,6 @@ class EventPageState extends State<EventPage> {
 
   Event event;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
