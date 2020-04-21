@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/view/notFoundErrorPage.dart';
@@ -18,7 +19,11 @@ class AnimalPage extends StatelessWidget
   // This function gets the text style for the page, it's factored out into a function in the interest of DRY code
   TextStyle _getTextStyle(BuildContext context)
   {
-    return Theme.of(context).textTheme.body2;
+    //return Theme.of(context).textTheme.body2;
+    return TextStyle(
+      color: Colors.purple[700],
+      decoration: TextDecoration.none,
+    );
   }
 
   // This gets all of the animal facts into an array of Text objects
@@ -36,13 +41,17 @@ class AnimalPage extends StatelessWidget
   Widget _buildAnimalPage(BuildContext context)
   {
     return Scaffold(
+      backgroundColor: Colors.lightGreenAccent[100],
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(animal.commonName),
       ),
       body: Center(
         child: ListView(
           children: <Widget>[
-            Text(animal.scientificName, style: _getTextStyle(context),),
+            Text("Scientific name", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+            Text(animal.scientificName, style: _getTextStyle(context)),
+            Text("\nAnimal Facts", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             Column(children: _getAnimalFacts(context)),
           ],
         ),

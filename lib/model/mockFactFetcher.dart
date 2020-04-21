@@ -21,5 +21,10 @@ class MockFactFetcher implements IFactFetcher
   Iterable<Fact> getFactsByAnimalId(int animalId) {
     return facts.where((fact) => fact.animalId == animalId).toList();
   }
+
+  @override
+  Future<void> update() {
+    return null;
+  }
   
 }
