@@ -18,7 +18,7 @@ class Family extends StatefulWidget{
             animalList: controller.searchAnimalByClass(familyId), title: classes[familyId].toString())));
       },
       shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-      color: Colors.orange[200],
+      color: Colors.yellow[200],
     );
   }
 
