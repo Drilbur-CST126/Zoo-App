@@ -60,3 +60,9 @@ as
 SELECT *
 FROM animal.exhibits
 WHERE exhibit_id = @exhibit_id;
+
+CREATE PROC spGetEventDetails @event_id int
+as
+SELECT detail_id, event_id, CONVERT(VARCHAR(8), date, 1) as date, FORMAT(time, N'hh:mm tt') as time, duration, description
+FROM calendar.details
+WHERE event_id = @event_id;
