@@ -1,4 +1,4 @@
-USE ZooCompanion;
+
 
 --DROP SCHEMA IF EXISTS animal;
 
@@ -9,24 +9,15 @@ DROP TABLE IF EXISTS animal.classes;
 
 CREATE TABLE animal.classes (
 	class_id	INT	PRIMARY KEY	NOT NULL IDENTITY,
-	name		TEXT	NOT NULL
+	name		VARCHAR(60) NOT NULL
 	);
-
---Origins (NOT BEING USED CURRENTLY)
-/*DROP TABLE IF EXISTS animal.origins;
-
-CREATE TABLE origins (
-	origin_id	INT	PRIMARY KEY	NOT NULL IDENTITY,
-	region		TEXT	NOT NULL,
-	description	TEXT
-	);*/
 
 --Exhibits
 DROP TABLE IF EXISTS animal.exhibits;
 
 CREATE TABLE animal.exhibits (
 	exhibit_id	INT	PRIMARY KEY	NOT NULL IDENTITY,
-	name		TEXT	NOT NULL,
+	name		VARCHAR(60)	NOT NULL,
 	description	TEXT
 	);
 	
@@ -35,10 +26,10 @@ DROP TABLE IF EXISTS animal.animals;
 
 CREATE TABLE animal.animals (
 	animal_id		INT	PRIMARY KEY	NOT NULL IDENTITY,
-	common_name		TEXT	NOT NULL,
-	scientific_name	TEXT	NOT NULL,
+	common_name		VARCHAR(60)	NOT NULL,
+	scientific_name		VARCHAR(60)	NOT NULL,
 	qr_code			BINARY,
-	tags			TEXT,
+	tags			VARCHAR(250),
 	class_id		INT
 		REFERENCES animal.classes (class_id),
 	exhibit_id		INT
@@ -50,7 +41,7 @@ DROP TABLE IF EXISTS animal.facts;
 
 CREATE TABLE animal.facts (
 	fact_id		INT	PRIMARY KEY	NOT NULL IDENTITY,
-	fact		TEXT	NOT NULL,
+	fact		VARCHAR(MAX)	NOT NULL,
 	animal_id	INT
 		REFERENCES animal.animals (animal_id)
 	);
@@ -60,20 +51,19 @@ DROP TABLE IF EXISTS animal.pictures;
 
 CREATE TABLE animal.pictures (
 	picture_id		INT	PRIMARY KEY	NOT NULL IDENTITY,
-	file_name		TEXT	NOT NULL,
-	picture_file	BINARY	NOT NULL,
+	file_name		VARCHAR(60)	NOT NULL,
+	picture_url		VARCHAR(MAX)	NOT NULL,
 	animal_id		INT
 		REFERENCES animal.animals (animal_id)
 	);
-
 
 --Sounds
 DROP TABLE IF EXISTS animal.sounds;
 
 CREATE TABLE animal.sounds (
 	sound_id	INT	PRIMARY KEY	NOT NULL IDENTITY,
-	file_name	TEXT	NOT NULL,
-	sound_file	BINARY	NOT NULL,
+	file_name	VARCHAR(60)	NOT NULL,
+	sound_url	VARCHAR(MAX)	NOT NULL,
 	animal_id	INT
 		REFERENCES animal.animals (animal_id)
 	);

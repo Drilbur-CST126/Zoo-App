@@ -16,7 +16,7 @@ namespace AnimalDataAccess
     {
         public int picture_id { get; set; }
         public string file_name { get; set; }
-        public byte[] picture_file { get; set; }
+        public string picture_url { get; set; }
         public Nullable<int> animal_id { get; set; }
     
         public virtual animals animals { get; set; }
