@@ -1,0 +1,4 @@
+To get to the DbContext and disable Lazy Loading
+___DataModel.edmx =>
+  ___DataModel.Context.tt =>
+    ___DataModel.Context.cs
