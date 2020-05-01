@@ -76,18 +76,18 @@ Widget _getZooInfoPage(WidgetTester tester)
   return app;
 }
 
-Widget _getMapPage(WidgetTester tester)
-{
-  Widget app = MaterialApp(
-    title: 'Flutter Demo',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-    ),
-    home: MapPage(),
-  );
+// Widget _getMapPage(WidgetTester tester)
+// {
+//   Widget app = MaterialApp(
+//     title: 'Flutter Demo',
+//     theme: ThemeData(
+//       primarySwatch: Colors.blue,
+//     ),
+//     home: MapPage(),
+//   );
 
-  return app;
-}
+//   return app;
+// }
 
 testDrawer()
 {
@@ -348,18 +348,18 @@ void testExplore() {
   });
 }
 
-void testMapPage() {
-  testWidgets("Zoo Map Page Contains PDFViewerScaffold", (WidgetTester tester) async
-  {
-    await tester.pumpWidget(_getMapPage(tester));
-    await tester.pumpAndSettle();
+// void testMapPage() {
+//   testWidgets("Zoo Map Page Contains PDFViewerScaffold", (WidgetTester tester) async
+//   {
+//     await tester.pumpWidget(_getMapPage(tester));
+//     await tester.pumpAndSettle();
 
-    expect(find.byType(PDFViewerScaffold), findsOneWidget);
-  });
+//     expect(find.byType(PDFViewerScaffold), findsOneWidget);
+//   });
 
-  // I'd write more tests for our PDFViewerScaffold, making sure the file loads and such, but
-  // the library we are using has seemingly no external means of detecting a failed load of the PDF
-}
+//   // I'd write more tests for our PDFViewerScaffold, making sure the file loads and such, but
+//   // the library we are using has seemingly no external means of detecting a failed load of the PDF
+// }
 
 void main() {
   // Example
