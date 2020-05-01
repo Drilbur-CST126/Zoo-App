@@ -69,7 +69,6 @@ class DbAnimalFetcher implements IAnimalFetcher
   }
 
   // This function will return a list of unique values for Exhibit_id within the database for all animals
-  // TODO: replace with more efficient function. Perhaps one that touches that part the database directly.
   @override
   List<int> getExhibitIds() {
     var animals = getAllAnimals();
@@ -86,7 +85,6 @@ class DbAnimalFetcher implements IAnimalFetcher
 
 
   // This function will return a list of unique values for class_id within the database for all animals
-  // TODO: replace with more efficient function. Perhaps one that touches that part of database directly.
   @override
   List<int> getClassIds() {
     var animals = getAllAnimals();

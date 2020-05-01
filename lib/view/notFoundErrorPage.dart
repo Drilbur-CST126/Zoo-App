@@ -15,7 +15,6 @@ class NotFoundErrorPage extends StatelessWidget
       body: Column(
         children: <Widget>[
           Text("Our search has gone cold on this one, try another page!"),
-          // TODO: I am not certain if this image is copyrighted or not?
           Image(image: AssetImage("assets/penguin_lost.png"),),
           Text("If this problem persists, please contact an administrator."),
         ],

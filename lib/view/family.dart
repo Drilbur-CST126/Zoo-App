@@ -4,7 +4,7 @@ import 'package:zoo_app/view/animalList.dart';
 
 class Family extends StatefulWidget{
   Family({Key key, @required this.controller, @required this.classes}) : super(key: key);
-  Map<int, String> classes;
+  final Map<int, String> classes;
   final IControllerView controller;
 
   Widget _buttonMaker(BuildContext context, int familyId)
