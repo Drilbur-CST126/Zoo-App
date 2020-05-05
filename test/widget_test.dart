@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zoomable_image/zoomable_image.dart';
+import 'package:zoo_app/zoomableImage.dart';
 
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
