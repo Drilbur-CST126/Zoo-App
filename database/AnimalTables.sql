@@ -28,7 +28,6 @@ CREATE TABLE animal.animals (
 	animal_id		INT	PRIMARY KEY	NOT NULL IDENTITY,
 	common_name		VARCHAR(60)	NOT NULL,
 	scientific_name		VARCHAR(60)	NOT NULL,
-	qr_code			BINARY,
 	tags			VARCHAR(250),
 	class_id		INT
 		REFERENCES animal.classes (class_id),
