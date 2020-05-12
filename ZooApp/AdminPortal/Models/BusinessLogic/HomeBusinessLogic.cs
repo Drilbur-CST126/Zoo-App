@@ -154,8 +154,8 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             try
             {
                 // Query.  
-                string query = "EXEC spCheckAdminCred @username = '" + username + "', " 
-                                +   "@password = '" + password + "';";
+                string query = "EXEC spCheckAdminCred @username = '" + username + "', "
+                                + "@password = '" + password + "';";
 
                 // Execute.  
                 int result = DAL.getCount(query);
@@ -227,6 +227,24 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 exhibit.Description = (row["description"]).ToString();
 
                 return exhibit;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetEvents()
+        {
+            DataTable events;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetEvents;";
+
+                // Execute. 
+                return events = DAL.getTable(query);
             }
             catch (Exception ex)
             {

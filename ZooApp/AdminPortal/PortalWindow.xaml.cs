@@ -29,6 +29,7 @@ namespace AdminPortal
         private readonly IHomeBusinessLogic HomeBusinessLogic;
         private int adminId = 0;
         private int exhibitId = 0;
+        private int eventId = 0;
 
         public PortalWindow()
         {
@@ -36,6 +37,7 @@ namespace AdminPortal
             InitializeComponent();
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
             tblExhibitListing.DataContext = HomeBusinessLogic.GetExhibits();
+            tblEventListing.DataContext = HomeBusinessLogic.GetEvents();
             viewModel = new PortalWindowViewModel(HomeBusinessLogic);
         }
 
@@ -120,6 +122,30 @@ namespace AdminPortal
             }
         }
 
+        private void tblEventListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = tblEventListing.SelectedItem;
+                if (item == null)
+                {
+                    eventId = 0;
+                }
+                else
+                {
+                    string ID = (tblEventListing.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    eventId = Convert.ToInt32(ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void tblExhibitListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -193,7 +219,7 @@ namespace AdminPortal
             this.Close();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void btnEditExhibit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -232,6 +258,22 @@ namespace AdminPortal
                 // Display Message  
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void btnEditEvent_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAddNewEvent_Click(object sender, RoutedEventArgs e)
+        {
+            // Open Add Event Window
+            AddEditEvent form = new AddEditEvent();
+            form.Show();
+
+
+            // Close this window
+            this.Close();
         }
     }
 }

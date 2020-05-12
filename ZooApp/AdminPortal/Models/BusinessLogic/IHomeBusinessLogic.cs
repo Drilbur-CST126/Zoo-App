@@ -16,6 +16,7 @@ namespace AdminPortal.Models.BusinessLogic
         bool CheckAdminCredentials(string username, string password);
         DataTable GetAdmins();
         DataTable GetExhibits();
+        DataTable GetEvents();
         ListedExhibit GetExhibit(int exhibitId);
 
     }

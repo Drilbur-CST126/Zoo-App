@@ -63,6 +63,14 @@ WHERE exhibit_id = @exhibit_id;
 
 CREATE PROC spGetEventDetails @event_id int
 as
-SELECT detail_id, event_id, CONVERT(VARCHAR(8), date, 1) as date, FORMAT(time, N'hh:mm tt') as time, duration, description
+SELECT detail_id as ID, CONVERT(VARCHAR(8), date, 1) as Date, FORMAT(time, N'hh:mm tt') as Time, duration as Duration, description as Description
 FROM calendar.details
 WHERE event_id = @event_id;
+
+CREATE PROC spGetEvents
+as
+select e.event_id as ID, e.title as Title, convert(varchar(8), min(d.date), 1) as 'Start Date', convert(varchar(8), max(d.date), 1) as 'End Date'
+from calendar.events as e
+left join calendar.details as d
+on e.event_id = d.event_id
+group by e.event_id, e.title;
