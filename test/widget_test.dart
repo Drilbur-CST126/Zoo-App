@@ -90,6 +90,19 @@ Widget _getMapPage(WidgetTester tester)
   return app;
 }
 
+Widget _getCalendarPage(WidgetTester tester)
+{
+  Widget app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: CalendarPage(),
+  );
+
+  return app;
+}
+
 testDrawer()
 {
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
@@ -367,7 +380,7 @@ void testMap()
 void testCalendar() {
   testWidgets("Calendar can be created", (WidgetTester tester) async
   {
-    await tester.pumpWidget(CalendarPage());
+    await tester.pumpWidget(_getCalendarPage(tester));
     await tester.pumpAndSettle();
 
     expect(find.byType(Column), findsWidgets);
