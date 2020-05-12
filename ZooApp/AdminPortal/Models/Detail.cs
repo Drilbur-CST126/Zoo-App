@@ -19,6 +19,7 @@ namespace AdminPortal.Models
 
     public class ListedDetail
     {
+        public int EventId { get; set; }
         public string Title { get; set; }
         public int DetailID { get; set; }
         public string Date { get; set; }

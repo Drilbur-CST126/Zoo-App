@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AdminPortal.HelperCode.Common;
+using AdminPortal.Models.BusinessLogic.HelperCode.Common;
+using AdminPortal.Models;
+using AdminPortal.Models.BusinessLogic;
+using AdminPortal.ViewModels;
 
 namespace AdminPortal
 {
@@ -19,12 +25,20 @@ namespace AdminPortal
     /// </summary>
     public partial class AddEditEvent : Window
     {
+        //AddEditEventViewModel AddEditExhibitViewModel = new AddEditEventViewModel();
+
         public AddEditEvent()
         {
             InitializeComponent();
         }
 
-        private void txtEventDetails_TextChanged(object sender, TextChangedEventArgs e)
+        public AddEditEvent(int eventId)
+        {
+            InitializeComponent();
+            //tblDetailListing.DataContext = HomeBusinessLogic.GetEventDetails(eventId);
+        }
+
+        private void tblDetailListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

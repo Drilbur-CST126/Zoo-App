@@ -9,7 +9,7 @@
     <Grid HorizontalAlignment="Left" Width="541" Margin="0,0,0,12">
         <TextBox x:Name="txtEventTitle" HorizontalAlignment="Left" Height="23" Margin="22,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
         <Label x:Name="lblEventTitle" Content="Title:" HorizontalAlignment="Left" Margin="22,62,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtEventDetails" HorizontalAlignment="Left" Height="152" Margin="22,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495" VerticalScrollBarVisibility="Auto" TextChanged="txtEventDetails_TextChanged"/>
+        <DataGrid x:Name="tblDetailListing" SelectionMode="Single" HorizontalAlignment="Left" Height="152" Margin="22,142,0,0" VerticalAlignment="Top" Width="495" ItemsSource="{Binding}" IsReadOnly="True" SelectionChanged="tblDetailListing_SelectionChanged"/>
         <Label x:Name="lblDetails" Content="Details:" HorizontalAlignment="Left" Margin="22,116,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEventID" Content="ID:" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtExhibitID" HorizontalAlignment="Left" Height="23" Margin="79,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>

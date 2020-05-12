@@ -39,6 +39,27 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             else return false;
         }
 
+        internal bool AddNewEvent(string title)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spAddNewEvent " +
+                               "@name = '" + title + "', " + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool AddNewAdmin(string username, string firstname, string lastname, string email, string password)
         {
             try
@@ -72,6 +93,28 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 string query = "EXEC spAddNewExhibit " +
                                "@name = '" + name + "', " +
                                "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool EditEvent(int eventId, string title)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spEditEvent " +
+                               "@event_id = '" + eventId + "', " +
+                               "@title = '" + title + "';";
 
                 // Execute.  
                 int result = DAL.executeQuery(query);
@@ -252,5 +295,22 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
+        public DataTable GetEventDetails(int eventId)
+        {
+            DataTable details;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetEventDetails @event_id = '" + eventId + "';";
+
+                // Execute. 
+                return details = DAL.getTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
