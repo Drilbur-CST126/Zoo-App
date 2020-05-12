@@ -27,12 +27,15 @@ namespace AdminPortal
     {
         private PortalWindowViewModel viewModel;
         private readonly IHomeBusinessLogic HomeBusinessLogic;
+        private int adminId = 0;
+        private int exhibitId = 0;
 
         public PortalWindow()
         {
             HomeBusinessLogic = new HomeBusinessLogic();
             InitializeComponent();
             tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
+            tblExhibitListing.DataContext = HomeBusinessLogic.GetExhibits();
             viewModel = new PortalWindowViewModel(HomeBusinessLogic);
         }
 
@@ -47,48 +50,20 @@ namespace AdminPortal
 
         private void btnAddNewAdmin_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var admin = new Admin
-                {
-                    Username = this.txtUsername.Text,
-                    FirstName = this.txtFirstName.Text,
-                    LastName = this.txtLastName.Text,
-                    Email = this.txtEmail.Text
-                };
-                // Initialization.  
-                string confirm_email = this.txtConfirmEmail.Text;
-                string password = this.txtPassword.Password;
-                string confirm_password = this.txtConfirmPassword.Password;
+            // Open Add Admin Window
+            AddEditAdmin form = new AddEditAdmin();
+            form.Show();
 
-                var successful = viewModel.AddNewAdmin(admin, password, confirm_email, confirm_password);
-                if (!successful) return;
-
-                txtUsername.Clear();
-                txtFirstName.Clear();
-                txtLastName.Clear();
-                txtEmail.Clear();
-                txtConfirmEmail.Clear();
-                txtPassword.Clear();
-                txtConfirmPassword.Clear();
-                // Refresh AdminListing
-                tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-
-                // Display Message  
-                MessageBox.Show("Something goes wrong, Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            // Close this window
+            this.Close();
         }
 
-        /*
-         TODO: Finish delete implementation
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+
+        // Delete implementation
+        private void btnDeleteAdmin_Click(object sender, RoutedEventArgs e)
         {
             try
-            { 
+            {
                 if (adminId == 0)
                 {
                     MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -100,6 +75,8 @@ namespace AdminPortal
                     {
                         // Display Message  
                         MessageBox.Show("Admin deleted.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // tblAdminListing.SelectedIndex = 0;
+                        tblAdminListing.DataContext = HomeBusinessLogic.GetAdmins();
                         return;
                     }
                     else
@@ -123,8 +100,16 @@ namespace AdminPortal
         {
             try
             {
-                ListedAdmin admin = tblAdminListing.SelectedItem as ListedAdmin;
-                adminId = admin.AdminId;
+                object item = tblAdminListing.SelectedItem;
+                if (item == null)
+                {
+                    adminId = 0;
+                }
+                else
+                {
+                    string ID = (tblAdminListing.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    adminId = Convert.ToInt32(ID);
+                }
             }
             catch (Exception ex)
             {
@@ -134,6 +119,119 @@ namespace AdminPortal
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        */
+
+        private void tblExhibitListing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                object item = tblExhibitListing.SelectedItem;
+                if (item == null)
+                {
+                    exhibitId = 0;
+                }
+                else
+                {
+                    string ID = (tblExhibitListing.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    exhibitId = Convert.ToInt32(ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnDeleteExhibit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (exhibitId == 0)
+                {
+                    MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // Execution.
+                    if (HomeBusinessLogic.DeleteExhibit(exhibitId))
+                    {
+                        // Display Message  
+                        MessageBox.Show("Exhibit deleted.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // tblAdminListing.SelectedIndex = 0;
+                        tblExhibitListing.DataContext = HomeBusinessLogic.GetExhibits();
+                        return;
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Could not delete exhibit! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void btnAddNewExhibit_Click(object sender, RoutedEventArgs e)
+        {
+            // Open Add Exhibit Window
+            AddEditExhibit form = new AddEditExhibit();
+            form.Show();
+
+
+            // Close this window
+            this.Close();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (exhibitId == 0)
+                {
+                    MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // Execution.
+                    if (exhibitId != 0)
+                    {
+                        // Get info from Exhibit
+                        ListedExhibit exhibit = HomeBusinessLogic.GetExhibit(exhibitId);
+
+                        // Open AddEditExhibit with exhibit info
+                        AddEditExhibit editExhibit = new AddEditExhibit(exhibit);
+                        editExhibit.Show();
+
+                        // Close this window
+                        this.Close();
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Could not edit exhibit! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

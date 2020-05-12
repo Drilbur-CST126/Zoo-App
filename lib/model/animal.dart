@@ -9,6 +9,13 @@ class Animal
   String tags;
   int classid;
   int exhibitid;
+  List<String> pictureURL;
 
-  Animal(this.animalId, this.commonName, this.scientificName, this.classid, this.exhibitid, [this.tags]);
+  Animal(this.animalId, this.commonName, this.scientificName, this.classid, this.exhibitid, [this.tags = "", this.pictureURL])
+  {
+    if (pictureURL == null)
+    {
+      pictureURL = List<String>();
+    }
+  }
 }

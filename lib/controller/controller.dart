@@ -30,7 +30,7 @@ class Controller implements IControllerView
 
   @override
   List<Fact> getAllFactsForAnimal(int animalId) {
-    return model.factFetcher.getFactsByAnimalId(animalId);
+    return model.factFetcher.getFactsByAnimalId(animalId).toList();
   }
 
   @override
@@ -62,6 +62,25 @@ class Controller implements IControllerView
   Future<bool> updateAnimals() async {
     try {
       await model.animalFetcher.update();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> updateFacts() async {
+    try {
+      await model.factFetcher.update();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> updatePhotos() async {
+    try {
+      await model.updatePhotos();
       return true;
     } catch (e) {
       return false;

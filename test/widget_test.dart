@@ -7,6 +7,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zoo_app/zoomableImage.dart';
+import 'package:zoo_app/view/mapPage.dart';
+import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -73,6 +76,33 @@ Widget _getZooInfoPage(WidgetTester tester)
 
   return app;
 }
+
+Widget _getMapPage(WidgetTester tester)
+{
+  Widget app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: MapPage(),
+  );
+
+  return app;
+}
+
+Widget _getCalendarPage(WidgetTester tester)
+{
+  Widget app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: CalendarPage(),
+  );
+
+  return app;
+}
+
 testDrawer()
 {
   testWidgets("Drawer containes ListTile contents", (WidgetTester tester) async
@@ -323,7 +353,7 @@ void testExplore() {
     expect(find.byType(RichText), findsWidgets);
   });
 
-  testWidgets("Zoo Info Page Containes Button To Purchase Tickets", (WidgetTester tester) async
+  testWidgets("Zoo Info Page Contains Button To Purchase Tickets", (WidgetTester tester) async
   {
     await tester.pumpWidget(_getZooInfoPage(tester));
     await tester.pumpAndSettle();
@@ -332,27 +362,36 @@ void testExplore() {
   });
 }
 
+void testMap() 
+{
+  testWidgets("Map can be created", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getMapPage(tester));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ZoomableImage), findsOneWidget);
+  });
+
+  // There isn't much further testing that can be done without tearing apart the ZoomableImage, 
+  // since there is no way to detect the current size or position of the image through the
+  // ZoomableImage itself
+}
+
+void testCalendar() {
+  testWidgets("Calendar can be created", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getCalendarPage(tester));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(Column), findsWidgets);
+  });
+}
+
 void main() {
-  // Example
-  /*testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(ZooApp(null));
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });*/
-
   testAnimalPage();
   testDrawer();
   testSearch();
   testExplore();
+  testMap();
+  testCalendar();
 }

@@ -11,27 +11,18 @@
         <TabControl HorizontalAlignment="Left" Height="292" Margin="10,41,0,0" VerticalAlignment="Top" Width="577">
             <TabItem Header="Admin Listing">
                 <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
-                    <DataGrid x:Name="tblAdminListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}"/>
+                    <DataGrid x:Name="tblAdminListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblAdminListing_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnDeleteAdmin" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteAdmin_Click"/>
+                    <Button x:Name="btnAddAdmin" Content="Add New Admin" HorizontalAlignment="Left" Margin="384,234,0,0" VerticalAlignment="Top" Width="100" Click="btnAddNewAdmin_Click"/>
                 </Grid>
                 <!--TODO: add ability to edit an admin's information-->
             </TabItem>
-            <TabItem Header="Add Admin">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-1,0" Height="271" VerticalAlignment="Top">
-                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" TabIndex="1"/>
-                    <Label Content="Username:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="10,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" TabIndex="4"/>
-                    <Label Content="Email Address:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="10,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" TabIndex="2"/>
-                    <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="23" Margin="309,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" TabIndex="3"/>
-                    <Label Content="Last Name:" HorizontalAlignment="Left" Margin="309,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <Label Content="Password:" HorizontalAlignment="Left" Margin="10,172,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <TextBox x:Name="txtConfirmEmail" HorizontalAlignment="Left" Height="23" Margin="309,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="249" TabIndex="5"/>
-                    <Label Content="Confirm Email Address:" HorizontalAlignment="Left" Margin="309,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <Label Content="Confirm Password:" HorizontalAlignment="Left" Margin="309,172,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.298,-0.954"/>
-                    <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="10,203,0,0" VerticalAlignment="Top" Width="249" TabIndex="6"/>
-                    <PasswordBox x:Name="txtConfirmPassword" HorizontalAlignment="Left" Height="23" Margin="309,203,0,0" VerticalAlignment="Top" Width="249" TabIndex="7"/>
-                    <Button x:Name="btnAddNewAdmin" Content="Add New Admin" HorizontalAlignment="Left" Margin="438,237,0,0" VerticalAlignment="Top" Width="120" Click="btnAddNewAdmin_Click"/>
+            <TabItem Header="Exhibits Listing">
+                <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
+                    <DataGrid x:Name="tblExhibitListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblExhibitListing_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnDeleteExhibit" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteExhibit_Click"/>
+                    <Button x:Name="btnAddNewExhibit" Content="Add New Exhibit" HorizontalAlignment="Left" Margin="388,234,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.836,0.376" Click="btnAddNewExhibit_Click"/>
+                    <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="308,234,0,0" VerticalAlignment="Top" Width="75" Click="btnEdit_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:zoo_app/Calendar.dart';
+import 'package:zoo_app/model/dbFactFetcher.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/DrawerItem.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -8,6 +9,7 @@ import 'package:zoo_app/MissingPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
+import 'package:zoo_app/view/mapPage.dart';
 
 import 'ZooInformation/ZooInfo.dart';
 import 'controller/controller.dart';
@@ -19,7 +21,7 @@ import 'view/app.dart';
 void main() async {
   // This new main creates the model, controller and view of our Model-View-Controller design pattern.
 
-  var model = Model(DbAnimalFetcher(), MockFactFetcher());
+  var model = Model(DbAnimalFetcher(), DbFactFetcher());
   var controller = Controller(model);
   var zooApp = MyApp(controller);
   runApp(zooApp);
@@ -72,6 +74,9 @@ class _MyHomePageState extends State<MyHomePage> {
     switch(pos){
       case 0:
         return new HomePage();
+        break;
+      case 1:
+        return new MapPage();
         break;
       case 2:
         return new ExploreBy(controller: widget.controller);

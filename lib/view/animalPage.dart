@@ -1,7 +1,9 @@
 // File created by Jordan Clark
 
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zoo_app/HomePage.dart';
 import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/view/notFoundErrorPage.dart';
@@ -18,7 +20,11 @@ class AnimalPage extends StatelessWidget
   // This function gets the text style for the page, it's factored out into a function in the interest of DRY code
   TextStyle _getTextStyle(BuildContext context)
   {
-    return Theme.of(context).textTheme.body2;
+    //return Theme.of(context).textTheme.body2;
+    return TextStyle(
+      color: Colors.purple[700],
+      decoration: TextDecoration.none,
+    );
   }
 
   // This gets all of the animal facts into an array of Text objects
@@ -32,18 +38,48 @@ class AnimalPage extends StatelessWidget
     return factsText;
   }
 
+  Container _buildImageCarasoul(){
+    return Container(
+      height: 800,
+      child: Carousel(
+        boxFit: BoxFit.fill,
+        images: _buildImageList(),
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 2000),
+        autoplay: false,
+        indicatorBgPadding: 0.25,
+        dotSize: .5,
+        dotColor: Colors.transparent,
+        dotBgColor: Colors.white70,
+      ),
+    );
+  }
+
+  List<Image> _buildImageList(){
+    List<Image> images = new List<Image>();
+    for (var imageurl in animal.pictureURL){
+      images.add(Image.network(imageurl));
+    }
+    return images;
+  }
+
   // This is the main animal page. Factored out into a separate method to make the build method cleaner.
   Widget _buildAnimalPage(BuildContext context)
   {
     return Scaffold(
+      backgroundColor: Colors.lightGreenAccent[100],
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text(animal.commonName),
       ),
       body: Center(
         child: ListView(
           children: <Widget>[
-            Text(animal.scientificName, style: _getTextStyle(context),),
+            Text("Scientific name", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+            Text(animal.scientificName, style: _getTextStyle(context)),
+            Text("\nAnimal Facts", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             Column(children: _getAnimalFacts(context)),
+            _buildImageCarasoul(),
           ],
         ),
       ),

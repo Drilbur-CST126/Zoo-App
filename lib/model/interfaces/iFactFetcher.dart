@@ -7,4 +7,5 @@ abstract class IFactFetcher
 {
   Fact getFactByFactId(int factId);
   Iterable<Fact> getFactsByAnimalId(int animalId);
+  Future<void> update();
 }

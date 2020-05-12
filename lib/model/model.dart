@@ -3,6 +3,9 @@ import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:zoo_app/model/interfaces/iFactFetcher.dart';
 import 'package:zoo_app/model/mockAnimalFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 import 'fact.dart';
 
@@ -25,5 +28,24 @@ class Model
     var mockFactFetcher = MockFactFetcher();
     mockFactFetcher.facts = facts;
     return Model(mockAnimalFetcher, mockFactFetcher);
+  }
+
+  Future<void> updatePhotos() async {
+    final response =
+    await http.get('https://zooappwebapi.azurewebsites.net/api/picture', headers: {"Accept": "application/json"});
+
+    if (response.statusCode == 200) {
+      decodePictureResponses(json.decode(response.body));
+    } else {
+      throw Exception("Failed to connect to database.");
+    }
+  }
+
+  // This function gets all animals from the json list and puts them in 'animals'.
+  void decodePictureResponses(List<dynamic> json) {
+    List<Animal> animals = animalFetcher.getAllAnimals();
+    for (var picture in json){
+      animals.firstWhere((element) => element.animalId == picture["animal_id"]).pictureURL.add(picture["picture_url"]);
+    }
   }
 }
