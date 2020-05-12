@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zoo_app/zoomableImage.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:zoo_app/view/mapPage.dart';
 import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
@@ -22,7 +22,6 @@ import 'package:zoo_app/view/app.dart';
 import 'package:zoo_app/main.dart';
 import 'package:zoo_app/view/exhibits.dart';
 import 'package:zoo_app/view/family.dart';
-import 'package:zoo_app/view/mapPage.dart';
 import 'package:zoo_app/view/notFoundErrorPage.dart';
 
 Widget _getAnimalListPage(WidgetTester tester, Model model)
@@ -350,13 +349,28 @@ void testExplore() {
   });
 }
 
+void testMap() 
+{
+  testWidgets("Map can be created", (WidgetTester tester) async
+  {
+    await tester.pumpWidget(_getMapPage(tester));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ZoomableImage), findsOneWidget);
+  });
+
+  // There isn't much further testing that can be done without tearing apart the ZoomableImage, 
+  // since there is no way to detect the current size or position of the image through the
+  // ZoomableImage itself
+}
+
 void testCalendar() {
   testWidgets("Calendar can be created", (WidgetTester tester) async
   {
     await tester.pumpWidget(CalendarPage());
     await tester.pumpAndSettle();
 
-    expect(find.byType(Column), findsOneWidget);
+    expect(find.byType(Column), findsWidgets);
   });
 }
 
@@ -365,5 +379,6 @@ void main() {
   testDrawer();
   testSearch();
   testExplore();
+  testMap();
   testCalendar();
 }
