@@ -103,6 +103,7 @@ class AnimalListPageState extends State<AnimalListPage>
           future: () async {
             await widget.controller.updateAnimals();
             await widget.controller.updateFacts();
+            await widget.controller.updatePhotos();
             return true;
           }(),
           builder: _createPage

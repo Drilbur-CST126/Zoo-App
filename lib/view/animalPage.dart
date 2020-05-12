@@ -60,6 +60,7 @@ class AnimalPage extends StatelessWidget
     for (var imageurl in animal.pictureURL){
       images.add(Image.network(imageurl));
     }
+    return images;
   }
 
   // This is the main animal page. Factored out into a separate method to make the build method cleaner.

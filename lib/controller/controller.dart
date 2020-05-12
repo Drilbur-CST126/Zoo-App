@@ -77,4 +77,13 @@ class Controller implements IControllerView
       return false;
     }
   }
+
+  Future<bool> updatePhotos() async {
+    try {
+      await model.updatePhotos();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }

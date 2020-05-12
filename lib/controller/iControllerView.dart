@@ -13,6 +13,7 @@ abstract class IControllerView
   Iterable<Animal> getAllAnimals({bool Function(Animal) where});
   Future<bool> updateAnimals();
   Future<bool> updateFacts();
+  Future<bool> updatePhotos();
   Iterable<Animal> searchAnimals(String searchTerm);
   Iterable<Animal> searchAnimalByExhibit(int requestedRegionId);
   Iterable<Animal> searchAnimalByClass(int requestedClassId);
