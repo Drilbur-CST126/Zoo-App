@@ -74,3 +74,15 @@ from calendar.events as e
 left join calendar.details as d
 on e.event_id = d.event_id
 group by e.event_id, e.title;
+
+CREATE PROC spEditEvent @event_id int, @title varchar(250)
+as
+UPDATE calendar.events
+SET title = title
+WHERE event_id = @event_id;
+
+
+CREATE PROC spAddNewEvent @title varchar(250)
+as
+INSERT INTO calendar.events (title)
+VALUES (@title);
