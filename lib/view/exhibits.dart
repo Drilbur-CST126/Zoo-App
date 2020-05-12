@@ -6,7 +6,7 @@ class Exhibits extends StatefulWidget{
   Exhibits({Key key, @required this.controller, @required this.exhibits}) : super(key: key);
 
   final IControllerView controller;
-  Map<int, String> exhibits;
+  final Map<int, String> exhibits;
 
   Widget _buttonMaker(BuildContext context, int exhibitid)
   {
