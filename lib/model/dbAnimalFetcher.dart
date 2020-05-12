@@ -117,7 +117,7 @@ class DbAnimalFetcher implements IAnimalFetcher
   void decodeResponses(List<dynamic> json) {
     var newAnimals = List<Animal>();
     for (var jsonAnimal in json) {
-      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"]);
+      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"], new List<String>());
       newAnimals.add(animal);
     }
     animals = newAnimals;
