@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 class CalendarEventFetcher
 {
   List<Event> events = List();
-  static const String eventurl = "https://zoocompanionwebapi.azurewebsites.net/api/event";
-  static const String detailurl = "https://zoocompanionwebapi.azurewebsites.net/api/detail";
+  static const String eventurl = "https://zooappwebapi.azurewebsites.net/api/event";
+  static const String detailurl = "https://zooappwebapi.azurewebsites.net/api/detail";
 
   static Future<CalendarEventFetcher> create() async {
     var fetcher = CalendarEventFetcher();

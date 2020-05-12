@@ -1,5 +1,6 @@
 // File created by Jordan Clark
 
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -37,6 +38,30 @@ class AnimalPage extends StatelessWidget
     return factsText;
   }
 
+  Container _buildImageCarasoul(){
+    return Container(
+      height: 800,
+      child: Carousel(
+        boxFit: BoxFit.fill,
+        images: _buildImageList(),
+        animationCurve: Curves.fastOutSlowIn,
+        animationDuration: Duration(milliseconds: 2000),
+        autoplay: false,
+        indicatorBgPadding: 0.25,
+        dotSize: .5,
+        dotColor: Colors.transparent,
+        dotBgColor: Colors.white70,
+      ),
+    );
+  }
+
+  List<Image> _buildImageList(){
+    List<Image> images = new List<Image>();
+    for (var imageurl in animal.pictureURL){
+      images.add(Image.network(imageurl));
+    }
+  }
+
   // This is the main animal page. Factored out into a separate method to make the build method cleaner.
   Widget _buildAnimalPage(BuildContext context)
   {
@@ -53,6 +78,7 @@ class AnimalPage extends StatelessWidget
             Text(animal.scientificName, style: _getTextStyle(context)),
             Text("\nAnimal Facts", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             Column(children: _getAnimalFacts(context)),
+            _buildImageCarasoul(),
           ],
         ),
       ),

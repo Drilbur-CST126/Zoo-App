@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 class DbAnimalFetcher implements IAnimalFetcher
 {
   List<Animal> animals = List();
-  static const String url = "https://zoocompanionwebapi.azurewebsites.net/api/animal";
+  static const String url = "https://zooappwebapi.azurewebsites.net/api/animal";
 
   static Future<DbAnimalFetcher> create() async {
     var fetcher = DbAnimalFetcher();
@@ -115,7 +115,7 @@ class DbAnimalFetcher implements IAnimalFetcher
   void decodeResponses(List<dynamic> json) {
     var newAnimals = List<Animal>();
     for (var jsonAnimal in json) {
-      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"]);
+      var animal = Animal(jsonAnimal["animal_id"], jsonAnimal["common_name"], jsonAnimal["scientific_name"], jsonAnimal["class_id"], jsonAnimal["exhibit_id"], jsonAnimal["tags"], new List<String>());
       newAnimals.add(animal);
     }
     animals = newAnimals;
