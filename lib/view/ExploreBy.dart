@@ -21,9 +21,9 @@ class ExploreBy extends StatefulWidget {
 
 class ExploreByState extends State<ExploreBy> {
   static const String exhibitUrl =
-      "https://zoocompanionwebapi.azurewebsites.net/api/exhibit";
+      "https://zooappwebapi.azurewebsites.net/api/exhibit";
   static const String classUrl =
-      "https://zoocompanionwebapi.azurewebsites.net/api/class";
+      "https://zooappwebapi.azurewebsites.net/api/class";
   Map<int, String> _exhibits;
   Map<int, String> _class;
 

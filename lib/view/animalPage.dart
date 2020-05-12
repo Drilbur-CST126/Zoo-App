@@ -78,7 +78,7 @@ class AnimalPage extends StatelessWidget
             Text(animal.scientificName, style: _getTextStyle(context)),
             Text("\nAnimal Facts", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
             Column(children: _getAnimalFacts(context)),
-
+            _buildImageCarasoul(),
           ],
         ),
       ),

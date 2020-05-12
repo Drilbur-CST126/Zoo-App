@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 class DbAnimalFetcher implements IAnimalFetcher
 {
   List<Animal> animals = List();
-  static const String url = "https://zoocompanionwebapi.azurewebsites.net/api/animal";
+  static const String url = "https://zooappwebapi.azurewebsites.net/api/animal";
 
   static Future<DbAnimalFetcher> create() async {
     var fetcher = DbAnimalFetcher();

@@ -17,7 +17,7 @@ class DbFactFetcher implements IFactFetcher {
   }
 
   List<Fact> facts = List();
-  static const String url = "https://zoocompanionwebapi.azurewebsites.net/api/fact";
+  static const String url = "https://zooappwebapi.azurewebsites.net/api/fact";
 
   static Future<DbFactFetcher> create() async {
     var fetcher = DbFactFetcher();
@@ -42,7 +42,7 @@ class DbFactFetcher implements IFactFetcher {
     var newFacts = List<Fact>();
     for (var jsonFact in json) {
       var fact = Fact(jsonFact["fact_id"], jsonFact["animal_id"],
-          jsonFact["fact"]);
+          jsonFact["fact1"]);
       newFacts.add(fact);
     }
     facts = newFacts;
