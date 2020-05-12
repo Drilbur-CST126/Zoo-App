@@ -1,6 +1,7 @@
 
 
 import 'package:test/test.dart';
+import 'package:zoo_app/Calendar/CalendarEventFetcher.dart';
 import 'package:zoo_app/controller/controller.dart';
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/dbAnimalFetcher.dart';
@@ -243,8 +244,33 @@ void testDbAnimalFetcher() {
   });
 }
 
+void testCalendarFetcher(){
+  test("Calendarfetcher has no events to start", (){
+    var fetcher = CalendarEventFetcher();
+
+    expect(fetcher.events.length, 0);
+  });
+  test("Calendarfetcher updates and gets events into the list", () async {
+    var fetcher = CalendarEventFetcher();
+
+    await fetcher.update();
+
+    expect(fetcher.events.length, greaterThan(0));
+  });
+  test("Calendar passes an updated list to the calling function", () async {
+    var fetcher = CalendarEventFetcher();
+
+    await fetcher.update();
+    var list = fetcher.getEvents();
+
+    expect(list.length, greaterThan(0));
+  });
+
+}
+
 main()
 {
   testMockAnimalFetcher();
   testMockFactFetcher();
+  testCalendarFetcher();
 }

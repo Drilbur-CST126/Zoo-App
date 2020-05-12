@@ -8,7 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zoo_app/zoomableImage.dart';
-
+import 'package:table_calendar/table_calendar.dart';
+import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
 import 'package:zoo_app/view/ExploreBy.dart';
 import 'package:zoo_app/HomePage.dart';
@@ -349,40 +350,20 @@ void testExplore() {
   });
 }
 
-void testMapPage() {
-  testWidgets("Zoo Map Page Contains PDFViewerScaffold", (WidgetTester tester) async
+void testCalendar() {
+  testWidgets("Calendar can be created", (WidgetTester tester) async
   {
-    await tester.pumpWidget(_getMapPage(tester));
+    await tester.pumpWidget(CalendarPage());
     await tester.pumpAndSettle();
 
-    expect(find.byType(ZoomableImage), findsOneWidget);
+    expect(find.byType(Column), findsOneWidget);
   });
-
-  // I'd write more tests for our PDFViewerScaffold, making sure the file loads and such, but
-  // the library we are using has seemingly no external means of detecting a failed load of the PDF
 }
 
 void main() {
-  // Example
-  /*testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(ZooApp(null));
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });*/
-
   testAnimalPage();
   testDrawer();
   testSearch();
   testExplore();
+  testCalendar();
 }
