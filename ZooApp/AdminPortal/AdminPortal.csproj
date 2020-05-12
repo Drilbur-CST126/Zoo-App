@@ -58,6 +58,9 @@
     <Compile Include="AddEditAdmin.xaml.cs">
       <DependentUpon>AddEditAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddEditDetail.xaml.cs">
+      <DependentUpon>AddEditDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddEditEvent.xaml.cs">
       <DependentUpon>AddEditEvent.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <DependentUpon>ZooCompanionWebApi_dbDataSet.xsd</DependentUpon>
     </Compile>
     <Page Include="AddEditAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddEditDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

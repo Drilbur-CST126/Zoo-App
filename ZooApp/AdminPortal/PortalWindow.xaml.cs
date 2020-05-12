@@ -53,8 +53,8 @@ namespace AdminPortal
         private void btnAddNewAdmin_Click(object sender, RoutedEventArgs e)
         {
             // Open Add Admin Window
-            AddEditAdmin form = new AddEditAdmin();
-            form.Show();
+            AddEditAdmin newAdmin = new AddEditAdmin();
+            newAdmin.Show();
 
             // Close this window
             this.Close();
@@ -262,6 +262,43 @@ namespace AdminPortal
 
         private void btnEditEvent_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (eventId == 0)
+                {
+                    MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // Execution.
+                    if (eventId != 0)
+                    {
+                        // Get info from Exhibit
+                        Event @event = HomeBusinessLogic.GetEvent(eventId);
+
+                        // Open AddEditExhibit with exhibit info
+                        AddEditEvent editEvent = new AddEditEvent(@event);
+                        editEvent.Show();
+
+                        // Close this window
+                        this.Close();
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Could not edit event! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 

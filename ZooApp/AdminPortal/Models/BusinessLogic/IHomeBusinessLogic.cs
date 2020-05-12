@@ -18,6 +18,6 @@ namespace AdminPortal.Models.BusinessLogic
         DataTable GetExhibits();
         DataTable GetEvents();
         ListedExhibit GetExhibit(int exhibitId);
-
+        Event GetEvent(int eventId);
     }
 }

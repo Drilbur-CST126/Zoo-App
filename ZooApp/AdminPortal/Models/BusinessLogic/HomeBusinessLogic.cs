@@ -129,6 +129,37 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
+        internal Detail GetDetail(int detailId)
+        {
+            DataTable tbl;
+            DataRow row;
+            Detail detail = new Detail();
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetDetail @detail_id = '" + detailId + "';";
+
+                // Execute. 
+                tbl = DAL.getTable(query);
+                row = tbl.Rows[0];
+
+                // Get Record.
+                detail.DetailID = Convert.ToInt32(row["detail_id"]);
+                detail.EventID = Convert.ToInt32(row["event_id"]);
+                detail.Date = (DateTime)(row["date"]);
+                detail.Time = (row["time"]).ToString();
+                detail.Description = (row["description"]).ToString();
+
+                return detail;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public bool EditExhibit(int exhibitId, string name, string description)
         {
             try
@@ -295,14 +326,41 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
-        public DataTable GetEventDetails(int eventId)
+        public Event GetEvent(int eventId)
+        {
+            DataTable tbl;
+            DataRow row;
+            Event @event = new Event();
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spGetEvent @event_id = '" + eventId + "';";
+
+                // Execute. 
+                tbl = DAL.getTable(query);
+                row = tbl.Rows[0];
+
+                // Get Record.
+                @event.EventID= Convert.ToInt32(row["event_id"]);
+                @event.Title = (row["title"]).ToString();
+
+                return @event;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetEventDetails(Event @event)
         {
             DataTable details;
 
             try
             {
                 // Query.  
-                string query = "EXEC spGetEventDetails @event_id = '" + eventId + "';";
+                string query = "EXEC spGetEventDetails @event_id = '" + @event.EventID + "';";
 
                 // Execute. 
                 return details = DAL.getTable(query);

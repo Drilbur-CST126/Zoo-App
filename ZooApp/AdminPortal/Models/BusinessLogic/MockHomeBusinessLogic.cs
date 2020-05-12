@@ -49,6 +49,11 @@ namespace AdminPortal.Models.BusinessLogic
             return new DataTable();
         }
 
+        public Event GetEvent(int eventId)
+        {
+            return new Event();
+        }
+
         public ListedExhibit GetExhibit(int exhibitId)
         {
             return new ListedExhibit();

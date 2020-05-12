@@ -32,7 +32,7 @@ namespace AdminPortal
         public AddEditExhibit(ListedExhibit exhibit)
         {
             InitializeComponent();
-            ttlAddExitExhibit.Title = "Edit Exhibit";
+            ttlAddEditExhibit.Title = "Edit Exhibit";
             txtExhibitID.Text = exhibit.ExhibitId.ToString();
             txtExhibitName.Text = exhibit.Name.ToString();
             txtExhibitDescription.Text = exhibit.Description.ToString();

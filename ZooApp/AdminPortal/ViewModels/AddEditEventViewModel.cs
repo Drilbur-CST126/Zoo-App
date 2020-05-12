@@ -13,10 +13,8 @@ namespace AdminPortal.ViewModels
     {
         HomeBusinessLogic HomeBusinessLogic = new HomeBusinessLogic();
 
-        public bool AddNewEvent(Event @event)
+        public bool AddNewEvent(string title)
         {
-            var title = @event.Title;
-
             // check for apostrophes and add one before they go into the query
             title = title.Replace("'", "''");
 
