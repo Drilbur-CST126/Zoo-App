@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zoo_app/zoomableImage.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:zoo_app/Calendar.dart';
 import 'package:zoo_app/ZooInformation/ZooInfo.dart';
