@@ -99,6 +99,32 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
+        public bool AddNewDetail(int eventId, DateTime date, string time, decimal duration, string description)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spAddNewDetail " +
+                               "@event_id = '" + eventId + "', " +
+                               "@date = '" + date + "', " +
+                               "@time = '" + time + "', " +
+                               "@duration = '" + duration + "', " +
+                               "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public bool AddNewExhibit(string name, string description)
         {
             try

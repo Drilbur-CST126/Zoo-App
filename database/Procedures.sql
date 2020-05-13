@@ -75,15 +75,10 @@ left join calendar.details as d
 on e.event_id = d.event_id
 group by e.event_id, e.title;
 
-CREATE PROC spGetEvent @event_id int
-as
-SELECT * FROM Calendar.Events
-WHERE event_id = @event_id;
-
 CREATE PROC spEditEvent @event_id int, @title varchar(250)
 as
 UPDATE calendar.events
-SET title = @title
+SET title = title
 WHERE event_id = @event_id;
 
 
@@ -92,13 +87,7 @@ as
 INSERT INTO calendar.events (title)
 VALUES (@title);
 
-CREATE PROC spGetDetail @detail_id int
+CREATE PROC spAddNewDetail @event_id int, @date datetime, @time datetime, @duration decimal, @description varchar(250)
 as
-SELECT detail_id, event_id, date, FORMAT(time, N'hh:mm tt') as time, duration, description
-FROM calendar.details
-WHERE detail_id = @detail_id;
-
-CREATE PROC spDeleteEvent @event_id int
-as
-DELETE calendar.events
-WHERE event_id = @event_id;
+INSERT INTO calendar.details (event_id, date, time, duration, description)
+VALUES (@event_id, @date, @time, @duration, @description);

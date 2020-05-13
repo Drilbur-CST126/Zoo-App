@@ -38,5 +38,39 @@ namespace AdminPortal
             btnSubmit.IsEnabled = false;
             btnSubmitEdit.IsEnabled = true;
         }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                string title = txtEventTitle.Text.ToString();
+
+                // check for apostrophes and add one before they go into the query
+                title = title.Replace("'", "''");
+
+                // Verification.
+                // Check if null or empty
+                if (string.IsNullOrEmpty(title))
+                {
+                    // Display Message  
+                    MessageBox.Show("Please give the Event a name.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ;
+                }
+                else
+                {
+                    if (HomeBusinessLogic.AddNewEvent(title))
+                    {
+                        // Display Message  
+                        MessageBox.Show("New event added.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
+            }
     }
 }
