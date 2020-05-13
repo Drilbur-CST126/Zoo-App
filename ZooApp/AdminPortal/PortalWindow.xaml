@@ -1,0 +1,41 @@
+﻿<Window x:Class="AdminPortal.PortalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminPortal"
+        mc:Ignorable="d"
+        Title="PortalWindow" Height="400" Width="607.143">
+    <Grid Margin="0,0,2,2">
+        <Label x:Name="lblWelcome" Content="Welcome!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TabControl HorizontalAlignment="Left" Height="292" Margin="10,41,0,0" VerticalAlignment="Top" Width="577">
+            <TabItem Header="Admins Listing">
+                <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
+                    <DataGrid x:Name="tblAdminListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblAdminListing_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnDeleteAdmin" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteAdmin_Click"/>
+                    <Button x:Name="btnAddAdmin" Content="Add New Admin" HorizontalAlignment="Left" Margin="384,234,0,0" VerticalAlignment="Top" Width="100" Click="btnAddNewAdmin_Click"/>
+                </Grid>
+                <!--TODO: add ability to edit an admin's information-->
+            </TabItem>
+            <TabItem Header="Events Listing">
+                <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
+                    <DataGrid x:Name="tblEventListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblEventListing_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnDeleteEvent" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteEvent_Click"/>
+                    <Button x:Name="btnAddNewEvent" Content="Add New Event" HorizontalAlignment="Left" Margin="388,234,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.836,0.376" Click="btnAddNewEvent_Click"/>
+                    <Button x:Name="btnEditEvent" Content="Edit" HorizontalAlignment="Left" Margin="308,234,0,0" VerticalAlignment="Top" Width="75" Click="btnEditEvent_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Exhibits Listing">
+                <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
+                    <DataGrid x:Name="tblExhibitListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblExhibitListing_SelectionChanged" IsReadOnly="True"/>
+                    <Button x:Name="btnDeleteExhibit" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteExhibit_Click"/>
+                    <Button x:Name="btnAddNewExhibit" Content="Add New Exhibit" HorizontalAlignment="Left" Margin="388,234,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.836,0.376" Click="btnAddNewExhibit_Click"/>
+                    <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="308,234,0,0" VerticalAlignment="Top" Width="75" Click="btnEditExhibit_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="512,338,0,0" VerticalAlignment="Top" Width="75" Click="btnClose_Click"/>
+        <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

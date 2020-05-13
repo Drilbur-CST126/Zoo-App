@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="836cb6f730df4b55a7f4dfd7efcfc4d4" Name="Diagram1">
+        <EntityTypeShape EntityType="ZooAnimalModel.animal" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.class" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.exhibit" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.fact" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.picture" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.sound" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.detail" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZooAnimalModel.event" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="ZooAnimalModel.FK__animals__class_i__7C1A6C5A" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooAnimalModel.FK__animals__exhibit__7D0E9093" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooAnimalModel.FK__facts__animal_id__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooAnimalModel.FK__pictures__animal__02C769E9" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooAnimalModel.FK__sounds__animal_i__05A3D694" ManuallyRouted="false" />
+        <AssociationConnector Association="ZooAnimalModel.FK__details__event_i__5224328E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
