@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ZooAnimalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="animals">
+          <Key>
+            <PropertyRef Name="animal_id" />
+          </Key>
+          <Property Name="animal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="common_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="scientific_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="tags" Type="varchar" MaxLength="250" />
+          <Property Name="class_id" Type="int" />
+          <Property Name="exhibit_id" Type="int" />
+        </EntityType>
+        <EntityType Name="classes">
+          <Key>
+            <PropertyRef Name="class_id" />
+          </Key>
+          <Property Name="class_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exhibits">
+          <Key>
+            <PropertyRef Name="exhibit_id" />
+          </Key>
+          <Property Name="exhibit_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="description" Type="text" />
+        </EntityType>
+        <EntityType Name="facts">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fact" Type="varchar(max)" Nullable="false" />
+          <Property Name="animal_id" Type="int" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="picture_id" />
+          </Key>
+          <Property Name="picture_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="picture_url" Type="varchar(max)" Nullable="false" />
+          <Property Name="animal_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sounds">
+          <Key>
+            <PropertyRef Name="sound_id" />
+          </Key>
+          <Property Name="sound_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file_name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="sound_url" Type="varchar(max)" Nullable="false" />
+          <Property Name="animal_id" Type="int" />
+        </EntityType>
+        <EntityType Name="details">
+          <Key>
+            <PropertyRef Name="detail_id" />
+          </Key>
+          <Property Name="detail_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="event_id" Type="int" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="duration" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="description" Type="text" />
+        </EntityType>
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__animals__class_i__7C1A6C5A">
+          <End Role="classes" Type="Self.classes" Multiplicity="0..1" />
+          <End Role="animals" Type="Self.animals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classes">
+              <PropertyRef Name="class_id" />
+            </Principal>
+            <Dependent Role="animals">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__animals__exhibit__7D0E9093">
+          <End Role="exhibits" Type="Self.exhibits" Multiplicity="0..1" />
+          <End Role="animals" Type="Self.animals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="exhibits">
+              <PropertyRef Name="exhibit_id" />
+            </Principal>
+            <Dependent Role="animals">
+              <PropertyRef Name="exhibit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__details__event_i__5224328E">
+          <End Role="events" Type="Self.events" Multiplicity="0..1" />
+          <End Role="details" Type="Self.details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="events">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="details">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__facts__animal_id__7FEAFD3E">
+          <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
+          <End Role="facts" Type="Self.facts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="facts">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pictures__animal__02C769E9">
+          <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
+          <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sounds__animal_i__05A3D694">
+          <End Role="animals" Type="Self.animals" Multiplicity="0..1" />
+          <End Role="sounds" Type="Self.sounds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="sounds">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZooAnimalModelStoreContainer">
+          <EntitySet Name="animals" EntityType="Self.animals" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="classes" EntityType="Self.classes" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="exhibits" EntityType="Self.exhibits" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="facts" EntityType="Self.facts" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="sounds" EntityType="Self.sounds" Schema="animal" store:Type="Tables" />
+          <EntitySet Name="details" EntityType="Self.details" Schema="calendar" store:Type="Tables" />
+          <EntitySet Name="events" EntityType="Self.events" Schema="calendar" store:Type="Tables" />
+          <AssociationSet Name="FK__animals__class_i__7C1A6C5A" Association="Self.FK__animals__class_i__7C1A6C5A">
+            <End Role="classes" EntitySet="classes" />
+            <End Role="animals" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__animals__exhibit__7D0E9093" Association="Self.FK__animals__exhibit__7D0E9093">
+            <End Role="exhibits" EntitySet="exhibits" />
+            <End Role="animals" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__details__event_i__5224328E" Association="Self.FK__details__event_i__5224328E">
+            <End Role="events" EntitySet="events" />
+            <End Role="details" EntitySet="details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__facts__animal_id__7FEAFD3E" Association="Self.FK__facts__animal_id__7FEAFD3E">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="facts" EntitySet="facts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pictures__animal__02C769E9" Association="Self.FK__pictures__animal__02C769E9">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sounds__animal_i__05A3D694" Association="Self.FK__sounds__animal_i__05A3D694">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="sounds" EntitySet="sounds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZooAnimalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="animal">
+          <Key>
+            <PropertyRef Name="animal_id" />
+          </Key>
+          <Property Name="animal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="common_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="scientific_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tags" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="class_id" Type="Int32" />
+          <Property Name="exhibit_id" Type="Int32" />
+          <NavigationProperty Name="class" Relationship="Self.FK__animals__class_i__7C1A6C5A" FromRole="animals" ToRole="classes" />
+          <NavigationProperty Name="exhibit" Relationship="Self.FK__animals__exhibit__7D0E9093" FromRole="animals" ToRole="exhibits" />
+          <NavigationProperty Name="facts" Relationship="Self.FK__facts__animal_id__7FEAFD3E" FromRole="animals" ToRole="facts" />
+          <NavigationProperty Name="pictures" Relationship="Self.FK__pictures__animal__02C769E9" FromRole="animals" ToRole="pictures" />
+          <NavigationProperty Name="sounds" Relationship="Self.FK__sounds__animal_i__05A3D694" FromRole="animals" ToRole="sounds" />
+        </EntityType>
+        <EntityType Name="class">
+          <Key>
+            <PropertyRef Name="class_id" />
+          </Key>
+          <Property Name="class_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__animals__class_i__7C1A6C5A" FromRole="classes" ToRole="animals" />
+        </EntityType>
+        <EntityType Name="exhibit">
+          <Key>
+            <PropertyRef Name="exhibit_id" />
+          </Key>
+          <Property Name="exhibit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="animals" Relationship="Self.FK__animals__exhibit__7D0E9093" FromRole="exhibits" ToRole="animals" />
+        </EntityType>
+        <EntityType Name="fact">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fact1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="animal_id" Type="Int32" />
+          <NavigationProperty Name="animal" Relationship="Self.FK__facts__animal_id__7FEAFD3E" FromRole="facts" ToRole="animals" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="picture_id" />
+          </Key>
+          <Property Name="picture_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="picture_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="animal_id" Type="Int32" />
+          <NavigationProperty Name="animal" Relationship="Self.FK__pictures__animal__02C769E9" FromRole="pictures" ToRole="animals" />
+        </EntityType>
+        <EntityType Name="sound">
+          <Key>
+            <PropertyRef Name="sound_id" />
+          </Key>
+          <Property Name="sound_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file_name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sound_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="animal_id" Type="Int32" />
+          <NavigationProperty Name="animal" Relationship="Self.FK__sounds__animal_i__05A3D694" FromRole="sounds" ToRole="animals" />
+        </EntityType>
+        <EntityType Name="detail">
+          <Key>
+            <PropertyRef Name="detail_id" />
+          </Key>
+          <Property Name="detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="event_id" Type="Int32" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="duration" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="event" Relationship="Self.FK__details__event_i__5224328E" FromRole="details" ToRole="events" />
+        </EntityType>
+        <EntityType Name="event">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="details" Relationship="Self.FK__details__event_i__5224328E" FromRole="events" ToRole="details" />
+        </EntityType>
+        <Association Name="FK__animals__class_i__7C1A6C5A">
+          <End Role="classes" Type="Self.class" Multiplicity="0..1" />
+          <End Role="animals" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classes">
+              <PropertyRef Name="class_id" />
+            </Principal>
+            <Dependent Role="animals">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__animals__exhibit__7D0E9093">
+          <End Role="exhibits" Type="Self.exhibit" Multiplicity="0..1" />
+          <End Role="animals" Type="Self.animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="exhibits">
+              <PropertyRef Name="exhibit_id" />
+            </Principal>
+            <Dependent Role="animals">
+              <PropertyRef Name="exhibit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__facts__animal_id__7FEAFD3E">
+          <End Role="animals" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="facts" Type="Self.fact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="facts">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pictures__animal__02C769E9">
+          <End Role="animals" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sounds__animal_i__05A3D694">
+          <End Role="animals" Type="Self.animal" Multiplicity="0..1" />
+          <End Role="sounds" Type="Self.sound" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="animals">
+              <PropertyRef Name="animal_id" />
+            </Principal>
+            <Dependent Role="sounds">
+              <PropertyRef Name="animal_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__details__event_i__5224328E">
+          <End Role="events" Type="Self.event" Multiplicity="0..1" />
+          <End Role="details" Type="Self.detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="events">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="details">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZooCompanionWebApi_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="animals" EntityType="Self.animal" />
+          <EntitySet Name="classes" EntityType="Self.class" />
+          <EntitySet Name="exhibits" EntityType="Self.exhibit" />
+          <EntitySet Name="facts" EntityType="Self.fact" />
+          <EntitySet Name="pictures" EntityType="Self.picture" />
+          <EntitySet Name="sounds" EntityType="Self.sound" />
+          <EntitySet Name="details" EntityType="Self.detail" />
+          <EntitySet Name="events" EntityType="Self.event" />
+          <AssociationSet Name="FK__animals__class_i__7C1A6C5A" Association="Self.FK__animals__class_i__7C1A6C5A">
+            <End Role="classes" EntitySet="classes" />
+            <End Role="animals" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__animals__exhibit__7D0E9093" Association="Self.FK__animals__exhibit__7D0E9093">
+            <End Role="exhibits" EntitySet="exhibits" />
+            <End Role="animals" EntitySet="animals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__facts__animal_id__7FEAFD3E" Association="Self.FK__facts__animal_id__7FEAFD3E">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="facts" EntitySet="facts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pictures__animal__02C769E9" Association="Self.FK__pictures__animal__02C769E9">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sounds__animal_i__05A3D694" Association="Self.FK__sounds__animal_i__05A3D694">
+            <End Role="animals" EntitySet="animals" />
+            <End Role="sounds" EntitySet="sounds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__details__event_i__5224328E" Association="Self.FK__details__event_i__5224328E">
+            <End Role="events" EntitySet="events" />
+            <End Role="details" EntitySet="details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZooAnimalModelStoreContainer" CdmEntityContainer="ZooCompanionWebApi_dbEntities">
+          <EntitySetMapping Name="animals">
+            <EntityTypeMapping TypeName="ZooAnimalModel.animal">
+              <MappingFragment StoreEntitySet="animals">
+                <ScalarProperty Name="animal_id" ColumnName="animal_id" />
+                <ScalarProperty Name="common_name" ColumnName="common_name" />
+                <ScalarProperty Name="scientific_name" ColumnName="scientific_name" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="class_id" ColumnName="class_id" />
+                <ScalarProperty Name="exhibit_id" ColumnName="exhibit_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classes">
+            <EntityTypeMapping TypeName="ZooAnimalModel.class">
+              <MappingFragment StoreEntitySet="classes">
+                <ScalarProperty Name="class_id" ColumnName="class_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exhibits">
+            <EntityTypeMapping TypeName="ZooAnimalModel.exhibit">
+              <MappingFragment StoreEntitySet="exhibits">
+                <ScalarProperty Name="exhibit_id" ColumnName="exhibit_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facts">
+            <EntityTypeMapping TypeName="ZooAnimalModel.fact">
+              <MappingFragment StoreEntitySet="facts">
+                <ScalarProperty Name="fact_id" ColumnName="fact_id" />
+                <ScalarProperty Name="fact1" ColumnName="fact" />
+                <ScalarProperty Name="animal_id" ColumnName="animal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="ZooAnimalModel.picture">
+              <MappingFragment StoreEntitySet="pictures">
+                <ScalarProperty Name="picture_id" ColumnName="picture_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="picture_url" ColumnName="picture_url" />
+                <ScalarProperty Name="animal_id" ColumnName="animal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sounds">
+            <EntityTypeMapping TypeName="ZooAnimalModel.sound">
+              <MappingFragment StoreEntitySet="sounds">
+                <ScalarProperty Name="sound_id" ColumnName="sound_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="sound_url" ColumnName="sound_url" />
+                <ScalarProperty Name="animal_id" ColumnName="animal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="details">
+            <EntityTypeMapping TypeName="ZooAnimalModel.detail">
+              <MappingFragment StoreEntitySet="details">
+                <ScalarProperty Name="detail_id" ColumnName="detail_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="events">
+            <EntityTypeMapping TypeName="ZooAnimalModel.event">
+              <MappingFragment StoreEntitySet="events">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
