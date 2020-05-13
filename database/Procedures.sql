@@ -83,7 +83,7 @@ WHERE event_id = @event_id;
 CREATE PROC spEditEvent @event_id int, @title varchar(250)
 as
 UPDATE calendar.events
-SET title = title
+SET title = @title
 WHERE event_id = @event_id;
 
 
