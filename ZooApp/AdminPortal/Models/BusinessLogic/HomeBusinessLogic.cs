@@ -15,28 +15,42 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
     {
         public bool DeleteAdmin(int adminId)
         {
-            // Query.  
-            string query = "EXEC spDeleteAdmin @admin_id = '" + adminId + "';";
+            try
+            {
+                // Query.  
+                string query = "EXEC spDeleteAdmin @admin_id = '" + adminId + "';";
 
-            // Execute.  
-            int result = DAL.executeQuery(query);
+                // Execute.  
+                int result = DAL.executeQuery(query);
 
-            if (result > 0)
-                return true;
-            else return false;
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public bool DeleteExhibit(int exhibitId)
         {
-            // Query.  
-            string query = "EXEC spDeleteExhibit @exhibit_id = '" + exhibitId + "';";
+            try
+            {
+                // Query.  
+                string query = "EXEC spDeleteExhibit @exhibit_id = '" + exhibitId + "';";
 
-            // Execute.  
-            int result = DAL.executeQuery(query);
+                // Execute.  
+                int result = DAL.executeQuery(query);
 
-            if (result > 0)
-                return true;
-            else return false;
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         internal bool AddNewEvent(string title)
@@ -45,7 +59,7 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             {
                 // Query.  
                 string query = "EXEC spAddNewEvent " +
-                               "@name = '" + title + "', " + "';";
+                               "@title = '" + title + "';";
 
                 // Execute.  
                 int result = DAL.executeQuery(query);
@@ -364,6 +378,26 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 
                 // Execute. 
                 return details = DAL.getTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool DeleteEvent(int eventId)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spDeleteEvent @event_id = '" + eventId + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
             }
             catch (Exception ex)
             {

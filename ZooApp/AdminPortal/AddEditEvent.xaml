@@ -15,7 +15,7 @@
         <TextBox x:Name="txtEventID" HorizontalAlignment="Left" Height="23" Margin="79,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
         <Button x:Name="btnSubmit" Content="Submit New" HorizontalAlignment="Left" Margin="349,341,0,0" VerticalAlignment="Top" Width="88" Click="btnSubmit_Click"/>
         <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="442,341,0,0" VerticalAlignment="Top" Width="75" Click="btnClose_Click"/>
-        <Button x:Name="btnSubmitEdit" Content="Submit Change" HorizontalAlignment="Left" Margin="244,341,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="btnSubmitEdit" Content="Submit Change" HorizontalAlignment="Left" Margin="244,341,0,0" VerticalAlignment="Top" Width="100" Click="btnSubmitEdit_Click"/>
         <Button x:Name="btnAddDetail" Content="Add Detail" HorizontalAlignment="Left" Margin="244,299,0,0" VerticalAlignment="Top" Width="75" Click="btnAddDetail_Click"/>
         <Button x:Name="btnEditDetail" Content="Edit Detail" HorizontalAlignment="Left" Margin="324,299,0,0" VerticalAlignment="Top" Width="88" Click="btnEditDetail_Click"/>
         <Button x:Name="btnDeleteDetail" Content="Delete Detail" HorizontalAlignment="Left" Margin="417,299,0,0" VerticalAlignment="Top" Width="100"/>

@@ -19,5 +19,6 @@ namespace AdminPortal.Models.BusinessLogic
         DataTable GetEvents();
         ListedExhibit GetExhibit(int exhibitId);
         Event GetEvent(int eventId);
+        bool DeleteEvent(int eventId);
     }
 }

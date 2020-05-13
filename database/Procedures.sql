@@ -97,3 +97,8 @@ as
 SELECT detail_id, event_id, date, FORMAT(time, N'hh:mm tt') as time, duration, description
 FROM calendar.details
 WHERE detail_id = @detail_id;
+
+CREATE PROC spDeleteEvent @event_id int
+as
+DELETE calendar.events
+WHERE event_id = @event_id;

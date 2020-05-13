@@ -25,8 +25,9 @@ namespace AdminPortal
     /// </summary>
     public partial class AddEditEvent : Window
     {
-        // AddEditEventViewModel AddEditExhibitViewModel = new AddEditEventViewModel();
         HomeBusinessLogic HomeBusinessLogic = new HomeBusinessLogic();
+        AddEditEventViewModel addEvent = new AddEditEventViewModel();
+
         private int detailId = 0;
 
         public AddEditEvent()
@@ -135,6 +136,93 @@ namespace AdminPortal
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+                string title = txtEventTitle.Text.ToString();
+
+                // check for apostrophes and add one before they go into the query
+                title = title.Replace("'", "''");
+
+                // Verification.
+                // Check if null or empty
+                if (string.IsNullOrEmpty(title))
+                {
+                    // Display Message  
+                    MessageBox.Show("Please give the Event a name.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ;
+                }
+                else
+                {
+                    if (HomeBusinessLogic.AddNewEvent(title))
+                    {
+                        // Display Message  
+                        MessageBox.Show("New event added.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
+                // TODO: fix object reference issue from AddEditEventViewModel
+                //Event @event = new Event { EventID = 0, Title = txtEventTitle.Text };
+                //string title = txtEventTitle.Text;
+                //bool successful = AddEditEventViewModel.AddNewEvent(@event);
+                //if (!successful) return;
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+        private void btnSubmitEdit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int eventId = Convert.ToInt32(txtEventID.Text);
+                string title = txtEventTitle.Text;
+
+                // check for apostrophes and add one before they go into the query
+                title = title.Replace("'", "''");
+
+                // Verification.
+                // Check if null or empty
+                if (string.IsNullOrEmpty(title))
+                {
+                    // Display Message  
+                    MessageBox.Show("Please give the Event a name.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    if (HomeBusinessLogic.EditEvent(eventId, title))
+                    {
+                        // Display Message  
+                        MessageBox.Show("Event updated.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
         }
     }
 }

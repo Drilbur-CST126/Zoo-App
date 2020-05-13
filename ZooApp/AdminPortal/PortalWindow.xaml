@@ -20,7 +20,7 @@
             <TabItem Header="Events Listing">
                 <Grid Background="#FFE5E5E5" HorizontalAlignment="Left" Width="591">
                     <DataGrid x:Name="tblEventListing" SelectionMode="Single" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="554" ItemsSource="{Binding}" SelectionChanged="tblEventListing_SelectionChanged" IsReadOnly="True"/>
-                    <Button x:Name="btnDeleteEvent" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btnDeleteEvent" Content="Delete" HorizontalAlignment="Left" Margin="489,234,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteEvent_Click"/>
                     <Button x:Name="btnAddNewEvent" Content="Add New Event" HorizontalAlignment="Left" Margin="388,234,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.836,0.376" Click="btnAddNewEvent_Click"/>
                     <Button x:Name="btnEditEvent" Content="Edit" HorizontalAlignment="Left" Margin="308,234,0,0" VerticalAlignment="Top" Width="75" Click="btnEditEvent_Click"/>
                 </Grid>

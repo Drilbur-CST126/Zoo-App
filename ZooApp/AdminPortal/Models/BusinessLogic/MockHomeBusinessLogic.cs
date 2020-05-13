@@ -58,5 +58,10 @@ namespace AdminPortal.Models.BusinessLogic
         {
             return new ListedExhibit();
         }
+
+        public bool DeleteEvent(int eventId)
+        {
+            return true;
+        }
     }
 }

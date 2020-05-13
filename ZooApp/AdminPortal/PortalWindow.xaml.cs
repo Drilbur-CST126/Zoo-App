@@ -312,5 +312,43 @@ namespace AdminPortal
             // Close this window
             this.Close();
         }
+
+        private void btnDeleteEvent_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (eventId == 0)
+                {
+                    MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // Execution.
+                    if (HomeBusinessLogic.DeleteEvent(eventId))
+                    {
+                        // Display Message  
+                        MessageBox.Show("Event deleted.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // tblAdminListing.SelectedIndex = 0;
+                        tblEventListing.DataContext = HomeBusinessLogic.GetEvents();
+                        return;
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Could not event exhibit! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
     }
 }
