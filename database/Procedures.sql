@@ -91,3 +91,7 @@ CREATE PROC spAddNewDetail @event_id int, @date datetime, @time datetime, @durat
 as
 INSERT INTO calendar.details (event_id, date, time, duration, description)
 VALUES (@event_id, @date, @time, @duration, @description);
+
+CREATE PROC spLastEventId
+as
+select max(event_id) as last from calendar.events;

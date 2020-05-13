@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using AdminPortal.Models;
+using AdminPortal.Models.BusinessLogic.HelperCode.Common;
 
 namespace AdminPortal
 {
@@ -20,6 +21,8 @@ namespace AdminPortal
     /// </summary>
     public partial class AddEditDetail : Window
     {
+        HomeBusinessLogic HomeBusinessLogic = new HomeBusinessLogic();
+
         public AddEditDetail()
         {
             InitializeComponent();
@@ -43,9 +46,10 @@ namespace AdminPortal
         {
             try
             {
-
-                string title = txtEventTitle.Text.ToString();
-
+                int event_id;
+                event_id = HomeBusinessLogic.LastEventId();
+                
+                // TODO: Build AddEditDetailViewModel for checks
                 // check for apostrophes and add one before they go into the query
                 title = title.Replace("'", "''");
 

@@ -200,6 +200,33 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
 
         }
 
+        internal int LastEventId()
+        {
+            DataTable tbl;
+            DataRow row;
+            int event_id;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spLastEventId;";
+
+                // Execute. 
+                tbl = DAL.getTable(query);
+                row = tbl.Rows[0];
+
+                // Get Record.
+                event_id = Convert.ToInt32(row["last"]);
+
+                return event_id;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public bool EditExhibit(int exhibitId, string name, string description)
         {
             try
