@@ -40,7 +40,7 @@ class AnimalPage extends StatelessWidget
 
   Container _buildImageCarasoul(){
     return Container(
-      height: 40,
+      height: 400,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: _buildImageList(),
