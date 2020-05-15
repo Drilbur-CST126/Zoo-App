@@ -99,6 +99,32 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
+        public bool AddNewDetail(Detail detail)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spAddNewDetail " +
+                               "@event_id = '" + detail.EventID + "', " +
+                               "@date = '" + detail.Date + "', " +
+                               "@time = '" + detail.Time + "', " +
+                               "@duration = '" + detail.Duration + "', " +
+                               "@description = '" + detail.Description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public bool AddNewExhibit(string name, string description)
         {
             try
@@ -166,6 +192,58 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 detail.Description = (row["description"]).ToString();
 
                 return detail;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        internal bool EditDetail(string detailId, DateTime date, string time, string duration, string description)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spEditDetail " +
+                               "@detail_id = '" + detailId + "', " +
+                               "@date = '" + date + "', " +
+                               "@time = '" + time + "', " +
+                               "@duration = " + duration + ", " +
+                               "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal int LastEventId()
+        {
+            DataTable tbl;
+            DataRow row;
+            int event_id;
+
+            try
+            {
+                // Query.  
+                string query = "EXEC spLastEventId;";
+
+                // Execute. 
+                tbl = DAL.getTable(query);
+                row = tbl.Rows[0];
+
+                // Get Record.
+                event_id = Convert.ToInt32(row["last"]);
+
+                return event_id;
             }
             catch (Exception ex)
             {
@@ -404,5 +482,26 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 throw ex;
             }
         }
+
+        public bool DeleteDetail(int detailId)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spDeleteDetail @detail_id = '" + detailId + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
