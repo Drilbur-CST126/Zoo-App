@@ -40,7 +40,7 @@ class AnimalPage extends StatelessWidget
 
   Container _buildImageCarasoul(){
     return Container(
-      height: 800,
+      height: 40,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: _buildImageList(),
@@ -71,6 +71,10 @@ class AnimalPage extends StatelessWidget
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text(animal.commonName),
+        actions: <Widget>[FlatButton(child: Icon(Icons.home),onPressed: () => {
+          Navigator.popUntil(context,
+              ModalRoute.withName(Navigator.defaultRouteName))
+        }),],
       ),
       body: Center(
         child: ListView(
@@ -91,4 +95,6 @@ class AnimalPage extends StatelessWidget
   Widget build(BuildContext context) {
     return animal != null ? _buildAnimalPage(context) : NotFoundErrorPage();
   }
+
+
 }
