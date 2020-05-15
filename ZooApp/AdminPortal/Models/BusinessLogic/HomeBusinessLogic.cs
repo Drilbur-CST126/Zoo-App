@@ -99,17 +99,17 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
             }
         }
 
-        public bool AddNewDetail(int eventId, DateTime date, string time, decimal duration, string description)
+        public bool AddNewDetail(Detail detail)
         {
             try
             {
                 // Query.  
                 string query = "EXEC spAddNewDetail " +
-                               "@event_id = '" + eventId + "', " +
-                               "@date = '" + date + "', " +
-                               "@time = '" + time + "', " +
-                               "@duration = '" + duration + "', " +
-                               "@description = '" + description + "';";
+                               "@event_id = '" + detail.EventID + "', " +
+                               "@date = '" + detail.Date + "', " +
+                               "@time = '" + detail.Time + "', " +
+                               "@duration = '" + detail.Duration + "', " +
+                               "@description = '" + detail.Description + "';";
 
                 // Execute.  
                 int result = DAL.executeQuery(query);
@@ -198,6 +198,31 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 throw ex;
             }
 
+        }
+
+        internal bool EditDetail(string detailId, DateTime date, string time, string duration, string description)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spEditDetail " +
+                               "@detail_id = '" + detailId + "', " +
+                               "@date = '" + date + "', " +
+                               "@time = '" + time + "', " +
+                               "@duration = " + duration + ", " +
+                               "@description = '" + description + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         internal int LastEventId()
@@ -457,5 +482,26 @@ namespace AdminPortal.Models.BusinessLogic.HelperCode.Common
                 throw ex;
             }
         }
+
+        public bool DeleteDetail(int detailId)
+        {
+            try
+            {
+                // Query.  
+                string query = "EXEC spDeleteDetail @detail_id = '" + detailId + "';";
+
+                // Execute.  
+                int result = DAL.executeQuery(query);
+
+                if (result > 0)
+                    return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

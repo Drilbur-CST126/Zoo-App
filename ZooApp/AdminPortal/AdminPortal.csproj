@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="ViewModels\AddEditAdminViewModel.cs" />
+    <Compile Include="ViewModels\AddEditDetailViewModel.cs" />
     <Compile Include="ViewModels\AddEditEventViewModel.cs" />
     <Compile Include="ViewModels\AddEditExhibitViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />

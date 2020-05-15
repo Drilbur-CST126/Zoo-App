@@ -78,7 +78,7 @@ group by e.event_id, e.title;
 CREATE PROC spEditEvent @event_id int, @title varchar(250)
 as
 UPDATE calendar.events
-SET title = title
+SET title = @title
 WHERE event_id = @event_id;
 
 
@@ -95,3 +95,14 @@ VALUES (@event_id, @date, @time, @duration, @description);
 CREATE PROC spLastEventId
 as
 select max(event_id) as last from calendar.events;
+
+CREATE PROC spEditDetail @detail_id int, @date datetime, @time datetime, @duration decimal, @description varchar(250)
+as
+UPDATE calendar.details
+SET date = @date, time = @time, duration = @duration, description = @description
+WHERE detail_id = @detail_id;
+
+CREATE PROC spDeleteDetail @detail_id int
+as
+DELETE FROM calendar.details
+WHERE detail_id = @detail_id;

@@ -335,7 +335,7 @@ namespace AdminPortal
                     else
                     {
                         // Display Message  
-                        MessageBox.Show("Could not event exhibit! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Could not delete event! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }

@@ -86,36 +86,46 @@ namespace AdminPortal
         {
             try
             {
-
-                string title = txtEventTitle.Text.ToString();
-
-                // check for apostrophes and add one before they go into the query
-                title = title.Replace("'", "''");
-
-                // Verification.
-                // Check if null or empty
-                if (string.IsNullOrEmpty(title))
+                if (string.IsNullOrEmpty(txtEventID.Text))
                 {
-                    // Display Message  
-                    MessageBox.Show("Please give the Event a name.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
-                    ;
-                }
-                else
-                {
-                    if (HomeBusinessLogic.AddNewEvent(title))
+                    string title = txtEventTitle.Text.ToString();
+
+                    // check for apostrophes and add one before they go into the query
+                    title = title.Replace("'", "''");
+
+                    // Verification.
+                    // Check if null or empty
+                    if (string.IsNullOrEmpty(title))
                     {
-                        // Open Detail window
-                        AddEditDetail addEditDetail = new AddEditDetail();
-                        addEditDetail.Show();
-
-                        // Close this window
-                        this.Close();
+                        // Display Message  
+                        MessageBox.Show("Please give the new Event a name.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     else
                     {
-                        // Display Message  
-                        MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        if (HomeBusinessLogic.AddNewEvent(title))
+                        {
+                            // Open Detail window
+                            AddEditDetail addEditDetail = new AddEditDetail();
+                            addEditDetail.Show();
+
+                            // Close this window
+                            this.Close();
+                        }
+                        else
+                        {
+                            // Display Message  
+                            MessageBox.Show("Something went wrong! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
+                }
+                else
+                {
+                    // Open Detail window
+                    AddEditDetail addEditDetail = new AddEditDetail(Convert.ToInt32(txtEventID.Text));
+                    addEditDetail.Show();
+
+                    // Close this window
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -229,6 +239,43 @@ namespace AdminPortal
                 // Display Message  
                 MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
 
+            }
+        }
+
+        private void btnDeleteDetail_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (detailId == 0)
+                {
+                    MessageBox.Show("Please select an item from the list.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    // Execution.
+                    if (HomeBusinessLogic.DeleteDetail(detailId))
+                    {
+                        // Display Message  
+                        MessageBox.Show("Detail deleted.", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                        // tblAdminListing.SelectedIndex = 0;
+                        Event @event = HomeBusinessLogic.GetEvent(Convert.ToInt32(txtEventID.Text));
+                        tblDetailListing.DataContext = HomeBusinessLogic.GetEventDetails(@event);
+                        return;
+                    }
+                    else
+                    {
+                        // Display Message  
+                        MessageBox.Show("Could not delete detail! Please try again.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+
+                // Display Message  
+                MessageBox.Show("Something went wrong! Please try again later.", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

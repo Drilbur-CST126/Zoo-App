@@ -11,18 +11,18 @@
             <RowDefinition Height="16*"/>
             <RowDefinition Height="107*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" Margin="217,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Grid.Row="1"/>
+        <TextBox x:Name="txtTime" HorizontalAlignment="Left" Height="23" Margin="217,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Grid.Row="1" TabIndex="2"/>
         <Label x:Name="lblTime" Content="Time:" HorizontalAlignment="Left" Margin="217,14,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="txtDetailDescription" HorizontalAlignment="Left" Height="194" Margin="22,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495" VerticalScrollBarVisibility="Auto" Grid.Row="1"/>
+        <TextBox x:Name="txtDetailDescription" HorizontalAlignment="Left" Height="194" Margin="22,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495" VerticalScrollBarVisibility="Auto" Grid.Row="1" TabIndex="4"/>
         <Label x:Name="lblDetailDescription" Content="Description:" HorizontalAlignment="Left" Margin="22,68,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label x:Name="lblDetailID" Content="ID:" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtDetailID" HorizontalAlignment="Left" Height="23" Margin="79,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button x:Name="btnSubmit" Content="Submit New" HorizontalAlignment="Left" Margin="349,293,0,0" VerticalAlignment="Top" Width="88" Grid.Row="1" Click="btnSubmit_Click"/>
-        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="442,293,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1"/>
-        <Button x:Name="btnSubmitEdit" Content="Submit Change" HorizontalAlignment="Left" Margin="244,293,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1"/>
-        <DatePicker x:Name="dpkDate" HorizontalAlignment="Left" Margin="23,39,0,0" VerticalAlignment="Top" Width="176" Height="25" Grid.Row="1"/>
+        <Button x:Name="btnSubmit" Content="Submit New" HorizontalAlignment="Left" Margin="349,293,0,0" VerticalAlignment="Top" Width="88" Grid.Row="1" Click="btnSubmit_Click" TabIndex="6"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="442,293,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="btnClose_Click" TabIndex="7"/>
+        <Button x:Name="btnSubmitEdit" Content="Submit Change" HorizontalAlignment="Left" Margin="244,293,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1" Click="btnSubmitEdit_Click" TabIndex="5"/>
+        <DatePicker x:Name="dpkDate" HorizontalAlignment="Left" Margin="23,39,0,0" VerticalAlignment="Top" Width="176" Height="25" Grid.Row="1" TabIndex="1"/>
         <Label x:Name="lblDatePicker" Content="Date:" HorizontalAlignment="Left" Margin="22,13,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.316,-0.625" Grid.Row="1"/>
-        <TextBox x:Name="txtDuration" HorizontalAlignment="Left" Height="23" Margin="376,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Grid.Row="1"/>
+        <TextBox x:Name="txtDuration" HorizontalAlignment="Left" Height="23" Margin="376,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" Grid.Row="1" TabIndex="3"/>
         <Label x:Name="lblDuration" Content="Duration (hours):" HorizontalAlignment="Left" Margin="376,14,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
