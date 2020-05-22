@@ -45,6 +45,18 @@ class AnimalListPage extends StatefulWidget{
     return buttons;
   }
 
+  static Widget _inContainer(Widget child)
+  {
+    return Container(
+      margin: EdgeInsets.only(top: 10.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        color: Colors.white,
+      ),
+      child: child,
+    );
+  }
+
   @override
   State<StatefulWidget> createState() => AnimalListPageState();
 
@@ -64,28 +76,37 @@ class AnimalListPageState extends State<AnimalListPage>
     var listItems = <Widget>[];
 
     if (updated || snapshot.hasData) {
-      listItems.add(TextField(onChanged: _changeSearchTerm,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
-          hintText: "Search for animals at the zoo",
-          hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
+      listItems.add(
+        TextField(
+          onChanged: _changeSearchTerm,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
+            hintText: "Search for animals at the zoo",
+            hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
+            icon: Icon(Icons.search),
+            filled: true,
+            fillColor: Colors.white,
+          ),
+          style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
 
-          icon: Icon(Icons.search),
-        ),
       ));
 
       var displayItems = widget._displayAnimals(context, searchTerm);
       if (displayItems.length > 0) {
         listItems.addAll(displayItems);
       } else {
-        listItems.addAll(<Widget>[
-          Text("Our search has gone cold on this one, try another page!"),
-          Image(image: AssetImage("assets/penguin_lost.png"),),
-        ]);
+        listItems.add(AnimalListPage._inContainer(
+          Column(
+            children: <Widget>[
+              Text("Our search has gone cold on this one, try another animal!"),
+              Image(image: AssetImage("assets/penguin_lost.png"),),
+            ],
+          )
+        ));
       }
       //listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
     } else {
-      listItems.add(LoadingWidget());
+      listItems.add(AnimalListPage._inContainer(LoadingWidget()));
     }
     updated = true;
     return Scaffold(
