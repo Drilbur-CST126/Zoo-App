@@ -73,7 +73,16 @@ class AnimalListPageState extends State<AnimalListPage>
           icon: Icon(Icons.search),
         ),
       ));
-      listItems.addAll(widget._displayAnimals(context, searchTerm));
+
+      var displayItems = widget._displayAnimals(context, searchTerm);
+      if (displayItems.length > 0) {
+        listItems.addAll(displayItems);
+      } else {
+        listItems.addAll(<Widget>[
+          Text("Our search has gone cold on this one, try another page!"),
+          Image(image: AssetImage("assets/penguin_lost.png"),),
+        ]);
+      }
       //listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
     } else {
       listItems.add(LoadingWidget());
