@@ -14,9 +14,12 @@ abstract class IControllerView
   Future<bool> updateAnimals();
   Future<bool> updateFacts();
   Future<bool> updatePhotos();
+  Future<bool> updateClassesAndExhibits();
   Iterable<Animal> searchAnimals(String searchTerm);
   Iterable<Animal> searchAnimalByExhibit(int requestedRegionId);
   Iterable<Animal> searchAnimalByClass(int requestedClassId);
   List<int> getExhibitIds();
   List<int> getClassIds();
+  Map<int, String> getExhibits();
+  Map<int, String> getClasses();
 }

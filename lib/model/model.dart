@@ -1,7 +1,9 @@
 import 'package:zoo_app/model/animal.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
+import 'package:zoo_app/model/interfaces/iClassExhibitFetcher.dart';
 import 'package:zoo_app/model/interfaces/iFactFetcher.dart';
 import 'package:zoo_app/model/mockAnimalFetcher.dart';
+import 'package:zoo_app/model/mockClassExhibitFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -16,18 +18,20 @@ class Model
 {
   IAnimalFetcher animalFetcher;
   IFactFetcher factFetcher;
+  IClassExhibitFetcher classExhibitFetcher;
 
-  Model(this.animalFetcher, this.factFetcher);
+  Model(this.animalFetcher, this.factFetcher, this.classExhibitFetcher);
 
   // This static method exists to more quickly create a Model with only mock helper classes.
   // These mock classes are most helpful while the database is not available
-  static Model mockModel(List<Animal> animals, List<Fact> facts)
+  static Model mockModel(List<Animal> animals, List<Fact> facts, [Map<int, String> classes, Map<int, String> exhibits])
   {
     var mockAnimalFetcher = MockAnimalFetcher();
     mockAnimalFetcher.animals = animals;
     var mockFactFetcher = MockFactFetcher();
     mockFactFetcher.facts = facts;
-    return Model(mockAnimalFetcher, mockFactFetcher);
+    var mockClassExhibitFetcher = MockClassExhibitFetcher(classes, exhibits);
+    return Model(mockAnimalFetcher, mockFactFetcher, mockClassExhibitFetcher);
   }
 
   Future<void> updatePhotos() async {

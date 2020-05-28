@@ -51,7 +51,7 @@ Widget _getExhibitPage(WidgetTester tester)
     Animal(8, "African Spurred Tortoise", "Centrochelys Sulcata", 1, 1),
     Animal(9, "Allen's Swamp Monkey", "Allenopithecus Nigroviridis", 1, 1),
     Animal(10, "American Beaver", "Castor Canadensis", 1, 1),
-  ], []));
+  ], [], {1: "Test Class"}, {1: "Test Exhibit"}));
   Widget app = MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
