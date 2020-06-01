@@ -20,6 +20,8 @@ class AnimalListPage extends StatefulWidget{
   // always marked "final".
   final IControllerView controller;
 
+  static const String NOT_FOUND_STR = "Our search has gone cold on this one, try another animal!";
+
   Widget _animalButton(BuildContext context, String name, int animalId)
   {
     return RaisedButton(
@@ -98,7 +100,7 @@ class AnimalListPageState extends State<AnimalListPage>
         listItems.add(AnimalListPage._inContainer(
           Column(
             children: <Widget>[
-              Text("Our search has gone cold on this one, try another animal!"),
+              Text(AnimalListPage.NOT_FOUND_STR),
               Image(image: AssetImage("assets/penguin_lost.png"),),
             ],
           )
