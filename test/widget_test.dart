@@ -276,7 +276,7 @@ void testSearch() {
 
     expect(find.byType(RaisedButton), findsNWidgets(2));
   });
-  testWidgets("Search returns nothing for a garbage query", (WidgetTester tester) async
+  testWidgets("Search returns an error for a garbage query", (WidgetTester tester) async
   {
 
     await tester.pumpWidget(_getAnimalListPage(tester, Model.mockModel([
@@ -289,6 +289,7 @@ void testSearch() {
     await tester.pumpAndSettle();
 
     expect(find.byType(RaisedButton), findsNothing);
+    expect(find.text(AnimalListPage.NOT_FOUND_STR), findsOneWidget);
   });
 }
 
