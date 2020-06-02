@@ -8,6 +8,7 @@ import 'package:zoo_app/model/dbAnimalFetcher.dart';
 import 'package:zoo_app/model/fact.dart';
 import 'package:zoo_app/model/interfaces/iAnimalFetcher.dart';
 import 'package:zoo_app/model/mockAnimalFetcher.dart';
+import 'package:zoo_app/model/mockClassExhibitFetcher.dart';
 import 'package:zoo_app/model/mockFactFetcher.dart';
 import 'package:zoo_app/model/model.dart';
 
@@ -236,7 +237,7 @@ void testDbAnimalFetcher() {
     expect(fetcher.animals.length, greaterThan(0));
   });
   test("DbAnimalFetcher updates through the Controller", () async {
-    var model = Model(DbAnimalFetcher(), MockFactFetcher());
+    var model = Model(DbAnimalFetcher(), MockFactFetcher(), MockClassExhibitFetcher());
     var controller = Controller(model);
     await controller.updateAnimals();
 

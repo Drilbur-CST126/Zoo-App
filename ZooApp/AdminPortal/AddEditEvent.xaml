@@ -18,7 +18,7 @@
         <Button x:Name="btnSubmitEdit" Content="Submit Change" HorizontalAlignment="Left" Margin="244,341,0,0" VerticalAlignment="Top" Width="100" Click="btnSubmitEdit_Click"/>
         <Button x:Name="btnAddDetail" Content="Add Detail" HorizontalAlignment="Left" Margin="244,299,0,0" VerticalAlignment="Top" Width="75" Click="btnAddDetail_Click"/>
         <Button x:Name="btnEditDetail" Content="Edit Detail" HorizontalAlignment="Left" Margin="324,299,0,0" VerticalAlignment="Top" Width="88" Click="btnEditDetail_Click"/>
-        <Button x:Name="btnDeleteDetail" Content="Delete Detail" HorizontalAlignment="Left" Margin="417,299,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="btnDeleteDetail" Content="Delete Detail" HorizontalAlignment="Left" Margin="417,299,0,0" VerticalAlignment="Top" Width="100" Click="btnDeleteDetail_Click"/>
 
     </Grid>
 </Window>

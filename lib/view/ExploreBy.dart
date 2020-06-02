@@ -4,10 +4,6 @@ import 'package:zoo_app/controller/iControllerView.dart';
 import 'package:zoo_app/view/exhibits.dart';
 import 'package:zoo_app/view/family.dart';
 import 'package:zoo_app/view/loadingWidget.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-
-import '../model/animal.dart';
 
 
 class ExploreBy extends StatefulWidget {
@@ -20,13 +16,6 @@ class ExploreBy extends StatefulWidget {
 }
 
 class ExploreByState extends State<ExploreBy> {
-  static const String exhibitUrl =
-      "https://zooappwebapi.azurewebsites.net/api/exhibit";
-  static const String classUrl =
-      "https://zooappwebapi.azurewebsites.net/api/class";
-  Map<int, String> _exhibits;
-  Map<int, String> _class;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +33,7 @@ class ExploreByState extends State<ExploreBy> {
                 bool result = await widget.controller.updateAnimals();
                 await widget.controller.updateFacts();
                 await widget.controller.updatePhotos();
-                await updateExhibit();
-                await updateClass();
+                await widget.controller.updateClassesAndExhibits();
                 return result;
               }(),
               builder: (context, snapshot) {
@@ -74,7 +62,7 @@ class ExploreByState extends State<ExploreBy> {
                                     MaterialPageRoute(
                                         builder: (context) => Exhibits(
                                               controller: widget.controller,
-                                              exhibits: _exhibits,
+                                              exhibits: widget.controller.getExhibits(),
                                             )));
                               },
                               color: Colors.orangeAccent,
@@ -102,7 +90,7 @@ class ExploreByState extends State<ExploreBy> {
                                     MaterialPageRoute(
                                         builder: (context) => Family(
                                               controller: widget.controller,
-                                              classes: _class,
+                                              classes: widget.controller.getClasses(),
                                             )));
                               },
                               color: Colors.orangeAccent[200],
@@ -116,47 +104,5 @@ class ExploreByState extends State<ExploreBy> {
                 }
               },
             )));
-  }
-
-  Future<void> updateExhibit() async {
-    final response =
-        await http.get(exhibitUrl, headers: {"Accept": "application/json"});
-
-    if (response.statusCode == 200) {
-      debugPrint("update call");
-      decodeExhibitResponses(json.decode(response.body));
-    } else {
-      throw Exception("Failed to connect to database.");
-    }
-  }
-
-  // This function gets all animals from the json list and puts them in 'animals'.
-  void decodeExhibitResponses(List<dynamic> json) {
-    var newAnimals = Map<int, String>();
-    for (var jsonAnimal in json) {
-      newAnimals[jsonAnimal["exhibit_id"]] = jsonAnimal["name"];
-    }
-    _exhibits = newAnimals;
-  }
-
-  Future<void> updateClass() async {
-    final response =
-        await http.get(classUrl, headers: {"Accept": "application/json"});
-
-    if (response.statusCode == 200) {
-      debugPrint("update call");
-      decodeClassResponses(json.decode(response.body));
-    } else {
-      throw Exception("Failed to connect to database.");
-    }
-  }
-
-  // This function gets all animals from the json list and puts them in 'animals'.
-  void decodeClassResponses(List<dynamic> json) {
-    var newAnimals = Map<int, String>();
-    for (var jsonAnimal in json) {
-      newAnimals[jsonAnimal["class_id"]] = jsonAnimal["name"];
-    }
-    _class = newAnimals;
   }
 }

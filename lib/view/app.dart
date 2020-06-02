@@ -20,6 +20,8 @@ class AnimalListPage extends StatefulWidget{
   // always marked "final".
   final IControllerView controller;
 
+  static const String NOT_FOUND_STR = "Our search has gone cold on this one, try another animal!";
+
   Widget _animalButton(BuildContext context, String name, int animalId)
   {
     return RaisedButton(
@@ -45,6 +47,18 @@ class AnimalListPage extends StatefulWidget{
     return buttons;
   }
 
+  static Widget _inContainer(Widget child)
+  {
+    return Container(
+      margin: EdgeInsets.only(top: 10.0),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        color: Colors.white,
+      ),
+      child: child,
+    );
+  }
+
   @override
   State<StatefulWidget> createState() => AnimalListPageState();
 
@@ -64,19 +78,37 @@ class AnimalListPageState extends State<AnimalListPage>
     var listItems = <Widget>[];
 
     if (updated || snapshot.hasData) {
-      listItems.add(TextField(onChanged: _changeSearchTerm,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
-          hintText: "Search for animals at the zoo",
-          hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
+      listItems.add(
+        TextField(
+          onChanged: _changeSearchTerm,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.teal)),
+            hintText: "Search for animals at the zoo",
+            hintStyle: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
+            icon: Icon(Icons.search),
+            filled: true,
+            fillColor: Colors.white,
+          ),
+          style: TextStyle(fontWeight: FontWeight.bold,  fontSize: 20, color: Colors.red),
 
-          icon: Icon(Icons.search),
-        ),
       ));
-      listItems.addAll(widget._displayAnimals(context, searchTerm));
+
+      var displayItems = widget._displayAnimals(context, searchTerm);
+      if (displayItems.length > 0) {
+        listItems.addAll(displayItems);
+      } else {
+        listItems.add(AnimalListPage._inContainer(
+          Column(
+            children: <Widget>[
+              Text(AnimalListPage.NOT_FOUND_STR),
+              Image(image: AssetImage("assets/penguin_lost.png"),),
+            ],
+          )
+        ));
+      }
       //listItems.add(widget._animalButton(context, "Nonexistant animal", -1));
     } else {
-      listItems.add(LoadingWidget());
+      listItems.add(AnimalListPage._inContainer(LoadingWidget()));
     }
     updated = true;
     return Scaffold(
@@ -98,12 +130,15 @@ class AnimalListPageState extends State<AnimalListPage>
 
   @override
   Widget build(BuildContext context) {
-    if (!updated) {
+    if (/*!updated*/true) {
       return FutureBuilder<bool>(
           future: () async {
-            await widget.controller.updateAnimals();
-            await widget.controller.updateFacts();
-            await widget.controller.updatePhotos();
+            if(!updated)
+            {
+              await widget.controller.updateAnimals();
+              await widget.controller.updateFacts();
+              await widget.controller.updatePhotos();
+            }
             return true;
           }(),
           builder: _createPage

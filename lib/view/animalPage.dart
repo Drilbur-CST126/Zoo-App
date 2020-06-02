@@ -32,15 +32,28 @@ class AnimalPage extends StatelessWidget
   {
     var facts = controller.getAllFactsForAnimal(animal.animalId);
     var factsText = new List<Widget>();
-    facts.forEach((fact) => factsText.add(
-      Padding(child: Text("- " + fact.fact, style: _getTextStyle(context),), padding: EdgeInsets.all(20))
-    ));
+    if (facts.length == 0){
+      factsText.add(
+          Padding(child: Text("No Facts Found", style: _getTextStyle(context),), padding: EdgeInsets.all(20))
+      );
+    }
+    else{
+      facts.forEach((fact) => factsText.add(
+          Padding(child: Text("- " + fact.fact, style: _getTextStyle(context),), padding: EdgeInsets.all(20))
+      ));
+    }
     return factsText;
   }
 
   Container _buildImageCarasoul(){
+    if(animal.pictureURL.length == 0){
+      return(
+      Container(child: Text("No Images Found"), padding: EdgeInsets.all(5),)
+      );
+    }
+
     return Container(
-      height: 800,
+      height: 400,
       child: Carousel(
         boxFit: BoxFit.fill,
         images: _buildImageList(),
@@ -71,6 +84,10 @@ class AnimalPage extends StatelessWidget
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text(animal.commonName),
+        actions: <Widget>[FlatButton(child: Icon(Icons.home),onPressed: () => {
+          Navigator.popUntil(context,
+              ModalRoute.withName(Navigator.defaultRouteName))
+        }),],
       ),
       body: Center(
         child: ListView(
@@ -91,4 +108,6 @@ class AnimalPage extends StatelessWidget
   Widget build(BuildContext context) {
     return animal != null ? _buildAnimalPage(context) : NotFoundErrorPage();
   }
+
+
 }

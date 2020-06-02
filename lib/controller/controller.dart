@@ -59,6 +59,16 @@ class Controller implements IControllerView
   }
 
   @override
+  Map<int, String> getClasses() {
+    return model.classExhibitFetcher.getClasses();
+  }
+
+  @override
+  Map<int, String> getExhibits() {
+    return model.classExhibitFetcher.getExhibits();
+  }
+
+  @override
   Future<bool> updateAnimals() async {
     try {
       await model.animalFetcher.update();
@@ -81,6 +91,15 @@ class Controller implements IControllerView
   Future<bool> updatePhotos() async {
     try {
       await model.updatePhotos();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> updateClassesAndExhibits() async {
+    try {
+      await model.classExhibitFetcher.update();
       return true;
     } catch (e) {
       return false;
